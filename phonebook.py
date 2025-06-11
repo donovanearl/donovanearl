@@ -1,7 +1,15 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
-password="DanDae123"
+
+fh=open('c:/Users/Donf/python_p/.env')
+for line in fh:
+    if '=' in line and not line.startswith('#'):
+        key, value = line.strip().split('=', 1)
+        p = value
+password=p
+print(password)
+
 engine= create_engine(f'postgresql+psycopg2://postgres:{password}@localhost:5432/phonebook',echo= True)
 Base=declarative_base()
 
@@ -10,9 +18,6 @@ class Person(Base):
     id=Column(Integer,primary_key=True)
     name=Column(String, nullable=False)
     number=Column(String)
-
-
-
 
 #------------Prepping---------------------------------------#
 
@@ -37,9 +42,20 @@ def del_person():
     session=Session()
     user=session.query(Person).filter_by(name=input('Name:')).first()
     
+    #check if user has data or if user is TRUE after the query
     if user:
         session.delete(user)
         session.commit()
 
+def show_all_person():
+    
+    Base.metadata.create_all(engine)
+    Session=sessionmaker(bind=engine)
+    session=Session()
+    All_user=session.query(Person).all()#filter_by(name=input('Name:')).first()
+    for i in All_user:
+        print('Name: ',i.name,'Number: ',i.number)
+    
 
-del_person()
+#new_person()
+show_all_person()
