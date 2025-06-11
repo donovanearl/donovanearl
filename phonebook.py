@@ -59,3 +59,4 @@ def show_all_person():
 
 #new_person()
 show_all_person()
+#Test for .gitignore
