@@ -46,6 +46,34 @@ def del_person():
     if user:
         session.delete(user)
         session.commit()
+def upd_person():
+    Base.metadata.create_all(engine)
+    Session=sessionmaker(bind=engine)
+    session=Session()
+    user=session.query(Person).filter_by(name=input('Name:')).first()
+    
+    #check if user has data or if user is TRUE after the query
+    if user:
+        x=1
+        while x==1:
+            option=input(f'Name or Number?: ')
+            option.lower()
+            try:
+                if option=='name':
+                    n_name=input('New name: ')
+                    user.name=n_name
+                    x=0
+                elif option=='number':
+                    n_number=input('New number: ')
+                    user.number=n_number
+                    x=0
+                else:
+                    print('not valid option')
+                    continue
+                
+            except:
+                print('No input error!')
+        session.commit()
 
 def show_all_person():
     
@@ -58,6 +86,7 @@ def show_all_person():
     
 
 #new_person()
-show_all_person()
+#show_all_person()
 #Test for .gitignore
 #Test for no .gitignore in repo
+upd_person()
