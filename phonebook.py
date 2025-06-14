@@ -21,21 +21,50 @@ class Person(Base):
 
 #------------Prepping---------------------------------------#
 
-def new_name():
-    name=input('Name:')
-    return name
-def new_number():
-    number=input('Number:')
-    return number
+
 
 #adding new entry to phonebook
 def new_person():
     Base.metadata.create_all(engine)
     Session=sessionmaker(bind=engine)
     session=Session()
-    person=Person(name=f'{new_name()}',number=f'{new_number()}')
-    session.add(person)
-    session.commit()
+    new_name=input('Name:')
+    new_number=input('Number:')
+    
+    person=Person(name=f'{new_name}',number=f'{new_number}')
+    #print('Test',user_query)
+    user_query= session.query(Person).filter_by(name=new_name).first()
+    #print('User Query:',user_query.name)
+    if user_query:
+        user_option=""
+        while user_option=="":
+
+            print(f'Do you want to name it \"{person.name}1\" instead')
+            user_option=(input('y / n? '))
+            user_option=user_option.lower().strip()
+            if user_option=='y':
+                person.name=person.name+"1"
+                session.add(person)
+                session.commit()
+
+            elif user_option=='n':
+                x=0
+                while x==0:
+                    new_person_name=person.name
+                    print('Samesame')
+                    new_person_name=(input('try another: '))
+                    if new_person_name==person.name:
+                        continue
+                    else:
+                        x=1
+                        person.name=new_person_name
+                        session.add(person)
+                        session.commit()
+
+             
+            
+
+
 def del_person():
     Base.metadata.create_all(engine)
     Session=sessionmaker(bind=engine)
@@ -85,8 +114,8 @@ def show_all_person():
         print('Name: ',i.name,'Number: ',i.number)
     
 
-#new_person()
+new_person()
 #show_all_person()
 #Test for .gitignore
 #Test for no .gitignore in repo
-upd_person()
+#upd_person()
