@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
-
+# Retrieve password from file
 fh=open('c:/Users/Donf/python_p/.env')
 for line in fh:
     if '=' in line and not line.startswith('#'):
@@ -32,9 +32,10 @@ def new_person():
     new_number=input('Number:')
     
     person=Person(name=f'{new_name}',number=f'{new_number}')
-    #print('Test',user_query)
+    
     user_query= session.query(Person).filter_by(name=new_name).first()
-    #print('User Query:',user_query.name)
+
+    #check to see if new_name is already in the database
     if user_query:
         user_option=""
         while user_option=="":
