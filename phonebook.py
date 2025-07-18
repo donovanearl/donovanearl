@@ -20,6 +20,7 @@ class Person(Base):
     number=Column(String)
 
 #------------Prepping---------------------------------------#
+Try PyQt
 
 
 
