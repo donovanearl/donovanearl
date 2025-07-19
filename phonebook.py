@@ -1,6 +1,22 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
-from PyQt5 import QApplication
+from PyQt5.QtWidgets import QApplication,QWidget,QLineEdit,QListWidget,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout
+
+
+#App Settings
+app=QApplication([])
+main_window=QWidget()
+main_window.setWindowTitle('TheFonebook')
+main_window.resize(300,400)
+text_box=QLineEdit()
+list_box=QListWidget()
+
+
+#DesignLayout
+grid=QGridLayout()
+
+grid.addWidget(text_box,0,1)
+
 
 # Retrieve password from file
 fh=open('c:/Users/Donf/python_p/.env')
@@ -21,7 +37,6 @@ class Person(Base):
     number=Column(String)
 
 #------------Prepping---------------------------------------#
-Try PyQt
 
 
 
@@ -115,9 +130,10 @@ def show_all_person():
     All_user=session.query(Person).all()#filter_by(name=input('Name:')).first()
     for i in All_user:
         print('Name: ',i.name,'Number: ',i.number)
-    
-
-new_person()
+main_window.setLayout(grid)   
+main_window.show()
+app.exec_()
+#new_person()
 #show_all_person()
 #Test for .gitignore
 #Test for no .gitignore in repo
