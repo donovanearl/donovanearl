@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
+from PyQt5 import QApplication
 
 # Retrieve password from file
 fh=open('c:/Users/Donf/python_p/.env')
