@@ -8,14 +8,28 @@ app=QApplication([])
 main_window=QWidget()
 main_window.setWindowTitle('TheFonebook')
 main_window.resize(300,400)
+
+in_data=[]
+
+#Add objects/ widgets
 text_box=QLineEdit()
 list_box=QListWidget()
+add_button=QPushButton('Add')
+del_button=QPushButton('Del')
+edit_button=QPushButton('Edit')
+
 
 
 #DesignLayout
 grid=QGridLayout()
 
-grid.addWidget(text_box,0,1)
+grid.addWidget(text_box,1,2)
+grid.addWidget(list_box,0,3)
+grid.addWidget(add_button,2,0)
+grid.addWidget(del_button,2,1)
+grid.addWidget(edit_button,2,2)
+
+
 
 
 # Retrieve password from file
@@ -130,6 +144,12 @@ def show_all_person():
     All_user=session.query(Person).all()#filter_by(name=input('Name:')).first()
     for i in All_user:
         print('Name: ',i.name,'Number: ',i.number)
+        in_data.append(i.name)
+
+show_all_person()
+
+list_box.addItems(in_data)
+
 main_window.setLayout(grid)   
 main_window.show()
 app.exec_()
