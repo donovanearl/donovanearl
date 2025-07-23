@@ -21,14 +21,15 @@ edit_button=QPushButton('Edit')
 
 
 #DesignLayout
-grid=QGridLayout()
+master_layout=QVBoxLayout()
+master_layout.addWidget(list_box)
+master_layout.addWidget(text_box)
 
-grid.addWidget(text_box,1,2)
-grid.addWidget(list_box,0,3)
-grid.addWidget(add_button,2,0)
-grid.addWidget(del_button,2,1)
-grid.addWidget(edit_button,2,2)
-
+button_row=QHBoxLayout()
+button_row.addWidget(add_button)
+button_row.addWidget(del_button)
+button_row.addWidget(edit_button)
+master_layout.addLayout(button_row)
 
 
 
@@ -150,7 +151,7 @@ show_all_person()
 
 list_box.addItems(in_data)
 
-main_window.setLayout(grid)   
+main_window.setLayout(master_layout)   
 main_window.show()
 app.exec_()
 #new_person()
