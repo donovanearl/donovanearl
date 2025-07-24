@@ -1,13 +1,14 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 from PyQt5.QtWidgets import QApplication,QWidget,QLineEdit,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout,QLabel,QTableWidget,QTableWidgetItem
+from PyQt5 import Qt
 
 
 #App Settings
 app=QApplication([])
 main_window=QWidget()
 main_window.setWindowTitle('TheFonebook')
-main_window.setFixedSize(400,500)
+main_window.setFixedSize(320,500)
 
 in_data=[]
 tup=()
@@ -32,8 +33,8 @@ master_layout=QVBoxLayout()
 master_layout.addWidget(list_table)
 
 row1=QHBoxLayout()
-row1.addWidget(label1)
-row1.addWidget(text_box)
+row1.addWidget(label1,20)
+row1.addWidget(text_box,70)
 button_row=QHBoxLayout()
 button_row.addWidget(add_button)
 button_row.addWidget(del_button)
@@ -41,7 +42,6 @@ button_row.addWidget(edit_button)
 
 master_layout.addLayout(button_row)
 master_layout.addLayout(row1)
-
 
 
 # Retrieve password from file
@@ -105,10 +105,6 @@ def new_person():
                         session.add(person)
                         session.commit()
 
-             
-            
-
-
 def del_person():
     Base.metadata.create_all(engine)
     Session=sessionmaker(bind=engine)
@@ -166,15 +162,12 @@ def show_all_person():
             print('Row',count_row)
        
 
-show_all_person()
 
-#list_box.addItems(tup[0])
+show_all_person()
+#####  error on code### add_button.clicked.connect(new_person)
+
+print('TEST')
 
 main_window.setLayout(master_layout)   
 main_window.show()
 app.exec_()
-#new_person()
-#show_all_person()
-#Test for .gitignore
-#Test for no .gitignore in repo
-#upd_person()
