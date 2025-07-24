@@ -1,35 +1,46 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
-from PyQt5.QtWidgets import QApplication,QWidget,QLineEdit,QListWidget,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout
+from PyQt5.QtWidgets import QApplication,QWidget,QLineEdit,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout,QLabel,QTableWidget,QTableWidgetItem
 
 
 #App Settings
 app=QApplication([])
 main_window=QWidget()
 main_window.setWindowTitle('TheFonebook')
-main_window.resize(300,400)
+main_window.setFixedSize(400,500)
 
 in_data=[]
+tup=()
 
 #Add objects/ widgets
 text_box=QLineEdit()
-list_box=QListWidget()
 add_button=QPushButton('Add')
 del_button=QPushButton('Del')
 edit_button=QPushButton('Edit')
+label1=QLabel('Input')
+
+list_table=QTableWidget()
+list_table.setColumnCount(2)
+list_table.setHorizontalHeaderLabels(['Name','Number'])
+#sort items on column click
+list_table.setSortingEnabled(True)
 
 
 
 #DesignLayout
 master_layout=QVBoxLayout()
-master_layout.addWidget(list_box)
-master_layout.addWidget(text_box)
+master_layout.addWidget(list_table)
 
+row1=QHBoxLayout()
+row1.addWidget(label1)
+row1.addWidget(text_box)
 button_row=QHBoxLayout()
 button_row.addWidget(add_button)
 button_row.addWidget(del_button)
 button_row.addWidget(edit_button)
+
 master_layout.addLayout(button_row)
+master_layout.addLayout(row1)
 
 
 
@@ -143,13 +154,21 @@ def show_all_person():
     Session=sessionmaker(bind=engine)
     session=Session()
     All_user=session.query(Person).all()#filter_by(name=input('Name:')).first()
+#------------Working area-----------    
+    count_row=0
+    count_col=0
     for i in All_user:
-        print('Name: ',i.name,'Number: ',i.number)
-        in_data.append(i.name)
+            #print('Here:',i.name,i.number)           
+            list_table.setRowCount(len(All_user))
+            list_table.setItem(count_row,count_col,QTableWidgetItem(i.name))
+            list_table.setItem(count_row,1,QTableWidgetItem(i.number))
+            count_row+=1
+            print('Row',count_row)
+       
 
 show_all_person()
 
-list_box.addItems(in_data)
+#list_box.addItems(tup[0])
 
 main_window.setLayout(master_layout)   
 main_window.show()
