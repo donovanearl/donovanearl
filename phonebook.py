@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
-from PyQt5.QtWidgets import QApplication,QWidget,QLineEdit,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout,QLabel,QTableWidget,QTableWidgetItem
+from PyQt5.QtWidgets import QAbstractItemView,QApplication,QWidget,QLineEdit,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout,QLabel,QTableWidget,QTableWidgetItem
 from PyQt5 import Qt
 
 
@@ -15,12 +15,18 @@ tup=()
 
 #Add objects/ widgets
 text_box=QLineEdit()
+text_boxnum=QLineEdit()
+text_box.setPlaceholderText('Enter Name')
+text_boxnum.setPlaceholderText('Enter Number')
+
 add_button=QPushButton('Add')
 del_button=QPushButton('Del')
 edit_button=QPushButton('Edit')
 label1=QLabel('Input')
+label2=QLabel()
 
 list_table=QTableWidget()
+list_table.setEditTriggers(QAbstractItemView.EditTrigger(0))
 list_table.setColumnCount(2)
 list_table.setHorizontalHeaderLabels(['Name','Number'])
 #sort items on column click
@@ -33,8 +39,13 @@ master_layout=QVBoxLayout()
 master_layout.addWidget(list_table)
 
 row1=QHBoxLayout()
+row2=QHBoxLayout()
 row1.addWidget(label1,20)
 row1.addWidget(text_box,70)
+row2.addWidget(label2,20)
+
+row2.addWidget(text_boxnum,70)
+
 button_row=QHBoxLayout()
 button_row.addWidget(add_button)
 button_row.addWidget(del_button)
@@ -42,6 +53,7 @@ button_row.addWidget(edit_button)
 
 master_layout.addLayout(button_row)
 master_layout.addLayout(row1)
+master_layout.addLayout(row2)
 
 
 # Retrieve password from file
@@ -71,12 +83,18 @@ def new_person():
     Base.metadata.create_all(engine)
     Session=sessionmaker(bind=engine)
     session=Session()
-    new_name=input('Name:')
-    new_number=input('Number:')
+    new_name=text_box.text().strip()
+    new_number=text_boxnum.text().strip()
     
     person=Person(name=f'{new_name}',number=f'{new_number}')
+    session.add(person)
+    session.commit()
+    session.close()
+    text_box.clear()
+    text_boxnum.clear()
+
     
-    user_query= session.query(Person).filter_by(name=new_name).first()
+    """user_query= session.query(Person).filter_by(name=new_name).first()
 
     #check to see if new_name is already in the database
     if user_query:
@@ -103,7 +121,7 @@ def new_person():
                         x=1
                         person.name=new_person_name
                         session.add(person)
-                        session.commit()
+                        session.commit()"""
 
 def del_person():
     Base.metadata.create_all(engine)
@@ -159,15 +177,12 @@ def show_all_person():
             list_table.setItem(count_row,count_col,QTableWidgetItem(i.name))
             list_table.setItem(count_row,1,QTableWidgetItem(i.number))
             count_row+=1
-            print('Row',count_row)
+            #print('Row',count_row)
        
 
 
 show_all_person()
-#####  error on code### add_button.clicked.connect(new_person)
-
-print('TEST')
-
+add_button.clicked.connect(new_person)
 main_window.setLayout(master_layout)   
 main_window.show()
 app.exec_()
