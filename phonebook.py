@@ -26,7 +26,7 @@ label1=QLabel('Input')
 label2=QLabel()
 
 list_table=QTableWidget()
-list_table.setEditTriggers(QAbstractItemView.EditTrigger(0))
+list_table.setEditTriggers(QAbstractItemView.EditTrigger(0)) #disabled edit in table
 list_table.setColumnCount(2)
 list_table.setHorizontalHeaderLabels(['Name','Number'])
 #sort items on column click
@@ -76,18 +76,28 @@ class Person(Base):
 
 #------------Prepping---------------------------------------#
 
-
+Base.metadata.create_all(engine)
+Session=sessionmaker(bind=engine)
 
 #adding new entry to phonebook
 def new_person():
-    Base.metadata.create_all(engine)
-    Session=sessionmaker(bind=engine)
+    
     session=Session()
     new_name=text_box.text().strip()
     new_number=text_boxnum.text().strip()
     
-    person=Person(name=f'{new_name}',number=f'{new_number}')
-    session.add(person)
+    if not new_name or not new_number:
+        text_box.setPlaceholderText('\'Cannot be empty, try again\'')
+        text_boxnum.setPlaceholderText('\'Cannot be empty, try again\'')
+    #Work AREA--------------------------------------------
+    # Erroe line elif new_name is not str:
+        text_box.setPlaceholderText('Invalid Input, only letters')
+       
+    else:
+            
+        person=Person(name=f'{new_name}',number=f'{new_number}')
+        session.add(person)
+    
     session.commit()
     session.close()
     text_box.clear()
@@ -124,8 +134,7 @@ def new_person():
                         session.commit()"""
 
 def del_person():
-    Base.metadata.create_all(engine)
-    Session=sessionmaker(bind=engine)
+    
     session=Session()
     user=session.query(Person).filter_by(name=input('Name:')).first()
     
@@ -134,8 +143,7 @@ def del_person():
         session.delete(user)
         session.commit()
 def upd_person():
-    Base.metadata.create_all(engine)
-    Session=sessionmaker(bind=engine)
+    
     session=Session()
     user=session.query(Person).filter_by(name=input('Name:')).first()
     
@@ -164,8 +172,6 @@ def upd_person():
 
 def show_all_person():
     
-    Base.metadata.create_all(engine)
-    Session=sessionmaker(bind=engine)
     session=Session()
     All_user=session.query(Person).all()#filter_by(name=input('Name:')).first()
 #------------Working area-----------    
