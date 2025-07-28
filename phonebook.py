@@ -1,7 +1,9 @@
 from sqlalchemy import create_engine, Integer, String, Float, Column, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 from PyQt5.QtWidgets import QAbstractItemView,QApplication,QWidget,QLineEdit,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout,QLabel,QTableWidget,QTableWidgetItem
+from PyQt5.QtGui import QRegExpValidator
 from PyQt5 import Qt
+from PyQt5.QtCore import QRegExp
 
 
 #App Settings
@@ -11,13 +13,15 @@ main_window.setWindowTitle('TheFonebook')
 main_window.setFixedSize(320,500)
 
 in_data=[]
-tup=()
+num_Validator=QRegExpValidator(QRegExp(r"^\+?\d{0,20}$")) #Uses RegEx to validate till 20 Digits and a + sign
 
 #Add objects/ widgets
 text_box=QLineEdit()
 text_boxnum=QLineEdit()
 text_box.setPlaceholderText('Enter Name')
 text_boxnum.setPlaceholderText('Enter Number')
+#text_boxnum.setValidator(QIntValidator()) # Downside is only 10 digits
+text_boxnum.setValidator(num_Validator)
 
 add_button=QPushButton('Add')
 del_button=QPushButton('Del')
@@ -136,9 +140,11 @@ def new_person():
 def del_person():
     
     session=Session()
-    user=session.query(Person).filter_by(name=input('Name:')).first()
-    
+      
     #check if user has data or if user is TRUE after the query
+    del_name=text_box.text().strip()
+    user=session.query(Person).filter_by(name=del_name).first() 
+    print('USER TO:',user)
     if user:
         session.delete(user)
         session.commit()
@@ -189,6 +195,7 @@ def show_all_person():
 
 show_all_person()
 add_button.clicked.connect(new_person)
+del_button.clicked.connect(del_person)
 main_window.setLayout(master_layout)   
 main_window.show()
 app.exec_()
