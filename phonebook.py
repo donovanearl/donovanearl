@@ -151,10 +151,16 @@ def del_person():
 def upd_person():
     
     session=Session()
-    user=session.query(Person).filter_by(name=input('Name:')).first()
+    upd_name=text_box.text().strip()
+    upd_num=text_boxnum.text().strip()
+    user=session.query(Person).filter_by(name=upd_name).first()
+
+    if user:
+        session.add_all(upd_name,upd_num)
+        session.commit()
     
     #check if user has data or if user is TRUE after the query
-    if user:
+    """if user:
         x=1
         while x==1:
             option=input(f'Name or Number?: ')
@@ -174,7 +180,7 @@ def upd_person():
                 
             except:
                 print('No input error!')
-        session.commit()
+        session.commit()"""
 
 def show_all_person():
     
@@ -190,10 +196,17 @@ def show_all_person():
             list_table.setItem(count_row,1,QTableWidgetItem(i.number))
             count_row+=1
             #print('Row',count_row)
+
+def clicked_Field():
+    selected_item= list_table.currentItem()
+    print('Selected:',selected_item.text())
+
+
        
 
 
 show_all_person()
+list_table.itemClicked.connect(clicked_Field)
 add_button.clicked.connect(new_person)
 del_button.clicked.connect(del_person)
 main_window.setLayout(master_layout)   
