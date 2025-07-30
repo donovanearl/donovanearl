@@ -96,8 +96,6 @@ def new_person():
     if not new_name or not new_number:
         text_box.setPlaceholderText('\'Cannot be empty, try again\'')
         text_boxnum.setPlaceholderText('\'Cannot be empty, try again\'')
-    #Work AREA--------------------------------------------
-    # Erroe line elif new_name is not str:
         text_box.setPlaceholderText('Invalid Input, only letters')
     elif user:
         text_box.setPlaceholderText('Name already Exist!, Try again')
@@ -151,18 +149,13 @@ def del_person():
     try:
            
         del_name=clicked_Field()
-        if del_name=="":
-            text_box.setPlaceholderText('Nothing to Delete!')
-        #----WORKING AREA--- issue deletes first row by default----
-        else:
-            user=session.query(Person).filter_by(name=del_name).first()
-            
-            if user:
-                session.delete(user)
-                session.commit()
-                show_all_person()
+        user=session.query(Person).filter_by(name=del_name).first()
+        if user:
+            session.delete(user)
+            session.commit()
+            show_all_person()
     except:
-        print('Nothing to Delete!')
+        text_box.setPlaceholderText('Nothing to Delete!')
 
 def upd_person():
     
@@ -212,19 +205,21 @@ def show_all_person():
             list_table.setItem(count_row,1,QTableWidgetItem(i.number))
             count_row+=1
             #print('Row',count_row)
+    
 
 def clicked_Field():
-    selected_item= list_table.currentItem()
-    print('Selected:',selected_item.text())
-    return selected_item.text()
-
-def clicked_row():
-    selected_row= list_table.currentRow()
-    print('Selected:',selected_row())
-    return selected_row
+    selected_item= list_table.selectedItems()
+    print('Selected items',selected_item[0].text())
+    #print('Selected:',selected_item.text())
+    return selected_item[0].text()
+#def clicked_row():
+ #   selected_row= list_table.currentRow()
+ #   print('Selected:',selected_row())
+ #   return selected_row
 
 
 show_all_person()
+
 list_table.itemClicked.connect(clicked_Field)
 add_button.clicked.connect(new_person)
 del_button.clicked.connect(del_person)
