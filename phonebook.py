@@ -87,8 +87,11 @@ Session=sessionmaker(bind=engine)
 def new_person():
     
     session=Session()
+    
+
     new_name=text_box.text().strip()
     new_number=text_boxnum.text().strip()
+    user=session.query(Person).filter_by(name=new_name).first()
     
     if not new_name or not new_number:
         text_box.setPlaceholderText('\'Cannot be empty, try again\'')
@@ -96,6 +99,8 @@ def new_person():
     #Work AREA--------------------------------------------
     # Erroe line elif new_name is not str:
         text_box.setPlaceholderText('Invalid Input, only letters')
+    elif user:
+        text_box.setPlaceholderText('Name already Exist!, Try again')
        
     else:
             
@@ -106,6 +111,7 @@ def new_person():
     session.close()
     text_box.clear()
     text_boxnum.clear()
+    show_all_person()
 
     
     """user_query= session.query(Person).filter_by(name=new_name).first()
@@ -142,12 +148,22 @@ def del_person():
     session=Session()
       
     #check if user has data or if user is TRUE after the query
-    del_name=text_box.text().strip()
-    user=session.query(Person).filter_by(name=del_name).first() 
-    print('USER TO:',user)
-    if user:
-        session.delete(user)
-        session.commit()
+    try:
+           
+        del_name=clicked_Field()
+        if del_name=="":
+            text_box.setPlaceholderText('Nothing to Delete!')
+        #----WORKING AREA--- issue deletes first row by default----
+        else:
+            user=session.query(Person).filter_by(name=del_name).first()
+            
+            if user:
+                session.delete(user)
+                session.commit()
+                show_all_person()
+    except:
+        print('Nothing to Delete!')
+
 def upd_person():
     
     session=Session()
@@ -200,15 +216,19 @@ def show_all_person():
 def clicked_Field():
     selected_item= list_table.currentItem()
     print('Selected:',selected_item.text())
+    return selected_item.text()
 
-
-       
+def clicked_row():
+    selected_row= list_table.currentRow()
+    print('Selected:',selected_row())
+    return selected_row
 
 
 show_all_person()
 list_table.itemClicked.connect(clicked_Field)
 add_button.clicked.connect(new_person)
 del_button.clicked.connect(del_person)
+
 main_window.setLayout(master_layout)   
 main_window.show()
 app.exec_()
