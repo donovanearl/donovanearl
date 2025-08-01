@@ -3,32 +3,38 @@ from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 from PyQt5.QtWidgets import QAbstractItemView,QApplication,QWidget,QLineEdit,QPushButton,QHBoxLayout,QVBoxLayout,QGridLayout,QLabel,QTableWidget,QTableWidgetItem
 from PyQt5.QtGui import QRegExpValidator
 from PyQt5 import Qt
-from PyQt5.QtCore import QRegExp
+from PyQt5.QtCore import QRegExp,Qt
 
 
 #App Settings
 app=QApplication([])
 main_window=QWidget()
 main_window.setWindowTitle('TheFonebook')
-main_window.setFixedSize(320,500)
+main_window.setFixedSize(300,500)
 
-in_data=[]
 num_Validator=QRegExpValidator(QRegExp(r"^\+?\d{0,20}$")) #Uses RegEx to validate till 20 Digits and a + sign
 
 #Add objects/ widgets
 text_box=QLineEdit()
 text_boxnum=QLineEdit()
-text_box.setPlaceholderText('Enter Name')
-text_boxnum.setPlaceholderText('Enter Number')
+text_box.setPlaceholderText('')
+text_box.setDisabled(True)
+text_boxnum.setPlaceholderText('')
+text_boxnum.setDisabled(True)
 #text_boxnum.setValidator(QIntValidator()) # Downside is only 10 digits
 text_boxnum.setValidator(num_Validator)
 
+#add Buttons
 add_button=QPushButton('Add')
 del_button=QPushButton('Del')
 edit_button=QPushButton('Edit')
-label1=QLabel('Input')
-label2=QLabel()
+ok_button=QPushButton('OK')
+ok_button.setDisabled(True)
 
+#Labels
+label1=QLabel('Input')
+
+#Table display
 list_table=QTableWidget()
 list_table.setEditTriggers(QAbstractItemView.EditTrigger(0)) #disabled edit in table
 list_table.setColumnCount(2)
@@ -43,21 +49,22 @@ master_layout=QVBoxLayout()
 master_layout.addWidget(list_table)
 
 row1=QHBoxLayout()
+row1.addWidget(add_button)
+row1.addWidget(del_button)
+row1.addWidget(edit_button)
+
 row2=QHBoxLayout()
-row1.addWidget(label1,20)
-row1.addWidget(text_box,70)
-row2.addWidget(label2,20)
+row2.addWidget(label1,35,alignment=Qt.AlignCenter)
+row2.addWidget(text_box,65)
 
-row2.addWidget(text_boxnum,70)
+row3=QHBoxLayout()
+row3.addWidget(ok_button,25,alignment=Qt.AlignCenter)
+row3.addWidget(text_boxnum,75)
 
-button_row=QHBoxLayout()
-button_row.addWidget(add_button)
-button_row.addWidget(del_button)
-button_row.addWidget(edit_button)
 
-master_layout.addLayout(button_row)
 master_layout.addLayout(row1)
 master_layout.addLayout(row2)
+master_layout.addLayout(row3)
 
 
 # Retrieve password from file
@@ -78,25 +85,25 @@ class Person(Base):
     name=Column(String, nullable=False)
     number=Column(String)
 
-#------------Prepping---------------------------------------#
+#------------Prepping connection / cursor---------------------------------#
 
 Base.metadata.create_all(engine)
 Session=sessionmaker(bind=engine)
+
+#--------Functions---------#
 
 #adding new entry to phonebook
 def new_person():
     
     session=Session()
-    
-
     new_name=text_box.text().strip()
     new_number=text_boxnum.text().strip()
     user=session.query(Person).filter_by(name=new_name).first()
     
     if not new_name or not new_number:
-        text_box.setPlaceholderText('\'Cannot be empty, try again\'')
-        text_boxnum.setPlaceholderText('\'Cannot be empty, try again\'')
-        text_box.setPlaceholderText('Invalid Input, only letters')
+        text_box.setPlaceholderText('Invalid input, Enter Name here')
+        text_boxnum.setPlaceholderText('Invalid input, Enter Number here')
+        
     elif user:
         text_box.setPlaceholderText('Name already Exist!, Try again')
        
@@ -112,34 +119,6 @@ def new_person():
     show_all_person()
 
     
-    """user_query= session.query(Person).filter_by(name=new_name).first()
-
-    #check to see if new_name is already in the database
-    if user_query:
-        user_option=""
-        while user_option=="":
-
-            print(f'Do you want to name it \"{person.name}1\" instead')
-            user_option=(input('y / n? '))
-            user_option=user_option.lower().strip()
-            if user_option=='y':
-                person.name=person.name+"1"
-                session.add(person)
-                session.commit()
-
-            elif user_option=='n':
-                x=0
-                while x==0:
-                    new_person_name=person.name
-                    print('Samesame')
-                    new_person_name=(input('try another: '))
-                    if new_person_name==person.name:
-                        continue
-                    else:
-                        x=1
-                        person.name=new_person_name
-                        session.add(person)
-                        session.commit()"""
 
 def del_person():
     
@@ -160,44 +139,32 @@ def del_person():
 def upd_person():
     
     session=Session()
-    upd_name=text_box.text().strip()
-    upd_num=text_boxnum.text().strip()
-    user=session.query(Person).filter_by(name=upd_name).first()
+    try:
+        upd_name=clicked_Field()
+        user=session.query(Person).filter_by(name=upd_name).first()
 
-    if user:
-        session.add_all(upd_name,upd_num)
-        session.commit()
+        if user:
+            
+            
+            edited_name=text_box.text()
+            edited_num=text_boxnum.text()
+            user.name = edited_name
+            user.number=edited_num
+
+            session.add(user)
+            session.commit()
+            show_all_person()
+    except:
+        text_box.setPlaceholderText('Nothing to Edit!')
     
-    #check if user has data or if user is TRUE after the query
-    """if user:
-        x=1
-        while x==1:
-            option=input(f'Name or Number?: ')
-            option.lower()
-            try:
-                if option=='name':
-                    n_name=input('New name: ')
-                    user.name=n_name
-                    x=0
-                elif option=='number':
-                    n_number=input('New number: ')
-                    user.number=n_number
-                    x=0
-                else:
-                    print('not valid option')
-                    continue
-                
-            except:
-                print('No input error!')
-        session.commit()"""
-
 def show_all_person():
     
     session=Session()
     All_user=session.query(Person).all()#filter_by(name=input('Name:')).first()
-#------------Working area-----------    
+
     count_row=0
     count_col=0
+    
     for i in All_user:
             #print('Here:',i.name,i.number)           
             list_table.setRowCount(len(All_user))
@@ -212,7 +179,17 @@ def clicked_Field():
     print('Selected items',selected_item[0].text())
     #print('Selected:',selected_item.text())
     return selected_item[0].text()
-#def clicked_row():
+
+#-------Trial------work area #Idea# get command when button clicked and enable Textboxes for input, then commit command after Ok_button.clicked#
+def clicked_Button():
+    if add_button.clicked.signal:
+        print('Message:',add_button.text())
+        return add_button.text()
+    if del_button.clicked.signal:
+        print('Message:',del_button.text())
+        return del_button.text()
+        
+
  #   selected_row= list_table.currentRow()
  #   print('Selected:',selected_row())
  #   return selected_row
@@ -220,9 +197,12 @@ def clicked_Field():
 
 show_all_person()
 
+
 list_table.itemClicked.connect(clicked_Field)
-add_button.clicked.connect(new_person)
-del_button.clicked.connect(del_person)
+
+add_button.clicked.connect(clicked_Button)
+del_button.clicked.connect(clicked_Button)
+edit_button.clicked.connect(upd_person)
 
 main_window.setLayout(master_layout)   
 main_window.show()
