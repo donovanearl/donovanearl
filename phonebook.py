@@ -23,6 +23,7 @@ text_boxnum.setPlaceholderText('')
 text_boxnum.setDisabled(True)
 #text_boxnum.setValidator(QIntValidator()) # Downside is only 10 digits
 text_boxnum.setValidator(num_Validator)
+command={'value':None}
 
 #add Buttons
 add_button=QPushButton('Add')
@@ -182,12 +183,33 @@ def clicked_Field():
 
 #-------Trial------work area #Idea# get command when button clicked and enable Textboxes for input, then commit command after Ok_button.clicked#
 def clicked_Button():
-    if add_button.clicked.signal:
-        print('Message:',add_button.text())
-        return add_button.text()
-    if del_button.clicked.signal:
-        print('Message:',del_button.text())
-        return del_button.text()
+    clicked_Button=app.sender().text()
+    text_box.setDisabled(False)
+    text_boxnum.setDisabled(False)
+    ok_button.setDisabled(False)
+    print('Clicke_Button:',clicked_Button)
+    #if clicked_Button=='add' or 'Add':
+        #print('You clicked the add button')
+        #clicked_Button_text='add'
+        #print('Clicked_text:',clicked_Button_text)
+        
+    command['value']=str(clicked_Button).lower()  #Used a dictionary to forward text value to another function clicked_commitButton#
+
+
+#Todo : Reduce redundant button clicks to get the value
+def clicked_commitButton():  
+    command_text=command['value']
+    print('Now here:',command_text)
+    if command_text=='add':
+        new_person()
+    elif command_text=='del':
+        del_person()
+    elif command_text=='edit':
+        upd_person()
+
+    
+        
+
         
 
  #   selected_row= list_table.currentRow()
@@ -199,10 +221,10 @@ show_all_person()
 
 
 list_table.itemClicked.connect(clicked_Field)
-
 add_button.clicked.connect(clicked_Button)
 del_button.clicked.connect(clicked_Button)
-edit_button.clicked.connect(upd_person)
+edit_button.clicked.connect(clicked_Button)
+ok_button.clicked.connect(clicked_commitButton)
 
 main_window.setLayout(master_layout)   
 main_window.show()
