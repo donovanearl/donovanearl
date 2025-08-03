@@ -186,6 +186,8 @@ def clicked_Button():
     clicked_Button=app.sender().text()
     text_box.setDisabled(False)
     text_boxnum.setDisabled(False)
+    text_box.setPlaceholderText('Enter Name')
+    text_boxnum.setPlaceholderText('Enter Number')
     ok_button.setDisabled(False)
     print('Clicke_Button:',clicked_Button)
     #if clicked_Button=='add' or 'Add':
@@ -207,22 +209,14 @@ def clicked_commitButton():
     elif command_text=='edit':
         upd_person()
 
-    
-        
-
-        
-
- #   selected_row= list_table.currentRow()
- #   print('Selected:',selected_row())
- #   return selected_row
-
+## Start executing
 
 show_all_person()
 
 
 list_table.itemClicked.connect(clicked_Field)
 add_button.clicked.connect(clicked_Button)
-del_button.clicked.connect(clicked_Button)
+del_button.clicked.connect(del_person)
 edit_button.clicked.connect(clicked_Button)
 ok_button.clicked.connect(clicked_commitButton)
 
