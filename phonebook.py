@@ -144,27 +144,13 @@ def upd_person(): #TODO BUG: if clicked field is empty, nothing happens#########
     session=Session()
     print('REAACHED here')
     try:
-        upd_name=clicked_Field
-        print('upd_name ni',upd_name)
-        user=session.query(Person).filter_by(name=upd_name).first()
-        print('USERR:',user.name)
-
-        if user.name == upd_name:
-            print('DIRE ta:',user.name)
-            edited_name=text_box.text()
-            #edited_num=text_boxnum.text()
-            user.name = edited_name
-            #user.number=edited_num
-
-            session.add(user)
-            session.commit()
-            show_all_person()
-        elif user.number==upd_name:
-            print('Nothing to update++')
-
-        else:
-            print('DIRE MO:',user.name)
-            #edited_name=text_box.text()
+        upd_name=clicked_Field()
+        
+        if upd_name=='':
+            print('WALA may ma print')
+            user=session.query(Person).filter_by(number=upd_name).first()
+            print('Name:',user.name,'Number:',user.number)
+            
             edited_num=text_boxnum.text()
             #user.name = edited_name
             user.number=edited_num
@@ -172,6 +158,34 @@ def upd_person(): #TODO BUG: if clicked field is empty, nothing happens#########
             session.add(user)
             session.commit()
             show_all_person()
+        else:
+            print('upd_name ni',upd_name)
+            user=session.query(Person).filter_by(name=upd_name).first()
+            print('USERR:',user.name)
+
+            if user.name == upd_name:
+                print('DIRE ta:',user.name)
+                edited_name=text_box.text()
+                #edited_num=text_boxnum.text()
+                user.name = edited_name
+                #user.number=edited_num
+
+                session.add(user)
+                session.commit()
+                show_all_person()
+            elif user.number==upd_name:
+                print('Nothing to update++')
+
+            else:
+                print('DIRE MO:',user.name)
+                #edited_name=text_box.text()
+                edited_num=text_boxnum.text()
+                #user.name = edited_name
+                user.number=edited_num
+
+                session.add(user)
+                session.commit()
+                show_all_person()
     except:
         text_box.setPlaceholderText('Nothing to Edit!')
     
@@ -201,30 +215,48 @@ def clicked_Field():
 #function to get the text value of the button being pressed, use it for command when pressing Ok_button#
 def clicked_Button(): #FIXED
     
-    #print('Field Value:',field['value'])
+    """print('Field Value:',field['value'])
+    
+    command['value']=str(clicked_Button).lower()  #Used a dictionary to forward text value to another function clicked_commitButton#
     field_v=field['value']
     field_v=str(field_v)
-    if re.search(r"[a-z,A-Z]",field_v):
+    if re.search(r"[a-z,A-Z]",field_v):"""
         
-        clicked_Button=app.sender().text()
+    clicked_Button=app.sender().text()
+    command['value']=str(clicked_Button).lower()  #Used a dictionary to forward text value to another function clicked_commitButton#
+    #Status // FIXED / all functions properly
+    print('command_input',command['value'])
+    if command['value']=='add':
+
         text_box.setDisabled(False)
-        #text_boxnum.setDisabled(False)
-        text_box.setPlaceholderText('Enter Name')
-        #text_boxnum.setPlaceholderText('Enter Number')
-        ok_button.setDisabled(False)
-        print('Clicked Button:',clicked_Button)
-        command['value']=str(clicked_Button).lower()  #Used a dictionary to forward text value to another function clicked_commitButton#
-        print('command',command['value'])
-    else:
-        clicked_Button=app.sender().text()
-        #text_box.setDisabled(False)
         text_boxnum.setDisabled(False)
-        #text_box.setPlaceholderText('Enter Name')
+        text_box.setPlaceholderText('Enter Name')
         text_boxnum.setPlaceholderText('Enter Number')
         ok_button.setDisabled(False)
-        print('Clicked Button:',clicked_Button)
-        command['value']=str(clicked_Button).lower()  #Used a dictionary to forward text value to another function clicked_commitButton#
-        print('commandSTR',command['value'])
+    
+    elif command['value']=='edit':
+        try:
+            if re.search(r"[a-z,A-Z]",field['value']):
+                print('Pressed Edit, IT has letters')
+
+                text_box.setDisabled(False)
+                text_box.setPlaceholderText('Enter NEW Name')
+                text_boxnum.setPlaceholderText('')
+                ok_button.setDisabled(False)
+                text_boxnum.setDisabled(True)
+                
+                ok_button.setDisabled(False)
+            else:
+                text_box.setDisabled(True)
+                text_boxnum.setDisabled(False)
+                text_boxnum.setPlaceholderText('Enter NEW Number')
+                text_box.setPlaceholderText('')
+                ok_button.setDisabled(False)
+        except:
+            print('No field clicked!')
+
+    
+    
 
 #function for the Ok_button#
 def clicked_commitButton():  
