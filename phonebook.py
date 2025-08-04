@@ -139,53 +139,43 @@ def del_person():
     except:
         text_box.setPlaceholderText('Nothing to Delete!')
 
-def upd_person(): #TODO BUG: if clicked field is empty, nothing happens########################################
+def upd_person(): #Status FIXED
     
     session=Session()
-    print('REAACHED here')
+    
     try:
-        upd_name=clicked_Field()
+        if re.search(r"[a-z,A-Z]",field['value']):
+        #print('Pressed Edit, IT has letters')
         
-        if upd_name=='':
-            print('WALA may ma print')
-            user=session.query(Person).filter_by(number=upd_name).first()
+            print('upd_name ni',field['value'])
+            user=session.query(Person).filter_by(name=field['value']).first()
             print('Name:',user.name,'Number:',user.number)
             
-            edited_num=text_boxnum.text()
-            #user.name = edited_name
-            user.number=edited_num
-
-            session.add(user)
-            session.commit()
-            show_all_person()
-        else:
-            print('upd_name ni',upd_name)
-            user=session.query(Person).filter_by(name=upd_name).first()
-            print('USERR:',user.name)
-
-            if user.name == upd_name:
-                print('DIRE ta:',user.name)
-                edited_name=text_box.text()
-                #edited_num=text_boxnum.text()
-                user.name = edited_name
-                #user.number=edited_num
-
-                session.add(user)
-                session.commit()
-                show_all_person()
-            elif user.number==upd_name:
-                print('Nothing to update++')
-
+            if not text_box.text():
+                print('Invalid input, Enter Name here')
             else:
-                print('DIRE MO:',user.name)
-                #edited_name=text_box.text()
-                edited_num=text_boxnum.text()
+                edited_name=text_box.text()
                 #user.name = edited_name
-                user.number=edited_num
+                user.name=edited_name
+                session.add(user)
+                session.commit()
+                show_all_person()
+        else:
+            if not text_boxnum.text():
+                print('Invalid input, Enter Number here')
+            else:
+                print('upd_number ni',field['value'])
+                user=session.query(Person).filter_by(number=field['value']).first()
+                print('Last area')
+
+                edited_number=text_boxnum.text()
+                user.number=edited_number
 
                 session.add(user)
                 session.commit()
                 show_all_person()
+           
+
     except:
         text_box.setPlaceholderText('Nothing to Edit!')
     
@@ -213,14 +203,8 @@ def clicked_Field():
     return selected_item[0].text()
 
 #function to get the text value of the button being pressed, use it for command when pressing Ok_button#
+
 def clicked_Button(): #FIXED
-    
-    """print('Field Value:',field['value'])
-    
-    command['value']=str(clicked_Button).lower()  #Used a dictionary to forward text value to another function clicked_commitButton#
-    field_v=field['value']
-    field_v=str(field_v)
-    if re.search(r"[a-z,A-Z]",field_v):"""
         
     clicked_Button=app.sender().text()
     command['value']=str(clicked_Button).lower()  #Used a dictionary to forward text value to another function clicked_commitButton#
@@ -258,20 +242,21 @@ def clicked_Button(): #FIXED
     
     
 
-#function for the Ok_button#
+#function for the Ok_button# UPLOADING the data from Textboxes to Database / CLEARS boxes after executed
 def clicked_commitButton():  
     command_text=command['value']
    
     if command_text=='add':
-        new_person()
+        new_person() #Executes process
+        #Sets the Textboxes to reset / disabled
         text_box.setDisabled(True)
         text_boxnum.setDisabled(True)
         text_box.setPlaceholderText('')
         text_boxnum.setPlaceholderText('')
-    elif command_text=='del':
+    elif command_text=='del': #All good on delete
         del_person()
-    elif command_text=='edit':
-        print('Reached++++')
+    elif command_text=='edit': #Edit name is ok , edit Num has bug
+        
         upd_person()
         text_box.setDisabled(True)
         text_boxnum.setDisabled(True)
@@ -296,3 +281,5 @@ ok_button.clicked.connect(clicked_commitButton)
 main_window.setLayout(master_layout)   
 main_window.show()
 app.exec_()
+
+#TODO: ADD feature , cancels current process if  another button is clicked###############
