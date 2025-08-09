@@ -282,4 +282,4 @@ main_window.setLayout(master_layout)
 main_window.show()
 app.exec_()
 
-#TODO: ADD feature , cancels current process if  another button is clicked###############
+#TODO: ADD feature , cancels current process if  another button is clicked/  Add Enter key for ok ###############
