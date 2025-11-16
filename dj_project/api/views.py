@@ -14,6 +14,7 @@ class AppUserView(generics.CreateAPIView):
 class ProductCardView(generics.ListCreateAPIView):
     queryset=ProductCard.objects.all()
     serializer_class=ProductCardSerializer
+    #permission_classes=[IsAuthenticated]
 
 class CreateUserView(generics.CreateAPIView):
     queryset=User.objects.all()

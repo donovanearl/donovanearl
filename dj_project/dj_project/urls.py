@@ -19,6 +19,7 @@ from django.urls import path , include
 from django.conf.urls.static import static
 from django.conf import settings
 from api.views import CreateUserView
+from api.views import ProductCardView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -29,5 +30,6 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(),name='get_token'),
     path('api/token/refresh/', TokenRefreshView.as_view(),name='refresh'),
     path('api-auth/',include('rest_framework.urls')),
+    path('api/product/', ProductCardView.as_view(),name='products'),  #Change made here
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #Donfadded

@@ -44,7 +44,7 @@ const auth = async ()=>{
         await refreshToken()
     }
     else {
-        isAuthorized(true)
+        setIsAuthorized(true) // My mistake
     }
 }
 if(isAuthorized===null){

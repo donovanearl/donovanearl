@@ -1,7 +1,9 @@
+import ProductCards from "../components/ProductCards"
 
 function Home(){
-    return <div>
-        Home page
+    return (<div>
+      <ProductCards />
     </div>
+    )
 }
 export default Home

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import RegexValidator , MinLengthValidator
 
 # Create your models here.
@@ -20,5 +21,8 @@ class ProductCard(models.Model):
     productDetails=models.TextField(max_length=150)
     productPrice=models.CharField(max_length=9,validators=[numeric_validator])
     created_at=models.DateTimeField(auto_now_add=True)
+
+    #author=models.ForeignKey(User,on_delete=models.CASCADE, related_name="product")
+   
 
 
