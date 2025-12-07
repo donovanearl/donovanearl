@@ -1,0 +1,19 @@
+
+
+
+body{
+    display: block;
+    margin: 0px;
+    
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    height:100dvh;
+    background-image: url("../assets/bg-image.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+

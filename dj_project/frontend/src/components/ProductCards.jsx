@@ -1,6 +1,6 @@
 import api from "../api";
 import React, { useEffect, useState } from "react";
-
+import "../styles/ProductCards.css"
 
 
 function ProductCards(){
@@ -33,7 +33,7 @@ return(
           <h2 className="product-name">{products.productName}</h2>
           <p className="product-description">{products.productDetails}</p>
           <p className="product-price">{products.productPrice}</p>
-          <p className="product-created">{products.created_at}</p>
+         
           <button className="buy-button">Buy Now</button>
         </div>
       ))}
