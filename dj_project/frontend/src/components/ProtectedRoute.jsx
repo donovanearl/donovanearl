@@ -17,8 +17,8 @@ function ProtectedRoute({children}){
             const res= await api.post("/api/token/refresh/",{
                 refresh:refreshToken,
             });
-            if(res.status===200){
-                localStorage.setItem(ACCESS_TOKEN, res.data.access)
+            if(res.status===200){                                 
+                localStorage.setItem(ACCESS_TOKEN, res.data.access)      // Code that gets the Access token from Django //
                 setIsAuthorized(true)
             }
             else{

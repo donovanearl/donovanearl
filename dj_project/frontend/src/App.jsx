@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import NotFound from "./pages/Notfound"
 import ProtectedRoute from "./components/ProtectedRoute"
 
+// Acts like URLs.py //
 
 function Logout(){
   localStorage.clear()

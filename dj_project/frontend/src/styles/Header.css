@@ -1,15 +1,27 @@
 .header-container{
     display: flex;
-    background-color: blanchedalmond;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 100px;
-    height: 150px;
+    flex-direction: row;
+    background-color: rgb(243, 185, 109);
+    background-image: url("/src/assets/header-bg.jpg");
+    background-size: cover;
+ 
+    height: 15dvh;
+    width: auto;
+    box-shadow: 2px 3px 5px rgb(244, 244, 245);
+    border: 1px;
+    border-style: solid;
+  
+  
 }
 .logo-image{
   height: 80%;
   width: auto;
   margin-bottom: 0px;
-  margin-left: 100px;
+  margin-left: 7.5%;
+  /*box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.7);   Glow effect*/ 
+  
+  padding:20px;
+  border-radius: 50px;
 
+  
 }

@@ -1,0 +1,49 @@
+.contents-container{
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: center;
+    object-fit: contain;
+    contain: content;
+    height: 84dvh;
+    width: auto;
+    background-color: rgb(27, 28, 28,0.5);
+    
+    
+}
+.products-img-container{
+    display: flex;
+    background-color: rgba(6, 6, 6, 0.7);
+    height: 75dvh;
+    width: 80dvw;
+    margin-top: .1%;
+    border-radius: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+.content-img{
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: rgb(242, 238, 238);
+    border-width: 10px;
+    height: 60dvh;
+    width: auto;
+    margin-right: 1%;
+      
+}
+.products-text{
+    color: rgb(255, 255, 255);
+    margin-bottom: 15%;
+    padding: 10%;
+    height: 30dvh;
+    width: auto;
+    font-size: 25px;
+    font-family: "Exo 2", sans-serif;
+
+}
+
+
+
