@@ -1,0 +1,61 @@
+ @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+/* src/styles/dropdown.css */
+
+.dropdown-content {
+  background: rgb(0, 0, 0,.5);
+  border: 1px solid rgb(255, 165, 0,.5);
+  border-radius: 6px;
+  padding: 6px;
+  min-width: 120px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+  
+}
+
+/* Animation states */
+.dropdown-content[data-state="open"] {
+  animation: dropdown-open 160ms ease-out;
+}
+
+.dropdown-content[data-state="closed"] {
+  animation: dropdown-close 120ms ease-in;
+}
+
+@keyframes dropdown-open {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dropdown-close {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+}
+
+/* Items */
+.dropdown-item {
+  border-radius: 4px;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: #fffefe; /* color text on dropdown menu*/
+  font-family: "Exo 2",arial;
+}
+
+.dropdown-link:hover {
+  background-color: #f4a700a5;
+}

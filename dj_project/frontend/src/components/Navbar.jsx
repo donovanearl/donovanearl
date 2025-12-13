@@ -1,22 +1,18 @@
-import React from "react";
-import "../styles/Navbar.css";
-import Logo from "../assets/Logo.png";
+// src/components/Navbar.jsx
+import AnimatedDropdown from "./AnimatedDropdown";
+import "../styles/navbar.css";
 
-function Navbar(){
-    return (
-        
-            <nav className="navbar">
-                <ul className="navbar-links">
-                <li><b href="/home">Home</b></li>
-                <li><b href="/products">Products</b></li>
-                <li><b href="/services">Services</b></li>
-                <li><b href="/contacts">Contacts</b></li>
-                </ul>
-            </nav>
+export default function Navbar() {
+  return (
+    <nav className="navbar">
+      {/* Home: styled like dropdowns, but just a link */}
+      <a href="/home" className="nav-item">
+        Home
+      </a>
 
-        
-    
-    )
+      <AnimatedDropdown label="Products" basePath="products" />
+      <AnimatedDropdown label="Services" basePath="services" />
+      <AnimatedDropdown label="Contacts" basePath="contacts" />
+    </nav>
+  );
 }
-
-export default Navbar
