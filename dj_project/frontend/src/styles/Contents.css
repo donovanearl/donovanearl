@@ -1,49 +1,75 @@
 .contents-container{
     display: flex;
     flex-direction: row;
-    align-items:flex-start;
     justify-content: center;
+    align-items: center;
+    gap: 30px;
     object-fit: contain;
     contain: content;
     height: 84dvh;
-    width: auto;
-    background-color: rgb(27, 28, 28,0.5);
+    width: 90dvw;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-left: 5%;
+    box-shadow: 0px 0px 5px rgb(244, 244, 245,.7);
     
+}
+.text-container{
+    display:flex;
     
+    height: 75dvh;
+    width: 40dvw;
+    justify-content: flex-start;
+    align-items: center;
+
 }
 .products-img-container{
     display: flex;
-    background-color: rgba(6, 6, 6, 0.7);
     height: 75dvh;
-    width: 80dvw;
-    margin-top: .1%;
-    border-radius: 10px;
-    justify-content: flex-end;
-    align-items: center;
-    
+    width: 40dvw;
+
 }
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    contain: content;
+    height: 75dvh;
+    width: 40dvw;
+    font-family: "Exo 2",Arial, Helvetica, sans-serif;
+    color: white;
+
+}
+
 .content-img{
     display: flex;
     flex-direction: row;
-    border-radius: 30px;
     border-style: solid;
     border-color: rgb(242, 238, 238);
     border-width: 10px;
     height: 60dvh;
     width: auto;
-    margin-right: 1%;
-      
+    margin-right: 10px;
+  
 }
-.products-text{
+.products-title{
+    font-size: 30px;
+    padding: 5%;
+}
+.products-description{
+    font-size: 20px;
+    padding: 5%;
+}
+.footer{
+    display:flex;
+    justify-content: center;
     color: rgb(255, 255, 255);
-    margin-bottom: 15%;
-    padding: 10%;
-    height: 30dvh;
-    width: auto;
-    font-size: 25px;
-    font-family: "Exo 2", sans-serif;
-
+    font-family: "Exo 2",Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight:400;
+    background-color: rgb(0, 0, 0,.5);
 }
+
 
 
 

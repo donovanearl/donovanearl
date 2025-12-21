@@ -2,11 +2,11 @@
 /* src/styles/dropdown.css */
 
 .dropdown-content {
-  background: rgb(0, 0, 0,.5);
+  background: rgb(0, 0, 0,.7);
   border: 1px solid rgb(255, 165, 0,.5);
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 6px;
-  min-width: 120px;
+  min-width: 100px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
   
@@ -52,7 +52,7 @@
   display: block;
   padding: 8px 10px;
   text-decoration: none;
-  color: #fffefe; /* color text on dropdown menu*/
+  color: white; /* color text on dropdown menu*/
   font-family: "Exo 2",arial;
 }
 

@@ -2,8 +2,6 @@ import Navbar from "../components/Navbar"
 import "../styles/Home.css"
 import Contents from "../components/Contents"
 import Header from "../components/Header"
-import AnimatedDropdown from "../components/AnimatedDropdown"
-
 
 
 function Home(){
@@ -12,6 +10,9 @@ function Home(){
         <Header/>
         <Navbar/>
         <Contents/>
+         <div className="footer">
+            &copy; 2025 All Rights Reserved, Pinoy-Tech
+        </div>
     
      </div>    
     )

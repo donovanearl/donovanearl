@@ -13,33 +13,26 @@ export default function AnimatedDropdown({ label, basePath }) {
 
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
-      <DropdownMenu.Trigger
-        className="nav-item"
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
+      <DropdownMenu.Trigger className="nav-item" 
+      onMouseEnter={() => setOpen(true)} 
+      onMouseLeave={() => setOpen(false)}
       >
         {label}
       </DropdownMenu.Trigger>
-
+      
       <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className="dropdown-content"
-          sideOffset={8}
-          onMouseEnter={() => setOpen(true)}
+        <DropdownMenu.Content className="dropdown-content" 
+          sideOffset={8} 
+          onMouseEnter={() => setOpen(true)} 
           onMouseLeave={() => setOpen(false)}
-        >
-          {
-          menuItems[label]?.map((item) => (
-            <DropdownMenu.Item key={item} className="dropdown-item">
-              <a
-                href={`/${basePath}/${item}`}
-                className="dropdown-link"
-              >
+          >
+          {menuItems[label]?.map((item) => (
+              <DropdownMenu.Item key={item} className="dropdown-item">
+              <a href={`/${basePath}/${item}`} className="dropdown-link">
                 {item}
               </a>
-            </DropdownMenu.Item>
-            ))}
-            
+              </DropdownMenu.Item>
+              ))}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
