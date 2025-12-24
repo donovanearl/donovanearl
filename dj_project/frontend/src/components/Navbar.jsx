@@ -6,8 +6,8 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       {/* Home: styled like dropdowns, but just a link */}
-      <a href="/home" className="nav-item">
-        Home
+      <a href="/" className="nav-item">
+        Home 
       </a>
 
       <AnimatedDropdown label="Products" basePath="products" />

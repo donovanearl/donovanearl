@@ -1,16 +1,16 @@
 import Navbar from "../components/Navbar"
 import "../styles/Home.css"
-import Home_contents from "../components/Home_content"
+import Contents from "../components/Contents"
 import Header from "../components/Header"
 
 
-function Home(){
+function CustomizedDesktop(){
     return (
       <div className="main-container">
-        <title>Home</title>
+        <title>Customized Desktop</title>
         <Header/>
         <Navbar/>
-        <Home_contents/>
+        <Contents/>
          <div className="footer">
             &copy; 2025 All Rights Reserved, Pinoy-Tech
         </div>
@@ -18,4 +18,4 @@ function Home(){
      </div>    
     )
 }
-export default Home
+export default CustomizedDesktop

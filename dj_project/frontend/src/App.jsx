@@ -5,6 +5,7 @@ import Register from "./pages/Register"
 import Home from "./pages/Home"
 import NotFound from "./pages/Notfound"
 import ProtectedRoute from "./components/ProtectedRoute"
+import CustomizedDesktop from "./pages/CustomizedDesktop"
 
 // Acts like URLs.py //
 
@@ -25,6 +26,13 @@ function App() {
         path="/" element={
           //<ProtectedRoute>
             <Home/>
+          //</ProtectedRoute>
+        }
+        />
+         <Route
+        path="/Products/Customized Desktop" element={
+          //<ProtectedRoute>
+            <CustomizedDesktop/>
           //</ProtectedRoute>
         }
         />

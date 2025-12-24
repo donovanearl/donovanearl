@@ -4,8 +4,9 @@
 .navbar {
   display: flex;
   flex-direction: row;
+  
   justify-content: flex-end;
-  gap: 12px;
+  gap: 5px;
   padding: .25% 10%;
   
   border-bottom: 1px solid #ccc;
@@ -15,7 +16,7 @@
 .nav-item {
   margin-bottom: 0%;
   padding: 8px 12px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Exo 2",arial;
   border: 1px solid #bbb;
   border-radius: 4px;
@@ -28,6 +29,6 @@
 
 /* Works for both <a> and Radix Trigger */
 .nav-item:hover {
-  background: orange;
+  background: rgb(255, 165, 0,.7);
   color: rgb(0, 0, 0);
 }
