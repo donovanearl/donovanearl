@@ -1,19 +1,13 @@
-import Navbar from "../components/Navbar"
-import "../styles/Home.css"
-import Home_contents from "../components/Home_content"
-import Header from "../components/Header"
+
+import "../styles/MainLayout.css"
+
 
 
 function Home(){
     return (
-      <div className="main-container">
+      <div>
         <title>Home</title>
-        <Header/>
-        <Navbar/>
-        <Home_contents/>
-         <div className="footer">
-            &copy; 2025 All Rights Reserved, Pinoy-Tech
-        </div>
+          This is HOME
     
      </div>    
     )

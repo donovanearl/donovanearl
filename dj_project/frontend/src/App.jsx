@@ -5,7 +5,9 @@ import Register from "./pages/Register"
 import Home from "./pages/Home"
 import NotFound from "./pages/Notfound"
 import ProtectedRoute from "./components/ProtectedRoute"
+import MainLayout from "./layouts/MainLayout"
 import CustomizedDesktop from "./pages/CustomizedDesktop"
+
 
 // Acts like URLs.py //
 
@@ -22,40 +24,42 @@ function App() {
   return (
   <BrowserRouter>
     <Routes>
-      <Route
-        path="/" element={
-          //<ProtectedRoute>
-            <Home/>
-          //</ProtectedRoute>
-        }
-        />
-         <Route
-        path="/Products/Customized Desktop" element={
-          //<ProtectedRoute>
-            <CustomizedDesktop/>
-          //</ProtectedRoute>
-        }
-        />
-      <Route
-        path="/login" element={
-          <Login/>
-        }
-        />
-      <Route
-        path="/logout" element={
-          <Logout/>
-        }
-        />
-      <Route
-        path="/register" element={
-          <RegisterAndLogout/>
-        }
-        />
+      <Route element={<MainLayout/>}>
         <Route
-        path="*" element={
-          <NotFound/>
-        }
-        />
+          path="/" element={
+            //<ProtectedRoute>
+              <Home/>
+            //</ProtectedRoute>
+          }
+          />
+          <Route
+          path="/Products/Customized-Desktop" element={
+            //<ProtectedRoute>
+              <CustomizedDesktop/>
+            //</ProtectedRoute>
+          }
+          />
+        <Route
+          path="/login" element={
+            <Login/>
+          }
+          />
+        <Route
+          path="/logout" element={
+            <Logout/>
+          }
+          />
+        <Route
+          path="/register" element={
+            <RegisterAndLogout/>
+          }
+          />
+          <Route
+          path="*" element={
+            <NotFound/>
+          }
+          />
+        </Route>
       
     </Routes>
   </BrowserRouter>

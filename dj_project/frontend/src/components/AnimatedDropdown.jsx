@@ -6,7 +6,7 @@ import "../styles/dropdown.css";
 export default function AnimatedDropdown({ label, basePath }) {
   const [open, setOpen] = useState(false);
   const menuItems ={
-            Products: ["Laptops","Customized Desktop"],
+            Products: ["Laptops","Customized-Desktop"],
             Services: ["Hardware","Software"],
             Contacts: ["Email","Whatsapp","Call"]
           };
