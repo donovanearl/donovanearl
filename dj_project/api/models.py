@@ -22,7 +22,18 @@ class ProductCard(models.Model):
     productPrice=models.CharField(max_length=9,validators=[numeric_validator])
     created_at=models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Product: {self.productName}" f" ID: {self.pk}"
+
     #author=models.ForeignKey(User,on_delete=models.CASCADE, related_name="product")
+class LandingPage_Content(models.Model):
+    contentImage=models.ImageField(blank=True)
+    contentHeader=models.CharField(max_length=35)
+    contentText=models.TextField(max_length=250)
+    created_at=models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"Product: {self.contentHeader}" f" ID: {self.pk}"
+
    
 
 

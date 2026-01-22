@@ -1,22 +1,27 @@
 import React from "react"
-import {Outlet} from "react-router-dom"
-import Header from "../components/Header"
-import Navbar from "../components/Navbar"
-import "../styles/MainLayout.css"
+import { Outlet } from "react-router-dom"
+import Logo2 from "/src/assets/Logo2.png"
+import NavBar from "../components/NavBar"
 
-
-export default function MainLayout(){
-    return(
-    <div className="main-container">
-        <Header/>
-        <Navbar/>
-        <div className="hero-container">
-            <Outlet/>
-        </div>
-          <div className="footer">
-            &copy; 2025 All Rights Reserved, Pinoy-Tech
-        </div>
-    </div>
+const MainLayout=()=>{
+    return (<div className="App"> 
+                <div className="Main-Container">
+                    <header className="Header">
+                        <img src={Logo2} className="Logo2"/>
+                        <NavBar/>
+                    </header>
+                    
+                    <div className="Outlet">
+                        <Outlet/>
+                    </div>
+                    <footer>
+                        This is the footer
+                    </footer>
+                </div>
+            </div>
+    
+                
     )
+    }
 
-}
+export default MainLayout

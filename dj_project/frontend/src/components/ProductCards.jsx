@@ -1,6 +1,7 @@
 import api from "../api";
 import React, { useEffect, useState } from "react";
 import "../styles/ProductCards.css"
+import "../styles/index.css"
 
 
 function ProductCards(){
@@ -8,19 +9,19 @@ function ProductCards(){
     const [loading,setLoading]= useState(true)
 
     useEffect(()=>{
-    
-    const fetchProducts =async ()=>{
-        try {
-            const res= await api.get("api/product/") // Change made here
-            setProducts(res.data)
-        } catch (error) {
-            console.error("Failed to grab data", error)
-        }finally{
-            setLoading(false)
-        }
-    }
-    fetchProducts();
-},[]);
+                    /*fill the products from server*/
+                    const fetchProducts =async ()=>{
+                        try {
+                            const res= await api.get("/api/product/") // get everything in this path in APIview
+                            setProducts(res.data)
+                        } catch (error) {
+                            console.error("Failed to grab data", error)
+                        }finally{
+                            setLoading(false)
+                        }
+                    }
+                    fetchProducts();
+                },[]);
 
 if(loading){
     return <p style={{ textAlign: "center" }}>Loading products...</p>;

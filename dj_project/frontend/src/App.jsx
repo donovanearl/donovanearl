@@ -5,8 +5,10 @@ import Register from "./pages/Register"
 import Home from "./pages/Home"
 import NotFound from "./pages/Notfound"
 import ProtectedRoute from "./components/ProtectedRoute"
-import MainLayout from "./layouts/MainLayout"
-import CustomizedDesktop from "./pages/CustomizedDesktop"
+import MainLayout from "./layouts/MainLayout.jsx"
+
+
+
 
 
 // Acts like URLs.py //
@@ -33,13 +35,6 @@ function App() {
           }
           />
           <Route
-          path="/Products/Customized-Desktop" element={
-            //<ProtectedRoute>
-              <CustomizedDesktop/>
-            //</ProtectedRoute>
-          }
-          />
-        <Route
           path="/login" element={
             <Login/>
           }

@@ -22,9 +22,8 @@
 }
 
 .form-button {
-  width: 95%;
-  padding: 10px;
-  margin: 20px 0;
+  width: 80%;
+  height: auto;
   background-color: rgb(242, 146, 2);
   color: white;
   border: none;

@@ -1,18 +1,11 @@
-// src/components/Navbar.jsx
 import AnimatedDropdown from "./AnimatedDropdown";
-import "../styles/navbar.css";
+import "../styles/index.css"
 
-export default function Navbar() {
-  return (
-    <nav className="navbar">
-      {/* Home: styled like dropdowns, but just a link */}
-      <a href="/" className="nav-item">
-        Home 
-      </a>
-
-      <AnimatedDropdown label="Products" basePath="products" />
-      <AnimatedDropdown label="Services" basePath="services" />
-      <AnimatedDropdown label="Contacts" basePath="contacts" />
-    </nav>
-  );
-}
+export default function NavBar(){
+        return <nav className="navbar">
+        <AnimatedDropdown label="Home" basePath="" className="nav-item"/>
+        <AnimatedDropdown label="Products" basePath="products" />
+        <AnimatedDropdown label="Services" basePath="services" />
+        <AnimatedDropdown label="Contacts" basePath="contacts" />
+        </nav>
+   }
