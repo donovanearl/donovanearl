@@ -33,7 +33,7 @@ export default function AnimatedDropdown({ label, basePath }) {
       
       <DropdownMenu.Portal>
         <DropdownMenu.Content className="dropdown-content" 
-          sideOffset={4} 
+          sideOffset={1} 
           onMouseEnter={() => setOpen(true)} 
           onMouseLeave={() => setOpen(false)}
           >

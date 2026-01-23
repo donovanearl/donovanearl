@@ -58,4 +58,5 @@
 
 .dropdown-link:hover {
   background-color: #f4a700a5;
+  border-radius: 5px;
 }
