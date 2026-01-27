@@ -1,6 +1,7 @@
 
 import "../styles/index.css"
 import "../styles/Home.css"
+import HeroImage from "../assets/HeroSection.jpg"
 import LandingPageContents from "../components/LandingPageContents"
 
 
@@ -14,20 +15,26 @@ function Home(){
         
         <div className="contents-container">
           <title>Home</title>
-          <div>
-            <h1>
+            
+            <img src={HeroImage} className="hero-image"/>
+            <div className="contents-sub-container">
+                <h1>
                 {head1}
-            </h1>
-            <h2>
-                {head2}
-            </h2>
-            <p1>
-                {par1}
-            </p1>
-            <button className="contact-button">👉 Get Your Computer Fixed Today</button>
-          </div>
-          
-          <LandingPageContents/>
+                </h1>
+                <h2>
+                    {head2}
+                </h2>
+                <p1>
+                    {par1}
+                </p1>
+                
+                <button className="contact-button">👉 Get Your Computer Fixed Today</button>
+                
+            
+                <LandingPageContents/>
+
+            </div>
+         
           
         </div> 
     )

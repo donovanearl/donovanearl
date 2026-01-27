@@ -175,9 +175,20 @@ body {
     padding: 12px 40px;
     border-color: black;
     border-radius: 5px;
-    
-    
+
   }
+  .Nav-plus{
+    display: flex;
+    gap: 24px;
+   
+  }
+  .Nav-sign{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+ 
 }
 
 
