@@ -1,20 +1,19 @@
     .landing-page-contents-container{
     display: grid;
     grid-template-columns: 1fr; /* mobile */
-    /* gap: 10px; */
+    background-color: whitesmoke;
+    gap: 10px;
+    padding: 10px;
     width: 100%;
     }
     .contents-container{
         display: flex;
-        flex-direction: column;
-        background-color:whitesmoke;
+        flex-direction: column;   
         padding: 0px; 
     }
-    .contents-sub-container{
-        
+    .contents-sub-container{ 
         padding: 0px 20px;
-        background-image: linear-gradient(white, rgb(255, 165, 0,.8), white);
-        
+    
     }
     .cta-cards{
         margin-top: 20px;
@@ -22,7 +21,7 @@
         border-radius: 5px;
     }
 
-    .contents-card{
+     .contents-card{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,9 +29,16 @@
         height: 100%;
         justify-content: flex-start;
         object-fit: contain;
-        padding:8px;
-        background-color:whitesmoke;
+        padding:20px;
+        gap: 10px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgb(148, 148, 148);
+        background-color: whitesmoke;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
      
+    }
+    .contents-card:hover{
+        transform: translateY(-2px);
     }
     .content-image-container{
         width: 100%;
@@ -89,7 +95,7 @@ p1{
     .landing-page-contents-container{
         display: grid;
         grid-template-columns: repeat(2,1fr); /* Tablet*/
-        /* gap: 10px; */
+        gap: 10px; 
         width:100%;
     }
     .content-image-container{
@@ -103,7 +109,7 @@ p1{
     .contents-sub-container{
         
         padding: 0px 40px;
-        background-image: linear-gradient(white, rgb(255, 165, 0,.8), white);
+        
         
     }
     .cta-cards{
@@ -124,7 +130,7 @@ p1{
     .landing-page-contents-container{
         display: grid;
         grid-template-columns: repeat(3,1fr); /* Laptop*/
-        /* gap: 10px; */
+        gap: 10px;
         width:100%;
     }
     .contents-container{ 
@@ -133,7 +139,7 @@ p1{
     .contents-sub-container{
         
         padding: 0px 40px;
-        background-image: linear-gradient(white, rgb(255, 165, 0,.8), white);
+        
         
     }
     .cta-cards{
@@ -160,20 +166,20 @@ p1{
     .landing-page-contents-container{
         display: grid;
         grid-template-columns: repeat(4,1fr); /* Laptop*/
-        /* gap: 10px; */
+        justify-content: center;
+        gap: 10px; 
+        padding: 10px;
         height: 100%;
         width:100%;
-        background-color: antiquewhite;
+        background-color: whitesmoke;
     }
     .contents-container{      
         padding: 0px 0px;
+        justify-content: center;
         
     }
     .contents-sub-container{
-        
-        padding: 0px 40px;
-        background-image: linear-gradient(white, rgb(255, 165, 0,.8), white);
-        
+        padding: 0px 40px;  
     }
     .cta-cards{
         margin-top: 20px;
@@ -181,6 +187,27 @@ p1{
         border-radius: 5px;
         padding-bottom: 24px;
         background-color: whitesmoke;
+        
+    }
+    .contents-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        justify-content: flex-start;
+        object-fit: contain;
+        padding:20px;
+        gap: 10px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgb(148, 148, 148);
+        background-color: whitesmoke;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .contents-card:hover{
+        transform: translateY(-2px);
+    }
+  
     }
     .content-image-container{
         width: 100%;
@@ -208,10 +235,17 @@ p1{
         flex-grow: 1;
         font-family: "Exo 2","arial";
     }
-h1{
-    font-size: 32px;
-}
-p{
-    font-size: 16px;
-}
-}
+    h1{
+         font-size: 36px;
+         font-family: "Exo 2","arial";
+    }
+    h2{
+         font-size: 26px;
+         font-family: "Exo 2","arial";
+         margin: 0;
+         padding: 0px;
+    }
+    p{
+        font-size: 18px;
+         font-family: "Exo 2","arial";
+    }
