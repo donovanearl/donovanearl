@@ -15,8 +15,7 @@ function Home(){
         
         <div className="contents-container">
           <title>Home</title>
-            
-            <img src={HeroImage} className="hero-image"/>
+     
             <div className="contents-sub-container">
                 <h1>
                 {head1}
@@ -24,14 +23,14 @@ function Home(){
                 <h2>
                     {head2}
                 </h2>
-                <p1>
+                <p>
                     {par1}
-                </p1>
+                </p>
+                <div className="cta-cards">
+                    <button className="contact-button">👉 Get Your Computer Fixed Today</button>
+                    <LandingPageContents/>
+                </div>
                 
-                <button className="contact-button">👉 Get Your Computer Fixed Today</button>
-                
-            
-                <LandingPageContents/>
 
             </div>
          

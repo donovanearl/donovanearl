@@ -4,6 +4,7 @@ import Logo2 from "/src/assets/Logo2.png"
 import NavBar from "../components/NavBar"
 import { Link } from "react-router-dom"
 import { getBaseURL } from "../api";
+import Footer from "../components/Footer"
 
 const MainLayout=()=>{
     return (<div className="App"> 
@@ -12,31 +13,30 @@ const MainLayout=()=>{
                         <img src={Logo2} className="Logo2"/>
                         <div className="Nav-plus">
                             <div className="Nav-sign">
-                                <p1>
-                                Welcome! {" "}
-                                <Link to="/login">Sign In</Link>
-                                </p1>
-                                <p1>New customer?{" "}
+                                <div className="Nav-sign-in">
+                                    <p>
+                                      Welcome! {" "}
+                                     <Link to="/login">Sign In</Link>
+                                    </p>
+                                </div>
+                    
+                                <p>New customer?{" "}
                                 <Link to="/register">Sign up here</Link> 
-                                </p1>
+                                </p>
                                
                             </div>
-                            
-                            <NavBar/>
-                        </div>
+                                <NavBar/>
+                            </div>
                        
                     </header>
                     
                     <div className="Outlet">
                         <Outlet/>
                     </div>
-                    <footer>
-                        This is the footer
-                    </footer>
+                    <Footer/>
                 </div>
             </div>
-    
-                
+         
     )
     }
 
