@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import NotFound from "./pages/Notfound"
 import ProtectedRoute from "./components/ProtectedRoute"
 import MainLayout from "./layouts/MainLayout.jsx"
+import Laptops from "./pages/Laptops.jsx"
 
 
 
@@ -31,6 +32,13 @@ function App() {
           path="/" element={
             //<ProtectedRoute>
               <Home/>
+            //</ProtectedRoute>
+          }
+          />
+          <Route
+          path="/products/laptops" element={
+            //<ProtectedRoute>
+              <Laptops/>
             //</ProtectedRoute>
           }
           />

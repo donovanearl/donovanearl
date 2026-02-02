@@ -1,0 +1,17 @@
+.laptops-container{
+    display: flex;
+    width: 500px;
+}
+.laptops-page-container{
+    display: flex;
+    width: 500px;
+    height: auto;
+}
+
+.laptop-header{
+    width: 200px;
+    height: auto;
+}
+.laptop-image{
+    width: 500px;;
+}

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import AppUser, ProductCard
+from .models import AppUser, LaptopsCard
 from .models import LandingPage_Content
 
 class AppUserSerializer(serializers.ModelSerializer):
@@ -8,10 +8,10 @@ class AppUserSerializer(serializers.ModelSerializer):
         model=AppUser
         fields=('id','name','address','email','phone','created_at')
 
-class ProductCardSerializer(serializers.ModelSerializer):
+class LaptopsCardSerializer(serializers.ModelSerializer):
     class Meta:
-        model=ProductCard
-        fields=('id','productName','productImage','productDetails','productPrice','created_at')
+        model=LaptopsCard
+        fields=('id','laptopName','laptopImage','laptopDetails','laptopPrice','created_at')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

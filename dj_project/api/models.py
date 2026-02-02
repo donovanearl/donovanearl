@@ -13,17 +13,17 @@ class AppUser(models.Model):
     phone=models.CharField(max_length=15,validators=[numeric_validator])
     created_at=models.DateTimeField(auto_now_add=True)
 
-class ProductCard(models.Model):
+class LaptopsCard(models.Model):
     numeric_validator = RegexValidator(r'^\d+\.?\d*$', message='Only digits are allowed.')
     
-    productName=models.CharField(max_length=25)
-    productImage=models.ImageField(blank=True)
-    productDetails=models.TextField(max_length=150)
-    productPrice=models.CharField(max_length=9,validators=[numeric_validator])
+    laptopName=models.CharField(max_length=25)
+    laptopImage=models.ImageField(blank=True)
+    laptopDetails=models.TextField(max_length=150)
+    laptopPrice=models.CharField(max_length=9,validators=[numeric_validator])
     created_at=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Product: {self.productName}" f" ID: {self.pk}"
+        return f"Laptop: {self.laptopName}" f" ID: {self.pk}"
 
     #author=models.ForeignKey(User,on_delete=models.CASCADE, related_name="product")
 class LandingPage_Content(models.Model):

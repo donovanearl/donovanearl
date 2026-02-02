@@ -1,7 +1,9 @@
 // src/components/AnimatedDropdown.jsx
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { useState } from "react";
+import React, { useState } from "react";
 import "../styles/Animateddropdown.css";
+import {useNavigate} from "react-router-dom"
+import Home from "../pages/Home";
 
 export default function AnimatedDropdown({ label, basePath }) {
   const [open, setOpen] = useState(false);
@@ -21,12 +23,21 @@ export default function AnimatedDropdown({ label, basePath }) {
     }
     return `/${basePath}/${toSlug(item)}`;
   };
+  
+  //  only Home nav has this clickable label
+  const Navigate = useNavigate()
+  const home_click=(e)=>{
+    if(Home){Navigate("/")
+    }
+  
+  }
 
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger className="nav-item" 
       onMouseEnter={() => setOpen(true)} 
       onMouseLeave={() => setOpen(false)}
+      onClick={home_click}
       >
       {label}
       </DropdownMenu.Trigger>
