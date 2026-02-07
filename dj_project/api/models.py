@@ -16,9 +16,9 @@ class AppUser(models.Model):
 class LaptopsCard(models.Model):
     numeric_validator = RegexValidator(r'^\d+\.?\d*$', message='Only digits are allowed.')
     
-    laptopName=models.CharField(max_length=25)
+    laptopName=models.CharField(max_length=40)
     laptopImage=models.ImageField(blank=True)
-    laptopDetails=models.TextField(max_length=150)
+    laptopDetails=models.TextField(max_length=300)
     laptopPrice=models.CharField(max_length=9,validators=[numeric_validator])
     created_at=models.DateTimeField(auto_now_add=True)
 

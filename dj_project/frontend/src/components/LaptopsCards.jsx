@@ -30,25 +30,16 @@ if(loading){
 return (
     <div className="laptops-container">
         {laptops.map((laptop) => (
-        <div key={laptop.id} className="laptop-header">
-          <img src={laptop.laptopImage} alt={laptop.laptopName} className="laptop-image" />
-          <h2 className="laptop-name">{laptop.laptopName}</h2>
-      
+        <div key={laptop.id} className="laptop-cards"> 
+            <div className="img-wrapper">
+                <img src={laptop.laptopImage} alt={laptop.laptopName} className="laptop-image"/> 
+            </div>         
+            <h2 className="laptop-name">{laptop.laptopName}</h2>
+            <p>{laptop.laptopDetails}</p>
+            <h2 className="price">AED {laptop.laptopPrice}</h2>
+            <button className="cart-btn">Add to cart</button>
         </div>
       ))}
     </div>
-  );
-//     <div className="laptops-container">
-        
-//     {laptops.map((laptop)=>{
-//         return (
-//             <div key={laptop.id} className="laptop-header">
-//             <img src={laptop.image} alt={laptop.name} className="laptop-image"/>
-//             </div>
-//             );
-//             }
-//         )
-//     }
-// </div>)
-
-};
+    )
+}
