@@ -7,6 +7,7 @@ import NotFound from "./pages/Notfound"
 import ProtectedRoute from "./components/ProtectedRoute"
 import MainLayout from "./layouts/MainLayout.jsx"
 import Laptops from "./pages/Laptops.jsx"
+import Customized_Desktop from "./pages/Customized_Desktop.jsx"
 
 
 
@@ -39,6 +40,13 @@ function App() {
           path="/products/laptops" element={
             //<ProtectedRoute>
               <Laptops/>
+            //</ProtectedRoute>
+          }
+          />
+          <Route
+          path="/products/Customized-Desktop" element={
+            //<ProtectedRoute>
+              <Customized_Desktop/>
             //</ProtectedRoute>
           }
           />

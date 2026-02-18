@@ -27,7 +27,7 @@ export default function AnimatedDropdown({ label, basePath }) {
   //  only Home nav has this clickable label
   const Navigate = useNavigate()
   const home_click=(e)=>{
-    if(Home){Navigate("/")
+    if(label==="Home"){Navigate("/")
     }
   
   }
