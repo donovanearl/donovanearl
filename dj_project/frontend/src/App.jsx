@@ -31,16 +31,16 @@ function App() {
       <Route element={<MainLayout/>}>
         <Route
           path="/" element={
-            //<ProtectedRoute>
+            
               <Home/>
-            //</ProtectedRoute>
+            
           }
           />
           <Route
           path="/products/laptops" element={
-            //<ProtectedRoute>
+            
               <Laptops/>
-            //</ProtectedRoute>
+            
           }
           />
           <Route
