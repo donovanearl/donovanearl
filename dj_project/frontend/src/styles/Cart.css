@@ -1,0 +1,9 @@
+.cart-container{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    min-height: 600px;
+    width: 1000px;
+    background-color: azure;
+
+}

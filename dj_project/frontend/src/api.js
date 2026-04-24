@@ -7,12 +7,12 @@ export const getBaseURL = () => {
     return 'http://localhost:8000';
   }
   // Otherwise use your computer's IP (for mobile testing)
-  return 'http://192.168.70.108:8000'; // Replace with your actual IP
+  return 'http://192.168.70.71:8000'; // Replace with your actual IP
 };
 
 const api = axios.create({
     baseURL:getBaseURL()
-    // baseURL:import.meta.env.VITE_API_URL
+    // creates axios instance with // baseURL:import.meta.env.VITE_API_URL
 })
 
 api.interceptors.request.use(

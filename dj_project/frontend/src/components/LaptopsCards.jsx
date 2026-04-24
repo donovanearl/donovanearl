@@ -37,7 +37,7 @@ return (
             <h2 className="laptop-name">{laptop.laptopName}</h2>
             <p className="laptop-details">{laptop.laptopDetails}</p>
             <h2 className="price">AED {laptop.laptopPrice}</h2>
-            <button onClick="" className="cart-btn">Add to cart</button>
+            <button onClick="" className="cart-btn">Add to cart</button>  
         </div>
       ))}
     </div>

@@ -34,6 +34,13 @@ class LandingPage_Content(models.Model):
     def __str__(self):
         return f"Product: {self.contentHeader}" f" ID: {self.pk}"
 
-   
+class Cart(models.Model):
+    numeric_validator = RegexValidator(r'^\d+$', message='Only digits are allowed.')
+    
+    user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='cart')
+    created_at=models.DateTimeField(auto_now_add=True)
+
+
+
 
 

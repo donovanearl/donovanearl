@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import MainLayout from "./layouts/MainLayout.jsx"
 import Laptops from "./pages/Laptops.jsx"
 import Customized_Desktop from "./pages/Customized_Desktop.jsx"
+import Cart from "./pages/Cart.jsx"
 
 
 
@@ -31,9 +32,7 @@ function App() {
       <Route element={<MainLayout/>}>
         <Route
           path="/" element={
-            
               <Home/>
-            
           }
           />
           <Route
@@ -70,7 +69,15 @@ function App() {
             <NotFound/>
           }
           />
+
+          <Route
+          path="/cart" element={
+              <Cart/>
+          }
+          />
+          
         </Route>
+        
       
     </Routes>
   </BrowserRouter>

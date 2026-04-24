@@ -2,8 +2,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from rest_framework import generics
 from .models import AppUser,LaptopsCard,LandingPage_Content
-from .serializers import AppUserSerializer,LaptopsCardSerializer,UserSerializer, LandingPage_ContentSerializer
+from .serializers import AppUserSerializer,LaptopsCardSerializer,UserSerializer, LandingPage_ContentSerializer , MyTokenObtainPairSerializer
 from rest_framework.permissions import IsAuthenticated,AllowAny
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Create your views here.
 
@@ -25,4 +26,7 @@ class CreateUserView(generics.CreateAPIView):
     queryset=User.objects.all()
     serializer_class=UserSerializer
     permission_classes=[AllowAny]
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class=MyTokenObtainPairSerializer
     

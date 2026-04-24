@@ -1,10 +1,11 @@
+import "../styles/Customized_Desktop.css"
 
 export default function PartSelector(props){
 
     
-    return(<div className="part-selector">
-            <label>{props.label}</label>
-            <select value={props.value} onChange={props.onChange}>
+    return(<div className="part-selector-container">
+            <label className="part-label">{props.label}</label>
+            <select className="part-selector" value={props.value} onChange={props.onChange}>
                 <option value="">--select--</option>
                 {props.options.map((item)=>{
                     return(<option key={item.id} value={item.id}>{item.name}</option>
@@ -13,7 +14,7 @@ export default function PartSelector(props){
                 }
             )}
             </select>
-            <div className="price"><span>AED </span>&nbsp; {(props.options.find(o=>o.id===Number(props.value))?.price: "")
+            <div className="part-price"><span></span>&nbsp; {props.options.find(o=>o.id===Number(props.value))?.price??""
             }</div>
     </div>
     )

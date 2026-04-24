@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import AppUser, LaptopsCard
 from .models import LandingPage_Content
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class AppUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,4 +27,14 @@ class LandingPage_ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model=LandingPage_Content
         fields=('id','contentImage','contentHeader','contentText','created_at')
- 
+
+
+#  from claude
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        
+        #add custom claims
+        token["username"] = user.username
+        return token
