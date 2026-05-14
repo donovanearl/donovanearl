@@ -18,20 +18,16 @@ from django.contrib import admin
 from django.urls import path , include
 from django.conf.urls.static import static
 from django.conf import settings
-from api.views import CreateUserView
-from api.views import LaptopsCardView
-from api.views import MyTokenObtainPairView
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('__reload__/', include('django_browser_reload.urls')),
-    path('api/user/register/', CreateUserView.as_view(),name='register'),
-    path('api/token/', MyTokenObtainPairView.as_view(),name='get_token'), #Change from Claude
-    path('api/token/refresh/', TokenRefreshView.as_view(),name='refresh'),
-    path('api-auth/',include('rest_framework.urls')),
-    path('api/laptops/', LaptopsCardView.as_view(),name='products'),  #Change made here
+    path('api-auth/',include('rest_framework.urls'))
+    
+    
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #Donfadded

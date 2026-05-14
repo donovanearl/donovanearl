@@ -9,7 +9,6 @@ import { getBaseURL } from "../api";
 import Footer from "../components/Footer"
 import { jwtDecode } from "jwt-decode"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
-import { removeItem } from "framer-motion"
 
 
 const MainLayout=()=>{
@@ -20,8 +19,9 @@ const MainLayout=()=>{
     const logout = ()=> {
         localStorage.removeItem(ACCESS_TOKEN)
         localStorage.removeItem(REFRESH_TOKEN)
-        navigate("/login")
+        navigate(0)
     }
+    
     console.log(user)
 
     return (<div className="App"> 

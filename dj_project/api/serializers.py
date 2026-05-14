@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import AppUser, LaptopsCard
-from .models import LandingPage_Content
+from .models import AppUser, LandingPage_Content,Cart,Product,CartItems,Order,OrderItems
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class AppUserSerializer(serializers.ModelSerializer):
@@ -9,10 +9,6 @@ class AppUserSerializer(serializers.ModelSerializer):
         model=AppUser
         fields=('id','name','address','email','phone','created_at')
 
-class LaptopsCardSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=LaptopsCard
-        fields=('id','laptopName','laptopImage','laptopDetails','laptopPrice','created_at')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,6 +23,31 @@ class LandingPage_ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model=LandingPage_Content
         fields=('id','contentImage','contentHeader','contentText','created_at')
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Cart
+        fields=('user','created_at','updated_at')
+
+class CartItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=CartItems
+        fields=('cart','product','quantity','added_at')
+        read_only_fields = ('cart',)
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Product
+        fields=('name','details','price','stock','image_url','created_at')
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Order
+        fields=('user','status','total_price','stripe_payment_intent_id','created_at')
+
+class OrderItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=OrderItems
+        fields=('order','product','quantity','price_at_purchase')
 
 
 #  from claude

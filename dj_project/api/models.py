@@ -13,17 +13,6 @@ class AppUser(models.Model):
     phone=models.CharField(max_length=15,validators=[numeric_validator])
     created_at=models.DateTimeField(auto_now_add=True)
 
-class LaptopsCard(models.Model):
-    numeric_validator = RegexValidator(r'^\d+\.?\d*$', message='Only digits are allowed.')
-    
-    laptopName=models.CharField(max_length=40)
-    laptopImage=models.ImageField(blank=True)
-    laptopDetails=models.TextField(max_length=300)
-    laptopPrice=models.CharField(max_length=9,validators=[numeric_validator])
-    created_at=models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Laptop: {self.laptopName}" f" ID: {self.pk}"
 
     #author=models.ForeignKey(User,on_delete=models.CASCADE, related_name="product")
 class LandingPage_Content(models.Model):
@@ -35,10 +24,41 @@ class LandingPage_Content(models.Model):
         return f"Product: {self.contentHeader}" f" ID: {self.pk}"
 
 class Cart(models.Model):
-    numeric_validator = RegexValidator(r'^\d+$', message='Only digits are allowed.')
-    
     user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='cart')
     created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+
+class Product(models.Model):
+
+    name=models.CharField(max_length=30 )
+    details=models.TextField(max_length=250)
+    price=models.FloatField()
+    stock=models.IntegerField()
+    image_url=models.URLField(max_length=500)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+class CartItems(models.Model):
+
+    cart=models.ForeignKey(Cart,on_delete=models.CASCADE, related_name="cart_items")
+    product=models.ForeignKey(Product,on_delete=models.CASCADE, related_name="product_cart_items")
+    quantity=models.IntegerField()
+    added_at=models.DateTimeField(auto_now_add=True)
+
+class Order(models.Model):
+    text_only_validator = RegexValidator(r'^[a-zA-Z\s]+$', 'Only text and spaces are allowed.')
+   
+    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="order")
+    status=models.CharField(max_length=10, validators=[text_only_validator])
+    total_price=models.FloatField()
+    stripe_payment_intent_id=models.CharField(max_length=255)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+class OrderItems(models.Model):
+ 
+    order=models.ForeignKey(Order,on_delete=models.CASCADE,related_name="order_items")
+    product=models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_order_items")
+    quantity=models.IntegerField()
+    price_at_purchase=models.FloatField()
 
 
 

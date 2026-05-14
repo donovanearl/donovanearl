@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
 from rest_framework import generics
-from .models import AppUser,LaptopsCard,LandingPage_Content
-from .serializers import AppUserSerializer,LaptopsCardSerializer,UserSerializer, LandingPage_ContentSerializer , MyTokenObtainPairSerializer
+from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems
+from .serializers import (AppUserSerializer,UserSerializer, LandingPage_ContentSerializer,
+                          MyTokenObtainPairSerializer,CartSerializer,CartItemsSerializer,ProductSerializer,
+                          OrderSerializer,OrderItemsSerializer)
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -11,11 +12,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 class AppUserView(generics.CreateAPIView):
     queryset=AppUser.objects.all()
     serializer_class=AppUserSerializer
-
-class LaptopsCardView(generics.ListCreateAPIView):
-    queryset=LaptopsCard.objects.all()
-    serializer_class=LaptopsCardSerializer
     permission_classes=[AllowAny]
+
 
 class LandingPage_ContentView(generics.ListCreateAPIView):
     queryset=LandingPage_Content.objects.all()
@@ -27,6 +25,48 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class=UserSerializer
     permission_classes=[AllowAny]
 
+    def perform_create(self, serializer):
+        user=serializer.save()
+        Cart.objects.create(user=user)  #cart created after user registers
+
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class=MyTokenObtainPairSerializer
+
+class CartView(generics.ListCreateAPIView):
+    # queryset=Cart.objects.all()
+    serializer_class=CartSerializer
+    permission_classes=[IsAuthenticated]
+    def get_queryset(self):
+        return Cart.objects.filter(user=self.request.user)
+
+class CartItemsView(generics.ListCreateAPIView):
+
+    serializer_class=CartItemsSerializer
+    permission_classes=[IsAuthenticated]
+    def get_queryset(self):
+        return CartItems.objects.filter(cart__user=self.request.user)
     
+    def perform_create(self, serializer):
+        cart=Cart.objects.get(user=self.request.user)
+        serializer.save(cart=cart)
+
+class ProductView(generics.ListCreateAPIView):
+    queryset=Product.objects.all()
+    serializer_class=ProductSerializer
+    permission_classes=[AllowAny]
+
+class OrderView(generics.ListCreateAPIView):
+    
+    serializer_class=OrderSerializer
+    permission_classes=[IsAuthenticated]
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class OrderItemsView(generics.ListCreateAPIView):
+    
+    serializer_class=OrderItemsSerializer
+    permission_classes=[IsAuthenticated]
+    def get_queryset(self):
+        return OrderItems.objects.filter(order__user=self.request.user)
