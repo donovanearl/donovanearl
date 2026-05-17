@@ -32,23 +32,24 @@ class CartSerializer(serializers.ModelSerializer):
 class CartItemsSerializer(serializers.ModelSerializer):
     class Meta:
         model=CartItems
-        fields=('cart','product','quantity','added_at')
+        fields=('id','cart','product','quantity','added_at')
         read_only_fields = ('cart',)
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=Product
-        fields=('name','details','price','stock','image_url','created_at')
+        fields=('id','name','details','price','stock','image','created_at')
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model=Order
-        fields=('user','status','total_price','stripe_payment_intent_id','created_at')
+        fields=('id','user','status','total_price','stripe_payment_intent_id','created_at')
+        read_only_fields=('user',)
 
 class OrderItemsSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrderItems
         fields=('order','product','quantity','price_at_purchase')
-
+    
 
 #  from claude
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):

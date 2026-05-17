@@ -15,17 +15,18 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv()  
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=moq(^$ut@)0h1()^txy)xpkt88*%_at%y-(98s@v4!uq(c9)y'
+SECRET_KEY=os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -68,11 +69,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'cloudinary',
+    'cloudinary_storage',   
 ]
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
+
 MIDDLEWARE = [
-    
+    'corsheaders.middleware.CorsMiddleware',#added
     'django_browser_reload.middleware.BrowserReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -80,8 +88,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',#added
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', 
 ]
 
 ROOT_URLCONF = 'dj_project.urls'
@@ -110,9 +117,9 @@ WSGI_APPLICATION = 'dj_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pt_db',         # database name
-        'USER': 'donf',       # created user
-        'PASSWORD': 'DanDae123',      # password
+        'NAME': os.getenv('DB_NAME'),         # database name
+        'USER': os.getenv('DB_USER'),       # created user
+        'PASSWORD': os.getenv('DB_PASSWORD'),      # password
         'HOST': 'localhost',           # or IP if remote
         'PORT': '5432',                # default Postgres port
     }
@@ -165,4 +172,9 @@ MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True #added
-CORS_ALLOWS_CREDENTIALS = True #added
+CORS_ALLOW_CREDENTIALS = True #added
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

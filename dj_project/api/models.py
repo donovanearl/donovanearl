@@ -28,14 +28,20 @@ class Cart(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"Cart: {self.user.username}"
+
 class Product(models.Model):
 
     name=models.CharField(max_length=30 )
     details=models.TextField(max_length=250)
-    price=models.FloatField()
+    price=models.DecimalField(max_digits=9, decimal_places=2)
     stock=models.IntegerField()
-    image_url=models.URLField(max_length=500)
+    image = models.ImageField(blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Product:{self.name} ID:{self.pk}"
 
 class CartItems(models.Model):
 
@@ -43,6 +49,10 @@ class CartItems(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE, related_name="product_cart_items")
     quantity=models.IntegerField()
     added_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.product.name}x{self.quantity}"
+    
 
 class Order(models.Model):
     text_only_validator = RegexValidator(r'^[a-zA-Z\s]+$', 'Only text and spaces are allowed.')
@@ -52,6 +62,9 @@ class Order(models.Model):
     total_price=models.FloatField()
     stripe_payment_intent_id=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order:{self.user.username} ID:{self.pk}"
 
 class OrderItems(models.Model):
  
