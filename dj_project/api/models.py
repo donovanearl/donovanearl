@@ -7,6 +7,7 @@ class AppUser(models.Model):
     text_only_validator = RegexValidator(r'^[a-zA-Z\s]+$', 'Only text and spaces are allowed.')
     numeric_validator = RegexValidator(r'^\d+$', message='Only digits are allowed.')
 
+    user= models.OneToOneField(User,on_delete=models.CASCADE, related_name="profile")  #connects with auth user
     name= models.CharField(max_length=25,validators=[MinLengthValidator(2),text_only_validator])
     address=models.CharField(max_length=50,validators=[MinLengthValidator(5)])
     email=models.EmailField(max_length=50)

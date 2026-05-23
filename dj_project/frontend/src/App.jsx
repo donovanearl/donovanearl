@@ -9,6 +9,8 @@ import MainLayout from "./layouts/MainLayout.jsx"
 import Laptops from "./pages/Laptops.jsx"
 import Customized_Desktop from "./pages/Customized_Desktop.jsx"
 import Cart from "./pages/Cart.jsx"
+import Orders from "./pages/Orders.jsx"
+import Profile from "./pages/Profile.jsx"
 
 
 
@@ -73,6 +75,20 @@ function App() {
           <Route
           path="/cart" element={
               <Cart/>
+          }
+          />
+          <Route
+          path="/Orders/" element={
+            
+              <Orders/>
+            
+          }
+          />
+          <Route
+          path="/Profile/" element={
+            
+              <Profile/>
+            
           }
           />
           

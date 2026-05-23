@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ACCESS_TOKEN } from "./constants"
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants"
 
 export const getBaseURL = () => {
   // Check if we're on localhost (desktop development)
@@ -23,6 +23,27 @@ api.interceptors.request.use(
         } return config
     },
     (error)=>{
+        return Promise.reject(error)
+    }
+)
+
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        if(error.response?.status === 401){
+            try {
+                const refresh = localStorage.getItem(REFRESH_TOKEN)
+                const res = await axios.post(`${getBaseURL()}/api/token/refresh/`, {
+                    refresh: refresh
+                })
+                localStorage.setItem(ACCESS_TOKEN, res.data.access)
+                error.config.headers.Authorization = `Bearer ${res.data.access}`
+                return axios(error.config)
+            } catch(err) {
+                localStorage.clear()
+                window.location.href = '/login'
+            }
+        }
         return Promise.reject(error)
     }
 )

@@ -28,17 +28,21 @@ class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model=Cart
         fields=('user','created_at','updated_at')
+        
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Product
+        fields=('id','name','details','price','stock','image','created_at')
 
 class CartItemsSerializer(serializers.ModelSerializer):
+    product=ProductSerializer(read_only=True)
+
     class Meta:
         model=CartItems
         fields=('id','cart','product','quantity','added_at')
         read_only_fields = ('cart',)
 
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Product
-        fields=('id','name','details','price','stock','image','created_at')
+
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model=Order

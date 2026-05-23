@@ -1,7 +1,8 @@
-import api from "../api";
+import api, { getBaseURL } from "../api";
 import React, { useEffect, useState } from "react";
 import "../styles/ProductCards.css"
 import "../styles/index.css"
+import axios from "axios";
 
 
 function ProductCards(){
@@ -12,7 +13,7 @@ function ProductCards(){
                     /*fill the products from server*/
                     const fetchProducts =async ()=>{
                         try {
-                            const res= await api.get("/api/product/") // get everything in this path in APIview
+                            const res= await axios.get(`${getBaseURL()}/api/product/`) // get everything in this path in APIview
                             setProducts(res.data)
                         } catch (error) {
                             console.error("Failed to grab data", error)

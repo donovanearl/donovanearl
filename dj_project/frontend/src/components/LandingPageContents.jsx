@@ -1,4 +1,5 @@
-import api from "../api";
+import api, { getBaseURL } from "../api";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css"
 import "../styles/index.css"
@@ -12,7 +13,7 @@ function LandingPageContents(){
                     /*fill the products from server*/
                     const fetchContents =async ()=>{
                         try {
-                            const res= await api.get("/api/landing-page/") // get everything in this path in APIview
+                            const res= await axios.get(`${getBaseURL()}/api/landing-page/`) // get everything in this path in APIview
                             setContents(res.data)
                         } catch (error) {
                             console.error("Failed to grab data", error)

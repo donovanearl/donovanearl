@@ -9,10 +9,12 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Create your views here.
 
-class AppUserView(generics.CreateAPIView):
-    queryset=AppUser.objects.all()
+class AppUserView(generics.RetrieveUpdateAPIView):
     serializer_class=AppUserSerializer
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
+    
+    def get_object(self):
+        return AppUser.objects.get(user=self.request.user)
 
 
 class LandingPage_ContentView(generics.ListCreateAPIView):
@@ -28,6 +30,7 @@ class CreateUserView(generics.CreateAPIView):
     def perform_create(self, serializer):
         user=serializer.save()
         Cart.objects.create(user=user)  #cart created after user registers
+        AppUser.objects.create(user=user) #auto create an empty profile
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class=MyTokenObtainPairSerializer
@@ -48,7 +51,23 @@ class CartItemsView(generics.ListCreateAPIView):
     
     def perform_create(self, serializer):
         cart=Cart.objects.get(user=self.request.user)
-        serializer.save(cart=cart)
+        product_id = self.request.data.get('product')
+        product = Product.objects.get(id=product_id)
+        
+        existing = CartItems.objects.filter(cart=cart, product=product).first()
+        if existing:
+            existing.quantity += 1  # 👈 increment instead of duplicate / Claude
+            existing.save()
+            return
+    
+        serializer.save(cart=cart,product=product)
+
+class CartItemsDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class=CartItemsSerializer
+    permission_classes=[IsAuthenticated]
+
+    def get_queryset(self):
+        return CartItems.objects.filter(cart__user=self.request.user)
 
 class ProductView(generics.ListCreateAPIView):
     queryset=Product.objects.all()

@@ -1,4 +1,5 @@
-import api from "../api";
+import api, { getBaseURL } from "../api";
+import axios from "axios";
 import React from "react"
 import { useState,useEffect } from "react";
 import "../styles/Laptops.css"
@@ -11,7 +12,7 @@ export default function LaptopCards(){
     //Fetch Data
     useEffect(()=>{
         const fetchdata= async ()=>{
-            try{const res=await api.get("/api/products/");
+            try{const res=await axios.get(`${getBaseURL()}/api/products/`);
                 setProducts(res.data);
             }
             catch(error){
