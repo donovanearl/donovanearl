@@ -16,4 +16,5 @@ urlpatterns = [
     path('orders/', views.OrderView.as_view(), name='orders'),
     path('orders/items/', views.OrderItemsView.as_view(), name='order-items'),
     path('cart/items/<int:pk>/', views.CartItemsDetailView.as_view(), name='cart-items-detail'), #from claude
+    path('create-payment-intent/',views.create_payment_intent, name='create-payment-intent'),
     ]

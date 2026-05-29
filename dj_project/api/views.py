@@ -6,6 +6,9 @@ from .serializers import (AppUserSerializer,UserSerializer, LandingPage_ContentS
                           OrderSerializer,OrderItemsSerializer)
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
+import stripe
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -89,3 +92,22 @@ class OrderItemsView(generics.ListCreateAPIView):
     permission_classes=[IsAuthenticated]
     def get_queryset(self):
         return OrderItems.objects.filter(order__user=self.request.user)
+    
+    def perform_create(self, serializer):
+        product_id = self.request.data.get('product')
+        product = Product.objects.get(id=product_id)
+        serializer.save(product=product)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_payment_intent(request):
+    try:
+        amount= request.data.get('amount')
+        intent= stripe.PaymentIntent.create(
+            amount=int(float(amount)*100), ## stripe uses cents
+            currency='aed',
+        )
+        return Response({'client_secret':intent.client_secret})
+    except Exception as e:
+        return Response({'error':str(e)} , status=400)

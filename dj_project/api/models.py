@@ -61,7 +61,7 @@ class Order(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="order")
     status=models.CharField(max_length=10, validators=[text_only_validator])
     total_price=models.FloatField()
-    stripe_payment_intent_id=models.CharField(max_length=255)
+    stripe_payment_intent_id=models.CharField(max_length=255, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

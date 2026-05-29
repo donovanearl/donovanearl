@@ -11,6 +11,7 @@ import Customized_Desktop from "./pages/Customized_Desktop.jsx"
 import Cart from "./pages/Cart.jsx"
 import Orders from "./pages/Orders.jsx"
 import Profile from "./pages/Profile.jsx"
+import Order_history from "./pages/Order_history.jsx"
 
 
 
@@ -74,21 +75,31 @@ function App() {
 
           <Route
           path="/cart" element={
+            <ProtectedRoute>
               <Cart/>
+            </ProtectedRoute>
           }
           />
           <Route
           path="/Orders/" element={
-            
-              <Orders/>
-            
+              <ProtectedRoute>
+                <Orders/>
+              </ProtectedRoute>
           }
           />
           <Route
           path="/Profile/" element={
-            
+            <ProtectedRoute>
               <Profile/>
-            
+            </ProtectedRoute>
+                         
+          }
+          />
+          <Route
+          path="/order-history" element={
+            <ProtectedRoute>
+              <Order_history/>
+            </ProtectedRoute>
           }
           />
           

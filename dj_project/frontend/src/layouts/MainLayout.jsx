@@ -11,19 +11,27 @@ import { jwtDecode } from "jwt-decode"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
 
 
+
+
 const MainLayout=()=>{
     const navigate=useNavigate()
     const cart_click= ()=>{navigate("/cart")}
     const token = localStorage.getItem(ACCESS_TOKEN)
-    const user = token ? jwtDecode(token) : null
+    const decoded = token ? jwtDecode(token) : null
+    const isExpired= decoded ? decoded.exp*1000<=Date.now():true
+    const user= isExpired ? null: decoded
+
+    
     const logout = ()=> {
         localStorage.removeItem(ACCESS_TOKEN)
         localStorage.removeItem(REFRESH_TOKEN)
         navigate(0)
     }
     
-    console.log(user)
-
+    console.log("User:",user)
+    // console.log("Time-now: ",timeNow)
+  
+    
     return (<div className="App"> 
                 <div className="Main-Container">
                     <header className="Header">

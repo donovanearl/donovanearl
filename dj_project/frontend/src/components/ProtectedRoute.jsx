@@ -1,4 +1,4 @@
-import {Navigate} from "react-router-dom"
+import {Navigate, useNavigate} from "react-router-dom"
 import {jwtDecode} from "jwt-decode"
 import api from "../api"
 import { REFRESH_TOKEN,ACCESS_TOKEN } from "../constants"
@@ -6,6 +6,7 @@ import { useState,useEffect } from "react"
 
 function ProtectedRoute({children}){
     const [isAuthorized,setIsAuthorized]= useState(null)
+    const navigate=useNavigate()
     
     useEffect(()=>{
         auth().catch(()=>setIsAuthorized(false))
@@ -20,6 +21,7 @@ function ProtectedRoute({children}){
             if(res.status===200){                                 
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)      // Code that gets the Access token from Django //
                 setIsAuthorized(true)
+                navigate(0)
             }
             else{
                 setIsAuthorized(false)
@@ -44,7 +46,7 @@ const auth = async ()=>{
         await refreshToken()
     }
     else {
-        setIsAuthorized(true) // My mistake
+        setIsAuthorized(true) 
     }
 }
 if(isAuthorized===null){

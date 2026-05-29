@@ -44,12 +44,14 @@ class CartItemsSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model=Order
         fields=('id','user','status','total_price','stripe_payment_intent_id','created_at')
         read_only_fields=('user',)
 
 class OrderItemsSerializer(serializers.ModelSerializer):
+    product =ProductSerializer(read_only=True)   #claude
     class Meta:
         model=OrderItems
         fields=('order','product','quantity','price_at_purchase')
