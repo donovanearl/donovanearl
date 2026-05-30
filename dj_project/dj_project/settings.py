@@ -122,7 +122,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),         # database name
         'USER': os.getenv('DB_USER'),       # created user
         'PASSWORD': os.getenv('DB_PASSWORD'),      # password
-        'HOST': 'localhost',           # or IP if remote
+        'HOST': os.getenv('DB_HOST'),           # or IP if remote
         'PORT': '5432',                # default Postgres port
     }
 }
