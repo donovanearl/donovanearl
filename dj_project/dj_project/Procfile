@@ -1,1 +1,1 @@
-web: python manage.py migrate --fake api 0002 && python manage.py migrate && gunicorn dj_project.wsgi --log-file - --bind 0.0.0.0:$PORT
+web: gunicorn dj_project.wsgi --log-file - --bind 0.0.0.0:$PORT
