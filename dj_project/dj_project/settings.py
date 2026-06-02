@@ -166,7 +166,15 @@ STATIC_URL = 'static/'
 STATICFILES_DIR = os.path.join(BASE_DIR,'static')
 
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')    #added for pre-deployment
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage' #added for pre-deployment
+# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage' #added for pre-deployment
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')

@@ -26,7 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('__reload__/', include('django_browser_reload.urls')),
-    path('api-auth/',include('rest_framework.urls'))
+    path('api-auth/',include('rest_framework.urls')),
+    path('','home/', name='home'),  # This fixes the root path 404 in railway
+
     
     
 ]
