@@ -173,9 +173,9 @@ STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
-    # "staticfiles": {
-    #     "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    # },
+    "staticfiles": {
+        "BACKEND":"django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
 }
 
 MEDIA_URL = 'media/'
