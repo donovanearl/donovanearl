@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 import stripe
 from dotenv import load_dotenv
+import dj_database_url
 import os
 
 
@@ -116,22 +117,26 @@ WSGI_APPLICATION = 'dj_project.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),         # database name
-        'USER': os.getenv('DB_USER'),       # created user
-        'PASSWORD': os.getenv('DB_PASSWORD'),      # password
-        'HOST': os.getenv('DB_HOST'),           # or IP if remote
-        'PORT': '5432',                # default Postgres port
-    }
+    "default": dj_database_url.parse(
+        os.environ["DATABASE_URL"]
+    )
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME'),         # database name
+#         'USER': os.getenv('DB_USER'),       # created user
+#         'PASSWORD': os.getenv('DB_PASSWORD'),      # password
+#         'HOST': os.getenv('DB_HOST'),           # or IP if remote
+#         'PORT': '5432',                # default Postgres port
+#     }
+# }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
