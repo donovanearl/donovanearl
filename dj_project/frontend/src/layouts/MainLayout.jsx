@@ -2,7 +2,7 @@ import React from "react"
 import { Outlet } from "react-router-dom"
 import Logo2 from "/src/assets/Logo2.png"
 import Cart from "/src/assets/Shopcart.svg"
-import NavBar from "../components/NavBar"
+import NavBar from "../components/NavBar.jsx"
 import {Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { getBaseURL } from "../api";
