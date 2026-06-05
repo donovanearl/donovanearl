@@ -9,6 +9,9 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants"
 //   // Otherwise use your computer's IP (for mobile testing)
 //   return 'http://192.168.70.71:8000'; // Replace with your actual IP
 // };
+export const getBaseURL = () => {
+  return import.meta.env.VITE_API_URL;
+};
 
 const api = axios.create({
     baseURL:import.meta.env.VITE_API_URL,
