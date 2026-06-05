@@ -46,7 +46,7 @@ function App() {
           }
           />
           <Route
-          path="/products/Customized-Desktop" element={
+          path="/products/customized-desktop" element={
             //<ProtectedRoute>
               <Customized_Desktop/>
             //</ProtectedRoute>

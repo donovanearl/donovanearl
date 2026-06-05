@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "../styles/AnimatedDropdown.css";
 import {useNavigate} from "react-router-dom"
 import Home from "../pages/Home";
+import { Link } from "react-router-dom";
 
 export default function AnimatedDropdown({ label, basePath }) {
   
@@ -56,9 +57,9 @@ export default function AnimatedDropdown({ label, basePath }) {
                 >
                   {menuItems[label]?.map((item) => (
                         <DropdownMenu.Item key={item} className="dropdown-item">
-                        <a href={getItemPath(item)} className="dropdown-link"> 
-                        {item} 
-                        </a>
+                       <Link to={getItemPath(item)} className="dropdown-link">
+                          {item}
+                        </Link>
                         </DropdownMenu.Item>
                         ))
                   }
