@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/ProductCards.css"
 import "../styles/index.css"
 import axios from "axios";
+import { getBaseURL } from "../api";
 
 
 function ProductCards(){

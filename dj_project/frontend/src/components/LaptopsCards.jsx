@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react"
 import { useState,useEffect } from "react";
 import "../styles/Laptops.css"
+import { getBaseURL } from "../api";
 
 export default function LaptopCards(){
     const [products,setProducts]= useState([])
