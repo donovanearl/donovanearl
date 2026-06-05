@@ -1,4 +1,4 @@
-import api, { getBaseURL } from "../api";
+import api from "../api";
 import React, { useEffect, useState } from "react";
 import "../styles/ProductCards.css"
 import "../styles/index.css"

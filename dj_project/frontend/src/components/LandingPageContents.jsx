@@ -1,4 +1,4 @@
-import api, { getBaseURL } from "../api";
+import api from "../api";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css"

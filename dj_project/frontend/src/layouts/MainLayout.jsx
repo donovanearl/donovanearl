@@ -5,7 +5,6 @@ import Cart from "/src/assets/Shopcart.svg"
 import NavBar from "../components/NavBar.jsx"
 import {Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-import { getBaseURL } from "../api";
 import Footer from "../components/Footer"
 import { jwtDecode } from "jwt-decode"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"

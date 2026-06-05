@@ -1,4 +1,4 @@
-import api, { getBaseURL } from "../api";
+import api from "../api";
 import axios from "axios";
 import React from "react"
 import { useState,useEffect } from "react";
