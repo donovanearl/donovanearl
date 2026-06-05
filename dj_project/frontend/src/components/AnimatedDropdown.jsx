@@ -1,7 +1,7 @@
 // src/components/AnimatedDropdown.jsx
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import React, { useState } from "react";
-import "../styles/Animateddropdown.css";
+import "../styles/AnimatedDropdown.css";
 import {useNavigate} from "react-router-dom"
 import Home from "../pages/Home";
 
