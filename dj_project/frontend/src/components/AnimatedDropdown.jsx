@@ -56,6 +56,7 @@ export default function AnimatedDropdown({ label, basePath }) {
                 onMouseLeave={() => setOpen(false)}
                 >
                   {menuItems[label]?.map((item) => (
+                        
                         <DropdownMenu.Item key={item} className="dropdown-item">
                        <Link to={getItemPath(item)} className="dropdown-link">
                           {item}
