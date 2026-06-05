@@ -16,6 +16,18 @@ import stripe
 from dotenv import load_dotenv
 import dj_database_url
 import os
+from django.db.backends.signals import connection_created
+from django.dispatch import receiver
+
+@receiver(connection_created)
+def create_superuser(sender, connection, **kwargs):
+    try:
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        if not User.objects.filter(username='donf').exists():
+            User.objects.create_superuser('donf', 'donovanearlfernandez@gmail.com', 'DanDae123')
+    except:
+        pass
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
