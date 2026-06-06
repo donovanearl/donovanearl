@@ -36,15 +36,21 @@ api.interceptors.response.use(
     async (error) => {
         console.log("INTERCEPTOR STATUS:", error.response?.status);
         console.log("INTERCEPTOR URL:", error.config?.url)
-        if(error.response?.status === 401){
+        const originalRequest = error.config;
+        if(error.response?.status === 401 &&
+            !originalRequest.url.includes("/api/token/") &&
+            !originalRequest.url.includes("/api/token/refresh/")
+        ){
+           
             try {
                 const refresh = localStorage.getItem(REFRESH_TOKEN)
                 const res = await api.post("/api/token/refresh/", {
                     refresh: refresh
                 })
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)
-                error.config.headers.Authorization = `Bearer ${res.data.access}`
-                return axios(error.config)
+
+                originalRequest.headers.Authorization = `Bearer ${res.data.access}`
+                return api(originalRequest)
             } catch(err) {
                 console.log("INTERCEPTOR REDIRECTING TO LOGIN");
                 localStorage.clear()
