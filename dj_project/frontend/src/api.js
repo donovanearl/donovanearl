@@ -44,6 +44,7 @@ api.interceptors.response.use(
                 error.config.headers.Authorization = `Bearer ${res.data.access}`
                 return axios(error.config)
             } catch(err) {
+                console.log("INTERCEPTOR REDIRECTING TO LOGIN");
                 localStorage.clear()
                 window.location.href = '/login'
             }
