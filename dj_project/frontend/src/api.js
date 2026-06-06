@@ -48,7 +48,7 @@ api.interceptors.response.use(
             } catch(err) {
                 console.log("INTERCEPTOR REDIRECTING TO LOGIN");
                 localStorage.clear()
-                window.location.href = '/login'
+                // window.location.href = '/login'
             }
         }
         return Promise.reject(error)
