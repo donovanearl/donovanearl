@@ -24,7 +24,7 @@ const MainLayout=()=>{
     const logout = ()=> {
         localStorage.removeItem(ACCESS_TOKEN)
         localStorage.removeItem(REFRESH_TOKEN)
-        navigate(0)
+        navigate("/")
     }
     
     console.log("User:",user)
