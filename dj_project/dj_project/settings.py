@@ -176,14 +176,22 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')    #added for pre-deployment
 
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "django.core.files.storage.FileSystemStorage",
+#     },
+#     "staticfiles": {
+#         "BACKEND":"django.contrib.staticfiles.storage.StaticFilesStorage",
+#     },
+# }
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND":"django.contrib.staticfiles.storage.StaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
-}
+}    # version 5
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
