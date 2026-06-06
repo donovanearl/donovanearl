@@ -21,7 +21,7 @@ function ProtectedRoute({children}){
             if(res.status===200){                                 
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)      // Code that gets the Access token from Django //
                 setIsAuthorized(true)
-                navigate("/")
+                navigate("0")
             }
             else{
                 setIsAuthorized(false)
