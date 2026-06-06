@@ -18,19 +18,25 @@ function Form({route,method}){
 
         try{
             const res = await api.post(route, {username,password})
+
             if (method==="login"){
                 localStorage.setItem(ACCESS_TOKEN,res.data.access);       // These changes the constants.js, gets the data from Django //
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
                 navigate("/");
-            }else{
+            } else {
                 navigate("/login")
             }
-        }catch(error){
-            alert(error)
-        }finally{
-            setLoading(false)
+
+        } catch(error){
+
+            if(error.response?.status===401){
+                alert("Invalid password or username");
+            } else {
+                alert("Invalid password or username");
+            }
+        } finally {
+            setLoading(false);
         }
-    }
     return <form onSubmit={handleSubmit} className="form-container">
         <h1>{name}</h1>
         <input className="form-input"
@@ -50,5 +56,6 @@ function Form({route,method}){
         </button>
                
     </form>
+}
 }
 export default Form
