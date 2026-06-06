@@ -67,11 +67,6 @@ function App() {
             <RegisterAndLogout/>
           }
           />
-          <Route
-          path="*" element={
-            <NotFound/>
-          }
-          />
 
           <Route
           path="/cart" element={
@@ -100,6 +95,11 @@ function App() {
             <ProtectedRoute>
               <Order_history/>
             </ProtectedRoute>
+          }
+          />
+          <Route
+          path="*" element={
+            <NotFound/>
           }
           />
           
