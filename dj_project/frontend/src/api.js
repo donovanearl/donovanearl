@@ -34,6 +34,8 @@ api.interceptors.request.use(
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
+        console.log("INTERCEPTOR STATUS:", error.response?.status);
+        console.log("INTERCEPTOR URL:", error.config?.url)
         if(error.response?.status === 401){
             try {
                 const refresh = localStorage.getItem(REFRESH_TOKEN)
