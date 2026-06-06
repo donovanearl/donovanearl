@@ -36,7 +36,7 @@ function Form({route,method}){
             }
         } finally {
             setLoading(false);
-        }
+        }}
     return <form onSubmit={handleSubmit} className="form-container">
         <h1>{name}</h1>
         <input className="form-input"
@@ -56,6 +56,6 @@ function Form({route,method}){
         </button>
                
     </form>
-}
+
 }
 export default Form
