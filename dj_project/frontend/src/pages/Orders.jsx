@@ -72,27 +72,33 @@ export default function Orders(){
                             Orders list
                         </h1>
                         <div className="items-container">
-                            {cartItems.map((item)=>{return(
+                            {cartItems.map((item,index)=>{return(
                                 <div key={item.id}>
-                                    Name:{item.product.name}
-                                    
-                                    <div className="qty">
-                                        Price:{item.product.price} {" "}          
-                                        Qty:{item.quantity}
+                                    <div>
+                                        {index+1}.{item.product.name}
+                                    </div>
+                                    <div className="items-price">
+                                        Price:{item.product.price} {" "}
+                                        Qty:{item.quantity}  
+
+                                    </div>
+                                    <div>
                                         Subtotal:{subTotal(item).toFixed(2)}
                                     </div>
                                 </div>
                                  )}
                             )}
+                            <div className="total-container">
+                                        <h2>Total:{total}
+                                        </h2>
+                                    </div>
                         </div> 
-                        <div className="total-container">
-                            <h2>Total:{total}
-                                </h2>
+                        <div className="check-out-form-container">
+                            <CheckoutForm className="check-out-form"
+                                total={total}
+                                onSuccess={(paymentIntentId)=>placeOrder(paymentIntentId)}
+                                />
                         </div>
-                        <CheckoutForm
-                            total={total}
-                            onSuccess={(paymentIntentId)=>placeOrder(paymentIntentId)}
-                            />
                     </div>
                 </div>
     ) // return closed

@@ -1,4 +1,4 @@
-import Form from "../components/LoginForm"
+import Form from "../components/Form"
 import "../styles/index.css"
 
 function Login(){

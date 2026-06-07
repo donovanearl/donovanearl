@@ -1,6 +1,7 @@
 import { CardElement,useStripe,useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import api from "../api";
+import "../styles/Orders.css"
 
 export default function CheckoutForm({total,onSuccess}){
     const stripe=useStripe()
@@ -38,10 +39,15 @@ export default function CheckoutForm({total,onSuccess}){
 
     return (
         <form onSubmit={handleSubmit}>
-            <CardElement/>
-            <button type="submit" disabled={loading}>
-                {loading?"Processing...":"Pay NOW"}
-            </button>
+            <div className="card-element-wrapper">
+                <CardElement/>
+                </div>
+                            <button type="submit" disabled={loading}>
+                                {loading?"Processing...":"Pay NOW"}
+                            </button>
+                
+           
+          
         </form>
     )
 

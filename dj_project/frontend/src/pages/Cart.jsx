@@ -58,16 +58,26 @@ export default function Cart(){
 
     return <div className="cart-container">
                 <div className="item-container">
-                    {cartItems.map((item)=>{
-                        return <div key={item.id}> 
-                        {item.product.id}. {item.product.name},  Price: ${item.product.price} , Qty: {item.quantity} , Subtotal: {subTotal(item)} 
-                        <button onClick={()=>updateQuantity(item.id,item.quantity -1)}>-</button>
-                        <button onClick={()=>updateQuantity(item.id,item.quantity+1)}>+</button>
-                        <button onClick={() => deleteItem(item.id)}>Remove</button>    </div>            
+                    {cartItems.map((item,index)=>{
+                        return <div className="items-parent"> 
+                                <div className="items"key={item.id}> 
+                               
+                                    <div className="items-name"> {index+1}. {item.product.name}  </div>
+                                    <div>Price: ${item.product.price}</div>
+                                    <div>Qty: {item.quantity} </div>
+                                    <div className="subtotal">Subtotal: {subTotal(item)}</div>
+                                    <div className="buttons">
+                                        <button className="minus" onClick={()=>updateQuantity(item.id,item.quantity -1)}>-</button>
+                                        <button className="plus" onClick={()=>updateQuantity(item.id,item.quantity+1)}>+</button>
+                                        <button className="remove" onClick={() => deleteItem(item.id)}>Remove</button>  
+                                    </div>
+                                </div> 
+                               
+                            </div>           
                     })}
                 </div>
                 <div className="totals-container">Totals:{Total.toFixed(2)}</div>    
-                <button onClick={checkOut}>Check out</button>
+                <button className="check-out-button" onClick={checkOut}>Check out</button>
             </div>
 }
 // TODO: Check out should navigate to Orders page and api.get from there useEffect

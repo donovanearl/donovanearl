@@ -66,10 +66,10 @@
 .Outlet{
     display: flex;
     width: 100%;
-    
+    min-height: 800px;
     height: auto;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background-image: linear-gradient(white, rgb(255, 165, 0,.8), white);
 }
 

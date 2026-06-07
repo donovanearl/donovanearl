@@ -1,22 +1,33 @@
-.order-page-container{
+/* .order-page-container{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    
-    background-color: #ebb410;
+    width: 95%;
 }
 .order-page-plate{
-    margin-top: 20px;
-    margin-left: 50px;
+    margin: 10px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     height: 700px;
-    width: 80%;
+    width: 90%;
     border-radius: 5px;
     box-shadow: 0px 0px 2px black;
-    overflow: hidden;
+    overflow: visible;
     
-    background-color: #d8dae2;
+    background-color: #ebecf1;
 }
+.check-out-form-container{
+    display: flex;
+    height: 400px;
+    width: 100%;
+    background-color: blue;
+
+}
+.card-element-wrapper{
+    display: flex;
+    height: 50px;
+    width: 1000px;
+    background-color: chartreuse;
+}
+ */
