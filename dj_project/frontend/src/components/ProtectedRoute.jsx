@@ -40,12 +40,16 @@ const auth = async ()=>{
     }
     const decoded= jwtDecode(token)  // decoding token using jwtDecode func
     const tokenExpiration= decoded.exp
-    const now= Date.now() / 1000
+    const now= Date.now() / 1000;
+    console.log("EXP:", tokenExpiration);
+    console.log("NOW:", now);
 
     if (tokenExpiration<now){
+        console.log("TOKEN EXPIRED");
         await refreshToken()
     }
     else {
+        console.log("TOKEN VALID");
         setIsAuthorized(true) 
     }
 }
@@ -54,6 +58,7 @@ if(isAuthorized===null){
 
     </div>
     }
+    console.log("isAuthorized =", isAuthorized);
 return isAuthorized ? children : <Navigate to="/login"/>
 }
 
