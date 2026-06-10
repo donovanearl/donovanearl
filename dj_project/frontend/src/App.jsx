@@ -14,7 +14,7 @@ import Profile from "./pages/Profile.jsx"
 import Order_history from "./pages/Order_history.jsx"
 
 
-
+console.log("APP LOADED");
 
 
 // Acts like URLs.py //
