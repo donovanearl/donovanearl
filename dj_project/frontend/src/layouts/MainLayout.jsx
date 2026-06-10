@@ -16,7 +16,18 @@ const MainLayout=()=>{
     const navigate=useNavigate()
     const cart_click= ()=>{navigate("/cart")}
     const token = localStorage.getItem(ACCESS_TOKEN)
-    const decoded = token ? jwtDecode(token) : null
+    let decoded = null  
+        try {
+            if (token) {
+                decoded = jwtDecode(token)
+            }
+        } catch (error) {
+            console.error("Invalid token found on refresh:", error)
+            // If the token is corrupted or malformed, clear it out
+            localStorage.removeItem(ACCESS_TOKEN)
+        }
+
+
     const isExpired= decoded ? decoded.exp*1000<=Date.now():true
     const user= isExpired ? null: decoded
 
