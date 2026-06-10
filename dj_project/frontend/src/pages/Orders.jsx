@@ -67,7 +67,6 @@ export default function Orders(){
 
     if(loading){return <div>Loading ...</div>}
     return (<div className="order-page-container">
-                    <div className="order-page-plate">
                         <h1>
                             Orders list
                         </h1>
@@ -93,13 +92,14 @@ export default function Orders(){
                                         </h2>
                                     </div>
                         </div> 
-                        <div className="check-out-form-container">
-                            <CheckoutForm className="check-out-form"
+                        
+                    
+                    <div className="checkout-form">
+                            <CheckoutForm
                                 total={total}
                                 onSuccess={(paymentIntentId)=>placeOrder(paymentIntentId)}
                                 />
                         </div>
-                    </div>
                 </div>
     ) // return closed
 }

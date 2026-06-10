@@ -1,33 +1,42 @@
-/* .order-page-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-}
-.order-page-plate{
-    margin: 10px;
-    padding: 10px;
+
+.order-page-container{
+    margin:5%;
     display: flex;
     flex-direction: column;
-    height: 700px;
-    width: 90%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px black;
-    overflow: visible;
-    
-    background-color: #ebecf1;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: rgb(248, 241, 241);
 }
-.check-out-form-container{
+.items-container{
     display: flex;
-    height: 400px;
-    width: 100%;
-    background-color: blue;
+    flex-direction: column;
+    margin-left: 20%;
+}
 
+.checkout-form { 
+    margin-top: 30%;  
+    margin-bottom: 10%;
+    width: 80%;  
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.card-element-wrapper{
-    display: flex;
-    height: 50px;
-    width: 1000px;
-    background-color: chartreuse;
+
+
+
+.checkout-form .StripeElement {
+    position: relative;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background: white;
 }
- */
+
+.checkout-form button {
+    width: 50%;
+    padding: 12px;
+    margin-top: 10px;
+}
