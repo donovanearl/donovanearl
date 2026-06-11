@@ -31,19 +31,30 @@ export default function Order_history(){
                 <div className="order-history-plate">
                     
                         {orderHistory.map((order)=>{
-                            return <div key={order.id}>
+                            return <div className="items-container"key={order.id}>
                                 Order #:{order.id}
                               
                                     {orderItems.filter((item)=>item.order===order.id)
                                         .map((item)=>{
-                                              return <div key={item.id}>
-                                              
-                                                {item.product.name}
-                                                {item.quantity}
-                                                {item.price_at_purchase}
-                                            </div> 
-                        
-                                    })}                            
+                                              return <div>
+                                                        <div className="items" key={item.id}>
+                                                            <div className="item-name">
+                                                                Name:{item.product.name}
+                                                            </div>
+                                                            <div className="item-quantity">
+                                                                Quantity:{item.quantity}
+                                                            </div>
+                                                            <div className="item-price-at-purchase">
+                                                                Price at purchase:{item.price_at_purchase}
+                                                            </div>
+                                                            
+                                                        </div>
+                                                          
+                                                    </div>
+                                    })}
+                                     <div className="total-price">
+                                                                Total:{Number(order.total_price).toFixed(2)}
+                                        </div>                            
                             </div>
                         
                     })} 

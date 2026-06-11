@@ -2,11 +2,39 @@
     display: flex;
     flex-direction: row;
     height: auto;
-    width: 600px;
+    width: 95%;
+    justify-content: center;
+    margin: 20px;
+    
 }
 .order-history-plate{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: auto;
-    width: 600px;
+    width: 75%;
+    background-color: orange;
+    align-items: center;
+}
+.items-container{
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    height: auto;
+    width: 85%;
+    justify-content: center;
+    
+}
+.item-name{
+    flex:1;
+}
+.item-quantity{
+    flex:.5;
+}
+.item-price-at-purchase{
+    flex:.5;
+}
+.total-price{
+    display: flex;
+    justify-self: flex-end;
+
 }

@@ -7,7 +7,7 @@ export default function Customized_Desktop(){
         
                 <div className="pc-builder-plate">
                     <div className="pc-builder-header-container">
-                    <h1 className="pc-builder-header">PC Builder</h1>
+                    <h1 className="pc-builder-header">PC Estimator</h1>
                     </div>
                         <PcBuilder/>
                 </div>
