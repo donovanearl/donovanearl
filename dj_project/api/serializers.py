@@ -67,7 +67,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token["username"] = user.username
         return token
     
-class ContactSerializer(serializers.ModelSerializer):
+class ContactPageSerializer(serializers.ModelSerializer):
     class Meta:
         model=ContactPage
         fields=('phone','email','location')
