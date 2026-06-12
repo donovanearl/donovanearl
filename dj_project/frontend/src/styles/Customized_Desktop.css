@@ -4,19 +4,19 @@
     justify-content: center;
     width: 100%;
     
-    background-color: #d3d6df;
+    /* background-color: #d3d6df; */
 }
 .pc-builder-plate{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    height: 700px;
+    height: auto;
     width: 80%;
     border-radius: 5px;
     box-shadow: 0px 0px 2px black;
     overflow: hidden;
     
-    background-color: #d8dae2;
+    background-color: aliceblue;
 }
 .pc-builder-header-container{
     padding-left: 40px;

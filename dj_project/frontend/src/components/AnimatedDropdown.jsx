@@ -13,7 +13,7 @@ export default function AnimatedDropdown({ label, basePath }) {
   const menuItems ={ Home:["About Us"],
                   Products: ["Laptops","Customized-Desktop"], 
                   Services: ["Hardware","Software"], 
-                  Contacts: ["Email","Whatsapp","Call"] };
+                  Contacts: ["Grab our phone & email"] };
 
 
 
@@ -22,10 +22,11 @@ export default function AnimatedDropdown({ label, basePath }) {
   text.toLowerCase().replace(/\s+/g, "-");
 
   const getItemPath = (item) => {
-    if (basePath === "/" || basePath === "") 
+    if (basePath === "/" || basePath === "")      //landing page, overide radix link
       {
         return `/${toSlug("")}`;
       }
+    if (basePath === "contacts") return `/${basePath}`;  //contacts page, overide radix link
     return `/${basePath}/${toSlug(item)}`;
   };
   
@@ -34,8 +35,8 @@ export default function AnimatedDropdown({ label, basePath }) {
   const navigate = useNavigate()
   const home_click=(e)=>{
     if(label==="Home"){navigate("/")}
-    // else{navigate(`/${toSlug(label)}`)}
-          }
+    else if(label==="Contacts"){navigate("/contacts")}
+    }
 
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
