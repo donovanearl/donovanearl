@@ -76,7 +76,7 @@ class OrderItems(models.Model):
 
 class ContactPage(models.Model):
 
-    phone=models.IntegerField()
+    phone=models.CharField(max_length=11)
     email=models.CharField(max_length=50)
     location=models.ImageField(blank=True)
 
