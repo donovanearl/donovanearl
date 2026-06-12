@@ -12,6 +12,7 @@ import Cart from "./pages/Cart.jsx"
 import Orders from "./pages/Orders.jsx"
 import Profile from "./pages/Profile.jsx"
 import Order_history from "./pages/Order_history.jsx"
+import Contact_page from "./pages/Contact.jsx"
 
 
 console.log("APP LOADED");
@@ -100,6 +101,11 @@ function App() {
           <Route
           path="*" element={
             <NotFound/>
+          }
+          />
+          <Route
+          path="/Contact" element={
+              <Contact_page/> 
           }
           />
           
