@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import AppUser, LandingPage_Content,Cart,Product,CartItems,Order,OrderItems
+from .models import AppUser, LandingPage_Content,Cart,Product,CartItems,Order,OrderItems,ContactPage
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -66,3 +66,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         #add custom claims
         token["username"] = user.username
         return token
+    
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=ContactPage
+        fields=('phone','email','location')

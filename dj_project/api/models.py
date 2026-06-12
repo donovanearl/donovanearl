@@ -74,6 +74,12 @@ class OrderItems(models.Model):
     quantity=models.IntegerField()
     price_at_purchase=models.FloatField()
 
+class ContactPage(models.Model):
+
+    phone=models.IntegerField()
+    email=models.CharField(max_length=50)
+    location=models.ImageField(blank=True)
+
 
 
 
