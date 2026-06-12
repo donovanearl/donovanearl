@@ -1,9 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { useState,useEffect } from "react";
+import { getBaseURL } from "../api";
 
 export default function Contact_page(){
-    const [data,setData]= useState({})
+    const [data,setData]= useState([])
     const [loading,setLoading]=useState(true)
 
     useEffect(()=>{
@@ -17,11 +18,20 @@ export default function Contact_page(){
         };
         fetchdata();
     },[])
-    console.log("Contact Data:",data)
+    if(loading){
+        return <div>loading...</div>
+    }
+    console.log("Contact Data:",data);
+
     return (<div>
-                {data.phone}, {data.location}
-    </div>
-
-    )
-
+                {/* {data.map((item)=>{
+                    return (<div key={item.id}>
+                                {item.phone}
+                            </div>
+                            );
+                        })}
+                        TEST */}
+                        {data.phone}
+        </div>
+        );
 }
