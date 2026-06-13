@@ -20,6 +20,7 @@ export default function Hardware_page(){
                 setLoading(false)
             }
           }
+          fetchdata();
         },[]);
 
 if(loading){
@@ -28,21 +29,19 @@ if(loading){
 
 return (
         <div>
-             {data.map((item)=>{return
-                <div key={item.id}>     
-                        <div className="intro_text">
-                            {item.intro_text}
-                        </div>
-                        <div className="service_text">
-                            {item.service_text}
-                        </div>
-                        <div className="image-container">
-                            {item.image}
-                        </div>
-                    </div>
-                    }
-                    
-                )}
+             {data.map((item)=>(
+                                <div key={item.id}>     
+                                        <div className="intro_text">
+                                            {item.intro_text}
+                                        </div>
+                                        <div className="service_text">
+                                            {item.service_text}
+                                        </div>
+                                        <div className="image-container">
+                                            <img src={item.image} alt="hardware-image"/>
+                                        </div>
+                                    </div>
+                                ))}
                
         </div>
 
