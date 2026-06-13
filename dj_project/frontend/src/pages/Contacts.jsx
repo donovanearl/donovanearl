@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState,useEffect } from "react";
 import { getBaseURL } from "../api";
-import "../styles/contacts.css"
+import "../styles/Contacts.css"
 
 export default function Contact_page(){
     const [data,setData]= useState([])
