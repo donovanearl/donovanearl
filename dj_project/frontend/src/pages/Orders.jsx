@@ -70,10 +70,10 @@ export default function Orders(){
                         <h1>
                             Orders list
                         </h1>
-                        <div className="items-container">
+                        <div className="orders-list-container">
                             {cartItems.map((item,index)=>{return(
-                                <div key={item.id}>
-                                    <div>
+                                <div className="key-div" key={item.id}>
+                                    <div className="product-name">
                                         {index+1}.{item.product.name}
                                     </div>
                                     <div className="items-price">
@@ -81,7 +81,7 @@ export default function Orders(){
                                         Qty:{item.quantity}  
 
                                     </div>
-                                    <div>
+                                    <div className="subtotal">
                                         Subtotal:{subTotal(item).toFixed(2)}
                                     </div>
                                 </div>

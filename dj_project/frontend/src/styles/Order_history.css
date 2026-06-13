@@ -1,40 +1,74 @@
-.order-history-container{
-    display: flex;
-    flex-direction: row;
-    height: auto;
-    width: 95%;
-    justify-content: center;
-    margin: 20px;
-    
+.order-history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 1rem 3rem;
+  font-family: 'Exo 2', Arial, sans-serif;
 }
-.order-history-plate{
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    width: 75%;
-    background-color: orange;
-    align-items: center;
-}
-.items-container{
-    display: flex;
-    flex-direction: column;
-    margin: 40px;
-    height: auto;
-    width: 85%;
-    justify-content: center;
-    
-}
-.item-name{
-    flex:1;
-}
-.item-quantity{
-    flex:.5;
-}
-.item-price-at-purchase{
-    flex:.5;
-}
-.total-price{
-    display: flex;
-    justify-self: flex-end;
 
+.order-history-plate {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 680px;
+}
+
+.orders-history-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 180, 80, 0.35);
+  box-shadow: 0 4px 20px rgba(255, 150, 30, 0.08);
+  background: white;
+}
+
+.order-number {
+  background: linear-gradient(135deg, #f97316, #ffb347);
+  padding: 0.7rem 1.5rem;
+  font-size: 13px;
+  font-weight: 800;
+  color: #1a0500;
+  letter-spacing: 0.04em;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 180, 80, 0.2);
+  background: #fffaf4;
+  gap: 1rem;
+}
+
+.item-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3a2000;
+  flex: 1;
+}
+
+.item-quantity {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a04800;
+}
+
+.item-price-at-purchase {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7a3500;
+}
+
+.total-price {
+  background: linear-gradient(135deg, #ffe0b2, #ffcc80);
+  padding: 0.85rem 1.5rem;
+  font-size: 15px;
+  font-weight: 800;
+  color: #7a3500;
+  text-align: right;
 }

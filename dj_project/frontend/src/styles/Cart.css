@@ -1,323 +1,133 @@
-.cart-container{
-    margin-top: 20px;
-    padding: 10px 10px;
-    display: flex;
-    flex-direction: column;
-    min-height: 400px;
-    height: 100%;
-    width: 98%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px black;
-    overflow: hidden;
-    
-    background-color:orange ;
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 680px;
+  margin: 2rem auto;
+  padding: 0 1rem 3rem;
+  font-family: 'Exo 2', Arial, sans-serif;
+}
 
+.item-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 180, 80, 0.35);
+  box-shadow: 0 4px 20px rgba(255, 150, 30, 0.08);
+  background: white;
+  margin-bottom: 1rem;
 }
-.items-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 50px;
-}
-.items{
-    display: flex;
-    justify-content: space-evenly;
-    gap: 8px;
-    font-size: 12px;
-    height: 30px;
-    width: auto;
-}
-.items-name{
-    display: flex;
-    width: 300px;
-    height: 30px;
-}
-.buttons{
-    display: flex;
-    flex-direction: row;
-    margin-right: 10px;
-    align-self: flex-start;
-    justify-self: flex-start;
-    height: 20px;
-    width: 20%;
-}
-.minus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-    
-}
-.plus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-  
-}
-.remove{
-    display: flex;
-    font-size: 12px;
-    width: 100px;
-    height: 20px;
 
+.items-parent {
+  border-bottom: 1px solid rgba(255, 180, 80, 0.2);
 }
-.totals-container{
-    display: flex;
-    width: 200px;
-    height: 50px;
-    align-items: center;
-    align-self: flex-end;
-    justify-content: flex-end;
-}
-.check-out-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 50px;
-    align-self: flex-end;
-}
-/* --------------------------- */
 
-@media(min-width:768px){
-    .cart-container{
-    margin-top: 20px;
-    padding: 10px 10px;
-    display: flex;
-    flex-direction: column;
-    min-height: 400px;
-    height: 100%;
-    width: 90%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px black;
-    overflow: hidden;
-    
-    background-color:orange ;
+.items-parent:last-child {
+  border-bottom: none;
+}
 
+.items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+  background: #fffaf4;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
-.items-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 50px;
-}
-.items{
-    display: flex;
-    justify-content: space-evenly;
-    gap: 8px;
-    font-size: 12px;
-    height: 30px;
-    width: auto;
-}
-.items-name{
-    display: flex;
-    width: 300px;
-    height: 30px;
-}
-.buttons{
-    display: flex;
-    flex-direction: row;
-    margin-right: 10px;
-    align-self: flex-start;
-    justify-self: flex-start;
-    height: 20px;
-    width: 20%;
-}
-.minus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-    
-}
-.plus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-  
-}
-.remove{
-    display: flex;
-    font-size: 12px;
-    width: 100px;
-    height: 20px;
 
+.items-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3a2000;
+  flex: 1;
+  min-width: 120px;
 }
-.totals-container{
-    display: flex;
-    width: 200px;
-    height: 50px;
-    align-items: center;
-    align-self: flex-end;
-    justify-content: flex-end;
-}
-.check-out-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 50px;
-    align-self: flex-end;
-}
-}
-    
-@media(min-width:1024px){
-    .cart-container{
-    margin-top: 20px;
-    padding: 10px 10px;
-    display: flex;
-    flex-direction: column;
-    min-height: 400px;
-    height: 100%;
-    width: 85%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px black;
-    overflow: hidden;
-    
-    background-color:orange ;
 
+.items > div {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a04800;
 }
-.items-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 50px;
-}
-.items{
-    display: flex;
-    justify-content: space-evenly;
-    gap: 8px;
-    font-size: 12px;
-    height: 30px;
-    width: auto;
-}
-.items-name{
-    display: flex;
-    width: 300px;
-    height: 30px;
-}
-.buttons{
-    display: flex;
-    flex-direction: row;
-    margin-right: 10px;
-    align-self: flex-start;
-    justify-self: flex-start;
-    height: 20px;
-    width: 20%;
-}
-.minus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-    
-}
-.plus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-  
-}
-.remove{
-    display: flex;
-    font-size: 12px;
-    width: 100px;
-    height: 20px;
 
+.subtotal {
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a3500 !important;
 }
-.totals-container{
-    display: flex;
-    width: 200px;
-    height: 50px;
-    align-items: center;
-    align-self: flex-end;
-    justify-content: flex-end;
-}
-.check-out-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 50px;
-    align-self: flex-end;
-}
-}
-@media(min-width:1440px){
-    .cart-container{
-    margin-top: 20px;
-    padding: 10px 10px;
-    display: flex;
-    flex-direction: column;
-    min-height: 400px;
-    height: 100%;
-    width: 80%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 2px black;
-    overflow: hidden;
-    
-    background-color:orange ;
 
+.buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
-.items-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 50px;
-}
-.items{
-    display: flex;
-    justify-content: space-evenly;
-    gap: 8px;
-    font-size: 12px;
-    height: 30px;
-    width: auto;
-}
-.items-name{
-    display: flex;
-    width: 300px;
-    height: 30px;
-}
-.buttons{
-    display: flex;
-    flex-direction: row;
-    margin-right: 10px;
-    align-self: flex-start;
-    justify-self: flex-start;
-    height: 20px;
-    width: 20%;
-}
-.minus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-    
-}
-.plus{
-    display: flex; 
-    width: 30px;
-    height: 20px;
-  
-}
-.remove{
-    display: flex;
-    font-size: 12px;
-    width: 100px;
-    height: 20px;
 
+.minus, .plus {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid rgba(255, 180, 80, 0.5);
+  border-radius: 6px;
+  background: white;
+  font-size: 15px;
+  font-weight: 700;
+  color: #a04800;
+  cursor: pointer;
+  font-family: 'Exo 2', Arial, sans-serif;
 }
-.totals-container{
-    display: flex;
-    width: 200px;
-    height: 50px;
-    align-items: center;
-    align-self: flex-end;
-    justify-content: flex-end;
-}
-.check-out-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 50px;
-    align-self: flex-end;
-}
-}
-    
 
+.minus:hover, .plus:hover {
+  background: #fff0d6;
+  border-color: #f97316;
+}
+
+.remove {
+  padding: 4px 12px;
+  border: 1.5px solid rgba(220, 80, 40, 0.3);
+  border-radius: 6px;
+  background: white;
+  font-size: 12px;
+  font-weight: 700;
+  color: #c03000;
+  cursor: pointer;
+  font-family: 'Exo 2', Arial, sans-serif;
+}
+
+.remove:hover {
+  background: #fff0ee;
+  border-color: #c03000;
+}
+
+.totals-container {
+  width: 100%;
+  background: linear-gradient(135deg, #ffe0b2, #ffcc80);
+  border-radius: 12px;
+  padding: 0.9rem 1.5rem;
+  font-size: 16px;
+  font-weight: 800;
+  color: #7a3500;
+  text-align: right;
+  margin-bottom: 1rem;
+  border: 1.5px solid rgba(255, 180, 80, 0.35);
+}
+
+.check-out-button {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #f97316, #ffb347);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Exo 2', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #1a0500;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}
+
+.check-out-button:hover {
+  background: linear-gradient(135deg, #e06010, #f0a030);
+}

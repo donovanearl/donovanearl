@@ -31,8 +31,8 @@ export default function Order_history(){
                 <div className="order-history-plate">
                     
                         {orderHistory.map((order)=>{
-                            return <div className="items-container"key={order.id}>
-                                Order #:{order.id}
+                            return <div className="orders-history-container"key={order.id}>
+                                        <div className="order-number">Order #:{order.id}</div>
                               
                                     {orderItems.filter((item)=>item.order===order.id)
                                         .map((item)=>{

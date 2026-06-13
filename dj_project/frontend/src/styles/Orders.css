@@ -1,43 +1,112 @@
-
-.order-page-container{
-    margin:20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    background-color: orange;
-}
-.items-container{
-    display: flex;
-    flex-direction: row;
-    margin-left: 20%;
-    width: 100%;
+.order-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 680px;
+  margin: 2rem auto;
+  padding: 0 1rem 3rem;
+  font-family: 'Exo 2', Arial, sans-serif;
 }
 
-.checkout-form { 
-    margin-top: 30%;  
-    margin-bottom: 10%;
-    width: 80%;  
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.order-page-container h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #7a3500;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
 }
 
+.orders-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 180, 80, 0.35);
+  box-shadow: 0 4px 20px rgba(255, 150, 30, 0.08);
+  background: white;
+  margin-bottom: 1.5rem;
+}
 
+.key-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 180, 80, 0.2);
+  background: #fffaf4;
+  gap: 1rem;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3a2000;
+  flex: 1;
+}
+
+.items-price {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a04800;
+  display: flex;
+  gap: 1rem;
+}
+
+.subtotal {
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a3500;
+}
+
+.total-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #ffe0b2, #ffcc80);
+  border-bottom: none;
+}
+
+.total-container h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: #7a3500;
+}
+
+.checkout-form {
+  width: 100%;
+  padding: 1.75rem 2rem;
+  background: white;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 180, 80, 0.35);
+  box-shadow: 0 4px 20px rgba(255, 150, 30, 0.08);
+}
 
 .checkout-form .StripeElement {
-    position: relative;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    background: whitesmoke;
+  padding: 12px;
+  border: 1px solid rgba(255, 180, 80, 0.5);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: #fffaf4;
 }
 
 .checkout-form button {
-    width: 50%;
-    padding: 12px;
-    margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #f97316, #ffb347);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Exo 2', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a0500;
+  cursor: pointer;
+}
+
+.checkout-form button:hover {
+  background: linear-gradient(135deg, #e06010, #f0a030);
 }
