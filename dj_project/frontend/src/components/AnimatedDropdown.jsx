@@ -58,11 +58,20 @@ export default function AnimatedDropdown({ label, basePath }) {
                 >
                   {menuItems[label]?.map((item) => (
                         
-                        <DropdownMenu.Item key={item} className="dropdown-item">
-                       <Link to={getItemPath(item)} className="dropdown-link">
-                          {item}
-                        </Link>
-                        </DropdownMenu.Item>
+                        // <DropdownMenu.Item key={item} onSelect={() => setOpen(false)} className="dropdown-item">
+                        // <Link to={getItemPath(item)} className="dropdown-link">
+                        //   {item}
+                        // </Link>
+                        // </DropdownMenu.Item>
+                        <DropdownMenu.Item asChild key={item} className="dropdown-item">
+                            <Link
+                              to={getItemPath(item)}
+                              className="dropdown-link"
+                              onClick={() => setOpen(false)}
+                            >
+                              {item}
+                            </Link>
+                          </DropdownMenu.Item>
                         ))
                   }
               </DropdownMenu.Content>
