@@ -13,6 +13,8 @@ import Orders from "./pages/Orders.jsx"
 import Profile from "./pages/Profile.jsx"
 import Order_history from "./pages/Order_history.jsx"
 import Contact_page from "./pages/Contacts.jsx"
+import Hardware_page from "./pages/Hardware.jsx"
+import Software_page from "./pages/Software.jsx"
 
 
 console.log("APP LOADED");
@@ -106,6 +108,16 @@ function App() {
           <Route
           path="/Contacts" element={
               <Contact_page/> 
+          }
+          />
+           <Route
+          path="services/hardware" element={
+              <Hardware_page/> 
+          }
+          />
+           <Route
+          path="services/software" element={
+              <Software_page/> 
           }
           />
           
