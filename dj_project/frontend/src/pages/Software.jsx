@@ -20,6 +20,7 @@ export default function Software_page(){
                 setLoading(false)
             }
           }
+          fetchdata();
         },[]);
 
 if(loading){
