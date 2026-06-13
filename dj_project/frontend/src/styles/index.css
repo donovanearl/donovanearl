@@ -63,7 +63,7 @@
 }
 
 
-.Outlet{
+/* .Outlet{
     display: flex;
     width: 100%;
     min-height: 800px;
@@ -72,6 +72,22 @@
     align-items: flex-start;
     background-image: linear-gradient(white, rgb(255, 165, 0,.8), white);
     
+} */
+ .Outlet {
+  display: flex;
+  width: 100%;
+  min-height: 800px;
+  height: auto;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+
+  background-color: #fffdf9;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,165,0,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255,140,0,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 0% 100%, rgba(255,200,50,0.08) 0%, transparent 60%);
 }
 
 /* Reset-ish */

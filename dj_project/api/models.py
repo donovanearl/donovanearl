@@ -80,6 +80,18 @@ class ContactPage(models.Model):
     email=models.CharField(max_length=50)
     location=models.ImageField(blank=True)
 
+class HardwarePage(models.Model):
+
+    intro_text= models.TextField(max_length=400)
+    service_text=models.CharField(max_length=50)
+    image=models.ImageField(blank=True)
+
+class SoftwarePage(models.Model):
+
+    intro_text= models.TextField(max_length=400)
+    service_text=models.CharField(max_length=50)
+    image=models.ImageField(blank=True)
+
 
 
 

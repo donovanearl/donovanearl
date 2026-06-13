@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,ContactPage
+from .models import LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,ContactPage,HardwarePage,SoftwarePage
 
 # Register your models here.
 admin.site.register(LandingPage_Content)
@@ -9,3 +9,5 @@ admin.site.register(Product)
 admin.site.register(Order)
 admin.site.register(OrderItems)
 admin.site.register(ContactPage)
+admin.site.register(HardwarePage)
+admin.site.register(SoftwarePage)

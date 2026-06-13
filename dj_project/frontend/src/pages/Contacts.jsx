@@ -26,20 +26,20 @@ export default function Contact_page(){
 
     return (<div className="contacts-container">
                 {data.map((item)=>{
-                    return ( <div >
-                                <div  className="cta-cards" key={item.id}>
-                                    <div>
+                    return ( <div className="contacts-plate">
+                                <div  className="cta-cardsContacts" key={item.id}>
+                                    <div className="intro-text">
                                             Have a question, need technical support, or looking for the right computer solution?<br></br>
                                             We're only a call, email, or visit away. <br></br>Contact Pinoy-Tech today and let us help you find the best solution for your needs.<br></br>
                                             Reliable Technology. Trusted Service.
                                         </div>
                                     <div className="phone">
-                                       👉 {item.phone},
+                                       Call us! 👉 {item.phone},
                                     </div>
                                     <div className="email">
-                                        👉 {item.email}
+                                       Email us! 👉 {item.email}
                                     </div>
-                                    <div>
+                                    <div className="location-text">
                                         <h2>Visit our location or contact us online—<br></br>we're ready to help with all your computer needs.</h2>
                                     </div>
                                     <div className="location-container">
