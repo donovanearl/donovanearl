@@ -105,7 +105,7 @@ class ContactPageView(generics.ListAPIView):
 
 class HardwarePageView(generics.ListAPIView):
     serializer_class=HardwarePageSerializer
-    permission_classes[AllowAny]
+    permission_classes=[AllowAny]
     queryset=HardwarePage.objects.all()
 
 class SoftwarePageView(generics.ListAPIView):
