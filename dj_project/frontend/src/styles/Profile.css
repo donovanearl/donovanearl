@@ -2,5 +2,55 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    width: 600px;
+    min-width: 600px;
+    width: 80%;
+}
+.input-container{
+    align-self: center;
+    width: 90%;
+    
+
+}
+
+.name{
+    font-family: 'Exo 2', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #2a1500;
+    
+    border-top: 1px solid rgba(180, 90, 0, 0.2);
+    background: #fff8f0;
+
+}
+
+.address{
+    font-family: 'Exo 2', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #2a1500;
+    
+    border-top: 1px solid rgba(180, 90, 0, 0.2);
+    background: #fff8f0;
+
+}
+
+.email-profile{
+    font-family: 'Exo 2', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #2a1500;
+    
+    border-top: 1px solid rgba(180, 90, 0, 0.2);
+    background: #fff8f0;
+
+}
+
+.phone-profile{
+    font-family: 'Exo 2', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #2a1500;
+   
+    border-top: 1px solid rgba(180, 90, 0, 0.2);
+    background: #fff8f0;
 }

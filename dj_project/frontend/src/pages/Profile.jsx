@@ -42,7 +42,7 @@ export default function Profile(){
             }
 
     return (<div className="profile-container">
-            {editing ? (<div>
+            {editing ? (<div className="input-container">
                     <input name="name" value={formData.name} onChange={handleChange} placeholder="Name"/>
                     <input name="address" value={formData.address} onChange={handleChange} placeholder="Address"/>
                     <input name="email" value={formData.email} onChange={handleChange} placeholder="Email"/>
@@ -51,12 +51,20 @@ export default function Profile(){
                     <button onClick={()=>setEditing(false)}>Cancel</button>
                 </div>) :
                 <div>
-
-                <p>Name:{userdata.name}</p>
-                <p>Address:{userdata.address}</p>
-                <p>Email:{userdata.email}</p>
-                <p>Phone:{userdata.phone}</p>
-                <button onClick={handleEdit}>Edit Profile</button>
+                    <div className="name">
+                        <p>Name:{userdata.name}</p>
+                    </div>
+                    <div className="address">
+                        <p>Address:{userdata.address}</p>
+                    </div>
+                    <div className="email-profile">
+                        <p>Email:{userdata.email}</p>
+                    </div>
+                    <div className="phone-profile">
+                        <p>Phone:{userdata.phone}</p>
+                    </div>
+                        <button onClick={handleEdit}>Edit Profile</button>
+                    
                 </div>
             }
 
