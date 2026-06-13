@@ -70,14 +70,14 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class ContactPageSerializer(serializers.ModelSerializer):
     class Meta:
         model=ContactPage
-        fields=('phone','email','location')
+        fields=('id','phone','email','location')
 
 class HardwarePageSerializer(serializers.ModelSerializer):
     class Meta:
         model=HardwarePage
-        fields=('intro_text','service_text','image')
+        fields=('id','intro_text','service_text','image')
 
 class SoftwarePageSerializer(serializers.ModelSerializer):
     class Meta:
         model=SoftwarePage
-        fields=('intro_text','service_text','image')
+        fields=('id','intro_text','service_text','image')

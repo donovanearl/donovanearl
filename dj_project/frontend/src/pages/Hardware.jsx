@@ -11,11 +11,13 @@ export default function Hardware_page(){
     useEffect(()=>{
         const fetchdata=async ()=>{
             try{
-                const res= await axios.get(`${getBaseURL()}/api/hardware/`);
+                const res= await axios.get(`${getBaseURL()}/api/services/hardware/`);
                 setData(res.data);
+                console.log("ResData",res.data)
             }catch(error){
                 console.log("Error loading data",error)
                 }
+            
             finally{
                 setLoading(false)
             }
@@ -30,7 +32,8 @@ if(loading){
 return (
         <div>
              {data.map((item)=>(
-                                <div key={item.id}>     
+                            <div key={item.id} className="items-container">
+                                    
                                         <div className="intro_text">
                                             {item.intro_text}
                                         </div>
@@ -40,7 +43,8 @@ return (
                                         <div className="image-container">
                                             <img src={item.image} alt="hardware-image"/>
                                         </div>
-                                    </div>
+                                    
+                                </div>
                                 ))}
                
         </div>

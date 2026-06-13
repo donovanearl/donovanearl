@@ -11,7 +11,7 @@ export default function Software_page(){
     useEffect(()=>{
         const fetchdata=async ()=>{
             try{
-                const res= await axios.get(`${getBaseURL()}/api/software/`);
+                const res= await axios.get(`${getBaseURL()}/api/services/software/`);
                 setData(res.data);
             }catch(error){
                 console.log("Error loading data",error)
@@ -29,17 +29,19 @@ if(loading){
 return (
         <div>
              {data.map((item)=>{return
-                <div key={item.id}>     
-                        <div className="intro_text">
-                            {item.intro_text}
+                    <div className="items-container">
+                        <div key={item.id}>     
+                                <div className="intro_text">
+                                    {item.intro_text}
+                                </div>
+                                <div className="service_text">
+                                    {item.service_text}
+                                </div>
+                                <div className="image-container">
+                                    {item.image}
+                                </div>
+                            </div>
                         </div>
-                        <div className="service_text">
-                            {item.service_text}
-                        </div>
-                        <div className="image-container">
-                            {item.image}
-                        </div>
-                    </div>
                     }
                     
                 )}
