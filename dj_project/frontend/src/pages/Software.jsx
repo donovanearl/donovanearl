@@ -2,6 +2,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import { getBaseURL } from "../api";
 import axios from "axios";
+import "../styles/HardwareSoftware.css"
 
 
 export default function Software_page(){
@@ -13,6 +14,7 @@ export default function Software_page(){
             try{
                 const res= await axios.get(`${getBaseURL()}/api/services/software/`);
                 setData(res.data);
+                console.log("ResData",res.data)
             }catch(error){
                 console.log("Error loading data",error)
                 }
@@ -29,9 +31,9 @@ if(loading){
 
 return (
         <div>
-             {data.map((item)=>{return
-                    <div className="items-container">
-                        <div key={item.id}>     
+             {data.map((item)=>(
+                    <div key={item.id} className="items-container">
+                            
                                 <div className="intro_text">
                                     {item.intro_text}
                                 </div>
@@ -39,11 +41,11 @@ return (
                                     {item.service_text}
                                 </div>
                                 <div className="image-container">
-                                    {item.image}
+                                    <img src={item.image} alt="Software-image"/>
                                 </div>
-                            </div>
+                            
                         </div>
-                    }
+                        )
                     
                 )}
                

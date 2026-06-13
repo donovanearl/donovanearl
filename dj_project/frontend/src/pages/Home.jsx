@@ -3,6 +3,7 @@ import "../styles/index.css"
 import "../styles/Home.css"
 import HeroImage from "../assets/HeroSection.jpg"
 import LandingPageContents from "../components/LandingPageContents"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -13,6 +14,8 @@ function Home(){
     let par2="Pinoy-Tech provides computer repair and IT services anywhere in Fujairah—so you don't have to go out to find help."
     let par3="Serving Fujairah since 2016, we deliver affordable, dependable solutions backed by our No Fix - No Pay guarantee."
     let btn_book="👉 Book Your Service Today"
+    const navigate= useNavigate()
+    
     return (
         
         <div className="contents-container">
@@ -32,7 +35,7 @@ function Home(){
                 </p>
                
                 <div className="cta-cards">
-                    <button className="contact-button">👉 Get Your Computer Fixed Today</button>
+                    <button onClick={()=>navigate("/contacts")} className="contact-button">👉 Get Your Computer Fixed Today</button>
                     <LandingPageContents/>
                 </div>
                 

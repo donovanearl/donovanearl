@@ -2,6 +2,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import { getBaseURL } from "../api";
 import axios from "axios";
+import "../styles/HardwareSoftware.css"
 
 
 export default function Hardware_page(){
