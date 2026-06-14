@@ -27,7 +27,7 @@ export default function LaptopCards(){
 },[])
 
 if(loading){
-    return <div>Loading...</div>
+    return <div>Loading... (first render takes 60 secs)</div>
 }
 
    async function handle_onClick(productId,quantity){ 

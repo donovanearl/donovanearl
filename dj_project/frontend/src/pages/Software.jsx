@@ -26,7 +26,7 @@ export default function Software_page(){
         },[]);
 
 if(loading){
-    return <div>loading...</div>
+    return <div>loading... (first render takes 60 secs)</div>
     }
 
 return (

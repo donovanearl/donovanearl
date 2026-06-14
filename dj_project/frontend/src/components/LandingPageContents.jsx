@@ -26,7 +26,7 @@ function LandingPageContents(){
                 },[]);
 
 if(loading){
-    return <p style={{ textAlign: "center" }}>Loading ...</p>;
+    return <p style={{ textAlign: "center" }}>Loading. . . (first render takes 60 secs)</p>;
 }
 return(
     
