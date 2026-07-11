@@ -1,6 +1,6 @@
 import React from "react"
 import { Outlet } from "react-router-dom"
-import Logo2 from "/src/assets/Logo2.png"
+import Logo1 from "/src/assets/Logo1.png"
 import Cart from "/src/assets/Shopcart.svg"
 import NavBar from "../components/Navbar.jsx"
 import {Link } from "react-router-dom"
@@ -45,7 +45,7 @@ const MainLayout=()=>{
     return (<div className="App"> 
                 <div className="Main-Container">
                     <header className="Header">
-                        <img src={Logo2} className="Logo2"/>
+                        <img src={Logo1} className="Logo1"/>
                         
                         <div className="Nav-plus">
                             <button onClick={cart_click} className="Shopcartbutton">

@@ -120,21 +120,21 @@ WSGI_APPLICATION = 'dj_project.wsgi.application'
 
 # Database
 
-DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL")
-    )
-}
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),         # database name
-#         'USER': os.getenv('DB_USER'),       # created user
-#         'PASSWORD': os.getenv('DB_PASSWORD'),      # password
-#         'HOST': os.getenv('DB_HOST'),           # or IP if remote
-#         'PORT': '5432',                # default Postgres port
-#     }
+#     "default": dj_database_url.config(
+#         default=os.getenv("DATABASE_URL")
+#     )
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),         # database name
+        'USER': os.getenv('DB_USER'),       # created user
+        'PASSWORD': os.getenv('DB_PASSWORD'),      # password
+        'HOST': os.getenv('DB_HOST'),           # or IP if remote
+        'PORT': '5432',                # default Postgres port
+    }
+}
 
 
 # Password validation

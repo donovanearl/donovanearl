@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     
+    
 }
 
 .Header{
@@ -15,15 +16,19 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2);
     margin-bottom: 3px;
-   
+  
+
 }
-.Logo2{
-    width: 300px;
+.Logo1{
+    width: 320px;
+    margin-left: 60px;
     max-width: 100%;
     height: auto;
-    padding: 16px;
+    padding: 2px;
+      
+       
     
 }
 .Shopcartimg{
@@ -63,16 +68,6 @@
 }
 
 
-/* .Outlet{
-    display: flex;
-    width: 100%;
-    min-height: 800px;
-    height: auto;
-    justify-content: center;
-    align-items: flex-start;
-    background-image: linear-gradient(white, rgb(255, 165, 0,.8), white);
-    
-} */
  .Outlet {
   display: flex;
   width: 100%;
@@ -83,7 +78,7 @@
   position: relative;
   overflow: hidden;
 
-  background-color: #fffdf9;
+  /* background-color: #f4a913; */
   background-image:
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,165,0,0.18) 0%, transparent 70%),
     radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255,140,0,0.1) 0%, transparent 60%),

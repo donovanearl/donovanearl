@@ -15,8 +15,7 @@ export const getBaseURL = () => {
 console.log("getBaseURL loaded");
 
 const api = axios.create({
-    baseURL:import.meta.env.VITE_API_URL,
-    // creates axios instance with // baseURL:import.meta.env.VITE_API_URL
+    baseURL: getBaseURL(),
 })
 
 api.interceptors.request.use(

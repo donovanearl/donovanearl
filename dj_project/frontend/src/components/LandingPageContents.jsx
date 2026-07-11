@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Home.css"
 import "../styles/index.css"
 import { getBaseURL } from "../api";
+import Loader from "./Loader";
 
 
 function LandingPageContents(){
@@ -26,7 +27,7 @@ function LandingPageContents(){
                 },[]);
 
 if(loading){
-    return <p style={{ textAlign: "center" }}>Loading. . . (first render takes 60 secs)</p>;
+    return <Loader/>;
 }
 return(
     

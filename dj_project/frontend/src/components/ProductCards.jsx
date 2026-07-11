@@ -26,7 +26,7 @@ function ProductCards(){
                 },[]);
 
 if(loading){
-    return <p style={{ textAlign: "center" }}>Loading products...</p>;
+    return <p style={{ textAlign: "center" }}>Loading products... (first render takes 60 secs)</p>;
 }
 return(
     <div className="product-container">
