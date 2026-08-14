@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom"
 import Logo1 from "/src/assets/Logo1.png"
 import Cart from "/src/assets/Shopcart.svg"
 import NavBar from "../components/Navbar.jsx"
+import NavList from "../components/Navlist.jsx"
 import {Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
@@ -37,6 +38,18 @@ const MainLayout=()=>{
         localStorage.removeItem(REFRESH_TOKEN)
         navigate("/")
     }
+      const navItems = [
+        { label: "Home", to: "/" },
+        { label: "Products", children: [
+            { label: "Laptops", to: "/products/laptops" },
+            { label: "Custom-PC", to: "/products/customized-desktop" },
+        ]},
+        { label: "Services", children: [
+            {label: "Hardware", to: "/services/hardware"},
+            {label: "Software", to: "/services/software"}
+        ]},
+        { label: "Contacts", to: "/contacts" },
+        ];
     
     console.log("User:",user)
     // console.log("Time-now: ",timeNow)
@@ -44,26 +57,27 @@ const MainLayout=()=>{
     
     return (<div className="App"> 
                 <div className="Main-Container">
-                    <header className="Header">
+                    <header className="page-Header">
                         <img src={Logo1} className="Logo1"/>
                         
                         <div className="Nav-plus">
-                            <button onClick={cart_click} className="Shopcartbutton">
-                                <img src={Cart} alt="Shopcart" className="Shopcartimg"/>
-                            </button>
-                            <div className="Nav-sign">
-                                <div className="Nav-sign-in">
-                                    <p>
-                                      Welcome! {" "}{user? (<><Link to="/profile">{user.username}</Link>{" "}{" "}<button onClick={logout}>logout</button></>):(<Link to="/login">Sign In</Link>)}
-                                    </p>
+                            <div className="customer">
+                                    <button onClick={cart_click} className="Shopcartbutton">
+                                    <img src={Cart} alt="Shopcart" className="Shopcartimg"/>
+                                    </button>
+                                    <div className="Nav-sign">
+                                        <div className="Nav-sign-in">
+                                            <p>
+                                            Welcome! {" "}{user? (<><Link to="/profile">{user.username}</Link>{" "}{" "}<button onClick={logout}>logout</button></>):(<Link to="/login">Sign In</Link>)}
+                                            </p>
+                                        </div>
+                                        <p>New customer?{" "}
+                                        <Link to="/register">Sign up here</Link> 
+                                        </p>
                                 </div>
-                    
-                                <p>New customer?{" "}
-                                <Link to="/register">Sign up here</Link> 
-                                </p>
-                               
                             </div>
-                                <NavBar/>
+                            {/* <NavList items={navItems}/> */}
+                            <NavBar/>
                             </div>
                        
                     </header>

@@ -1,0 +1,130 @@
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+/* --- Shared link styling (works for both <a> and <button>) --- */
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #4a4a4a;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 6px 2px;
+}
+
+/* The underline itself: an invisible bar that scales in from the left */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: #ea580c;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover = temporary underline */
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link:hover {
+  color: #ea580c;
+}
+
+/* Active = persistent underline (current page, or open dropdown) */
+.nav-link.active {
+  color: #ea580c;
+}
+
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* --- Chevron on the dropdown trigger --- */
+
+.nav-chevron {
+  margin-left: 4px;
+  vertical-align: -1px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-chevron.flipped {
+  transform: rotate(180deg);
+}
+
+/* --- Dropdown panel --- */
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  min-width: 200px;
+  z-index: 1000;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(50, 50, 50, 0.16), 0 2px 8px rgba(50, 50, 50, 0.08);
+
+  opacity: 0;
+  transform: translateY(-8px) scaleY(0.96);
+  transform-origin: top;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-dropdown.open {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+  pointer-events: auto;
+}
+
+.nav-dropdown-link {
+  display: block;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #4a4a4a;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+/* Dropdown links get a simple background highlight, not the underline,
+   since underline + rounded highlight together looks noisy in a menu */
+.nav-dropdown-link:hover {
+  background-color: #7a3708;
+  color: #ea580c;
+}
+
+/* Simple press feedback — no JS needed, browser handles the timing */
+.nav-dropdown-link:active {
+  background-color: #ffe4d1;
+  transform: scale(0.97);
+}
+
+/* Dropdown links use react-router's own active class, not ours */
+.nav-dropdown-link.active {
+  color: #ea580c;
+  font-weight: 600;
+}

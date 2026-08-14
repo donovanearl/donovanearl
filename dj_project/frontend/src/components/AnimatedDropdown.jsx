@@ -13,7 +13,7 @@ export default function AnimatedDropdown({ label, basePath }) {
   const menuItems ={ Home:["About Us"],
                   Products: ["Laptops","Customized-Desktop"], 
                   Services: ["Hardware","Software"], 
-                  Contacts: ["Grab our phone & email"] };
+                  Contacts: ["Email","Whatsapp"] };
 
 
 
