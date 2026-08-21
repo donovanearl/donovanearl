@@ -31,24 +31,35 @@ if(loading){
     }
 
 return (
-        <div>
-             {data.map((item)=>(
-                            <div key={item.id} className="items-container">
-                                    
-                                        <div className="intro_text">
-                                            {item.intro_text}
-                                        </div>
-                                        <div className="service_text">
-                                            {item.service_text}
-                                        </div>
-                                        <div className="image-container">
-                                            <img src={item.image} alt="hardware-image"/>
-                                        </div>
-                                    
-                                </div>
-                                ))}
-               
+        <div className="services-container">
+            <div className="services-sub-container">
+                <div className="header-container">
+                </div>
+                            {data.map((item)=>(
+                                            <div key={item.id} className="items-container">
+                                                    
+                                                    <div className="image-wrapper">
+                                                        <div className="image-container">
+                                                            <img src={item.image} alt="hardware-image" className="item-image"/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="service-text">
+                                                            {item.service_text}
+                                                    </div>
+                                                    <div className="intro-text">
+                                                        {item.intro_text}
+                                                    </div>
+                                                    <div className="service-price">
+                                                        <h2>AED 899</h2>
+                                                    </div>
+                                                    <div className="service-price">
+                                                        <button className="booking-btn" onClick={""}>Book Service</button>
+                                                    </div>
+                                                        
+                                            </div>))} 
+                </div>
         </div>
+            
 
     )
 }

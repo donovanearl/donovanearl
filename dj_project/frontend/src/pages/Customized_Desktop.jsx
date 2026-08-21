@@ -6,7 +6,7 @@ export default function Customized_Desktop(){
     return (<div className="pc-builder-container">
         
                 <div className="pc-builder-plate">
-                    <div className="pc-builder-header-container">
+                    <div className="header-container">
                     <h1 className="pc-builder-header">PC Estimator</h1>
                     </div>
                         <PcBuilder/>

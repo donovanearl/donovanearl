@@ -25,16 +25,6 @@
   margin-bottom: 2rem;
 }
 
-.intro-text {
-  background: linear-gradient(135deg, #fdaa25, #ffb247);
-  padding: 1.8rem 2rem;
-  font-family: 'Exo 2', Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.8;
-  color: #1a0500;  
-}
-
 .phone {
   font-family: 'Exo 2', Arial, sans-serif;
   font-size: 17px;
