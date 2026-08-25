@@ -12,7 +12,8 @@ import Cart from "./pages/Cart.jsx"
 import Orders from "./pages/Orders.jsx"
 import Profile from "./pages/Profile.jsx"
 import Order_history from "./pages/Order_history.jsx"
-import Contact_page from "./pages/Contacts.jsx"
+import Contacts_Email from "./pages/Contacts_Email.jsx"
+import Contacts_Whatsapp from "./pages/Contacts_Whatsapp.jsx"
 import Hardware_page from "./pages/Hardware.jsx"
 import Software_page from "./pages/Software.jsx"
 
@@ -106,8 +107,13 @@ function App() {
           }
           />
           <Route
-          path="/Contacts" element={
-              <Contact_page/> 
+          path="/Contacts/email" element={
+              <Contacts_Email/> 
+          }
+          />
+          <Route
+          path="/Contacts/whatsapp" element={
+              <Contacts_Whatsapp/> 
           }
           />
            <Route

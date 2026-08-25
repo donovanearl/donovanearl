@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import { getBaseURL } from "../api";
 import "../styles/Contacts.css"
 
-export default function Contact_page(){
+export default function Contacts_Whatsapp(){
     const [data,setData]= useState([])
     const [loading,setLoading]=useState(true)
 
@@ -25,8 +25,11 @@ export default function Contact_page(){
     console.log("Contact Data:",data);
 
     return (<div className="contacts-container">
-                {data.map((item)=>{
-                    return ( <div className="contacts-plate">
+                <div className="contacts-sub-container">
+                     <div className="header-container">
+                    </div>
+                    {data.map((item)=>{
+                    return ( <div className="contacts-items-container">
                                 <div  className="cta-cardsContacts" key={item.id}>
                                     <div className="intro-text">
                                             Have a question, need technical support, or looking for the right computer solution?<br></br>
@@ -49,6 +52,8 @@ export default function Contact_page(){
                             </div>
                             );
                         })}
+                </div>
+                
                         
         </div>
         );

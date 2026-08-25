@@ -26,7 +26,6 @@ export default function AnimatedDropdown({ label, basePath }) {
       {
         return `/${toSlug("")}`;
       }
-    if (basePath === "contacts") return `/${basePath}`;  //contacts page, overide radix link
     return `/${basePath}/${toSlug(item)}`;
   };
   
@@ -35,7 +34,7 @@ export default function AnimatedDropdown({ label, basePath }) {
   const navigate = useNavigate()
   const home_click=(e)=>{
     if(label==="Home"){navigate("/")}
-    else if(label==="Contacts"){navigate("/contacts")}
+
     }
 
   return (

@@ -32,6 +32,8 @@ if(loading){
 return (
     <div className="services-container">
         <div className="services-sub-container">
+            <div className="header-container">
+            </div>
              {data.map((item)=>(
                     <div key={item.id} className="items-container">
                             <div className="image-wrapper">
