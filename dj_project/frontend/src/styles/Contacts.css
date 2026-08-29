@@ -2,8 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    object-fit: contain;
-    
+    object-fit: contain;   
 }
 .contacts-sub-container{
         display: flex;
@@ -15,76 +14,257 @@
 }
 .contacts-items-container{
     display: flex;
-    flex-direction: row;
-    margin: 1px;
+    flex-direction: column;
+    
     justify-content: center;
     align-items: center;  
     text-align: center;
-    background-color: white;
-    box-shadow: 0px 0px 2px grey;
 }
 
-.contacts-plate {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.cta-cardsContacts {
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  max-width: 960px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1.5px solid rgba(200, 110, 0, 0.3);
-  box-shadow: 0 4px 24px rgba(180, 90, 0, 0.1);
-  background: white;
-  margin-bottom: 2rem;
-}
-
-.phone {
+.contacts-email-header{
   font-family: 'Exo 2', Arial, sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: #2a1500;
-  padding: 1rem 2rem 0.5rem;
-  border-top: 1px solid rgba(180, 90, 0, 0.2);
-  background: #fff8f0;
-}
-
-.email {
-  font-family: 'Exo 2', Arial, sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: #2a1500;
-  padding: 0.5rem 2rem 1rem;
-  background: #fff8f0;
-}
-
-.location-text {
-  padding: 1.2rem 2rem;
-  border-top: 1px solid rgba(180, 90, 0, 0.2);
-  background: white;
-}
-
-.location-text h2 {
-  font-family: 'Exo 2', Arial, sans-serif;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: 700;
   color: #a04800;
-  margin: 0;
-  line-height: 1.6;
+  padding: 10px;
 }
-
-.location-container {
-  border-top: 3px solid #c85f00;
-}
-
-.location-image {
-  display: block;
+.contacts-email-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: 520px;
-  object-fit: cover;
-  border-radius: 0 0 10px 10px;
+}
+.contacts-form-email{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  min-height: 300px;
+  height: auto;
+ 
+}
+
+.contacts-email-header{
+  padding: 20px;
+  width: 60%;
+  font-size: 18px;
+}
+.EmailLogo{
+ max-width: 250px;
+ width: auto;
+ height: auto;
+ margin-left: 60px;
+  
+}
+
+.label-input-container{
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+}
+/* ------------labels------------ */
+.name-label{
+  width: 20%;
+  max-width: 200px;
+}
+.email-label{
+  width: 20%;
+  max-width: 200px;
+}
+.whatsapp-label{
+  width: 20%;
+  max-width: 200px;
+}
+.message-label{
+  width: 20%;
+  max-width: 200px;
+}
+
+/* ------------inputs------------ */
+.name-input{
+  width:60%;
+  max-width:500px;
+}
+.email-input{
+  width: 60%;
+  max-width: 500px;
+}
+.message-input{
+  height: auto;
+  min-height:200px;
+  width: 60%;
+  max-width: 500px;
+}
+.email-submit-btn{
+  width: 100px;
+}
+/* ---------------------------------- */
+
+.whatsapp-form-container{
+  max-height: 200px;
+  width: auto;
+}
+.WhatsAppLogo{
+  padding: 10px;
+  max-height: 200px;
+  width: auto;
+}
+.contacts-form-whatsapp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  min-height: 300px;
+  height: auto;
+}
+.contacts-whatsapp-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.whatsapp-input{
+  width: 60%;
+  margin-left:4px;
+  max-width: 500px;
+}
+
+
+@media(min-width:768px){
+  .contacts-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;   
+}
+.contacts-sub-container{
+        display: flex;
+        flex-direction: column;
+        min-height: 800px;
+        width: 90%;
+        box-shadow: 0px 0px 3px grey;      
+        margin: 0px;
+}
+.contacts-items-container{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;  
+    text-align: center;
+}
+
+.contacts-email-header{
+  font-family: 'Exo 2', Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #a04800;
+  padding: 10px;
+  margin-left: 100px;
+}
+.contacts-email-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.contacts-form-email{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  min-height: 300px;
+  height: auto;
+ 
+}
+
+.contacts-email-header{
+  padding: 20px;
+  width: 60%;
+  font-size: 18px;
+}
+.EmailLogo{
+ max-width: 250px;
+ width: auto;
+ height: auto;
+ margin-left: 60px;
+  
+}
+
+.label-input-container{
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+}
+/* ------------labels------------ */
+.name-label{
+  width: 40%;
+  max-width: 200px;
+}
+.email-label{
+  width: 40%;
+  max-width: 200px;
+}
+.whatsapp-label{
+  width: 40%;
+  max-width: 200px;
+}
+.message-label{
+  width: 40%;
+  max-width: 200px;
+}
+
+/* ------------inputs------------ */
+.name-input{
+  width:60%;
+  max-width:500px;
+}
+.email-input{
+  width: 60%;
+  max-width: 500px;
+}
+.message-input{
+  height: auto;
+  min-height:200px;
+  width: 60%;
+  max-width: 500px;
+}
+.email-submit-btn{
+  width: 100px;
+}
+/* ---------------------------------- */
+
+.whatsapp-form-container{
+  max-height: 200px;
+  width: auto;
+}
+.WhatsAppLogo{
+  padding: 10px;
+  max-height: 200px;
+  width: auto;
+}
+.contacts-form-whatsapp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  min-height: 300px;
+  height: auto;
+}
+.contacts-whatsapp-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.whatsapp-input{
+  width: 60%;
+  margin-left:4px;
+  max-width: 500px;
+}
+
 }

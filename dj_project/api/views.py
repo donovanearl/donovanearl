@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,ContactPage,HardwarePage,SoftwarePage
+from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,ContactsEmailPage,HardwarePage,SoftwarePage
 from .serializers import (AppUserSerializer,UserSerializer, LandingPage_ContentSerializer,
                           MyTokenObtainPairSerializer,CartSerializer,CartItemsSerializer,ProductSerializer,
-                          OrderSerializer,OrderItemsSerializer,ContactPageSerializer,HardwarePageSerializer,SoftwarePageSerializer)
+                          OrderSerializer,OrderItemsSerializer,ContactsEmailPageSerializer,HardwarePageSerializer,SoftwarePageSerializer)
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 import stripe
@@ -98,10 +98,11 @@ class OrderItemsView(generics.ListCreateAPIView):
         product = Product.objects.get(id=product_id)
         serializer.save(product=product)
 
-class ContactPageView(generics.ListAPIView):
-    serializer_class=ContactPageSerializer
+class ContactsEmailPageView(generics.RetrieveAPIView):
+    serializer_class=ContactsEmailPageSerializer
     permission_classes=[AllowAny]
-    queryset=ContactPage.objects.all()
+    def get_object(self):
+        return ContactsEmailPage.objects.first()
 
 class HardwarePageView(generics.ListAPIView):
     serializer_class=HardwarePageSerializer

@@ -56,45 +56,45 @@ export default function Contacts_Email_Us() {
 
   // ========== THE FORM ==========
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 bg-white p-6 rounded-xl shadow-sm border">
+    <form onSubmit={handleSubmit} className="contacts-form-email">
       
       {/* Name field */}
-      <div>
-        <label className="block text-sm font-medium mb-1">Your Name</label>
+      <div className='label-input-container'>
+        <label className="name-label">Your Name</label>
         <input
           name="name"
           value={form.name}
           onChange={handleChange}
           required
-          className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 outline-none"
+          className="name-input"
           placeholder="John Doe"
         />
       </div>
 
       {/* Email field */}
-      <div>
-        <label className="block text-sm font-medium mb-1">Your Email</label>
+      <div className='label-input-container'>
+        <label className="email-label">Your Email</label>
         <input
           type="email"
           name="email"
           value={form.email}
           onChange={handleChange}
           required
-          className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 outline-none"
+          className="email-input"
           placeholder="you@example.com"
         />
       </div>
 
       {/* Message field */}
-      <div>
-        <label className="block text-sm font-medium mb-1">Message</label>
+      <div className='label-input-container'>
+        <label className="message-label">Message</label>
         <textarea
           name="message"
           value={form.message}
           onChange={handleChange}
           required
           rows={5}
-          className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 outline-none"
+          className="message-input"
           placeholder="How can we help you?"
         />
       </div>
@@ -103,7 +103,7 @@ export default function Contacts_Email_Us() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition disabled:opacity-60"
+        className="email-submit-btn"
       >
         {status === 'loading' ? 'Sending...' : 'Send Email'}
       </button>
