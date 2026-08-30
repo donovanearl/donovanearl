@@ -73,12 +73,7 @@ class OrderItems(models.Model):
     product=models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_order_items")
     quantity=models.IntegerField()
     price_at_purchase=models.FloatField()
-
-class ContactsEmailPage(models.Model):
-
-    phone=models.CharField(max_length=11)
-    email=models.CharField(max_length=50)
-    
+   
 
 class HardwarePage(models.Model):
 
@@ -91,6 +86,30 @@ class SoftwarePage(models.Model):
     intro_text= models.TextField(max_length=400)
     service_text=models.CharField(max_length=50)
     image=models.ImageField(blank=True)
+
+class ContactMessage(models.Model):
+    class Channel(models.TextChoices):
+        EMAIL = "email", "Email"
+        WHATSAPP = "whatsapp", "WhatsApp"
+
+    name = models.CharField(max_length=150)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=30, blank=True)
+    message = models.TextField()
+    channel = models.CharField(max_length=20, choices=Channel.choices)
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Contact Message"
+        verbose_name_plural = "Contact Messages"
+
+    def __str__(self):
+        return (
+            f"{self.name} ({self.get_channel_display()}) "
+            f"- {self.created_at:%Y-%m-%d %H:%M}"
+        )
 
 
 

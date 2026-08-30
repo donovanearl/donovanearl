@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import QRCode from 'react-qr-code';
 
 
 export default function Contacts_Whatsapp_Us() {
@@ -7,7 +8,7 @@ export default function Contacts_Whatsapp_Us() {
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [whatsappLink, setWhatsappLink] = useState('');
 
-  const YOUR_WHATSAPP_NUMBER = '971501234567'; // ← Change this (no + or spaces)
+  const YOUR_WHATSAPP_NUMBER = '971501158864'; // 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,7 +20,7 @@ export default function Contacts_Whatsapp_Us() {
 
     try {
       // 1. Save to database + send you an email
-      await axios.post('/api/contact/', {
+      await axios.post('/api/contacts/', {
         ...form,
         channel: 'whatsapp',
       });
@@ -41,9 +42,8 @@ export default function Contacts_Whatsapp_Us() {
 
   // ========== SUCCESS SCREEN ==========
   if (status === 'success') {
-    // QR code using a free public API (no library needed)
-    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappLink)}`;
-
+   
+    
     return (
       <div className="contacts-form-whatsapp">
         <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-5 text-3xl">
@@ -73,13 +73,15 @@ export default function Contacts_Whatsapp_Us() {
           <p className="text-sm text-gray-500 mb-4">
             Or scan this QR code with your phone:
           </p>
-          <img
-            src={qrCodeUrl}
-            alt="WhatsApp QR Code"
-            className="mx-auto rounded-lg border"
-            width={180}
-            height={180}
-          />
+          <div className="flex justify-center">
+            <div className="bg-white p-3 rounded-lg border">
+              <QRCode
+                value={whatsappLink}
+                size={160}
+                style={{ height: 'auto', maxWidth: '100%', width: '160px' }}
+              />
+            </div>
+          </div>
           <p className="text-xs text-gray-400 mt-3">
             Point your phone camera at the QR code
           </p>

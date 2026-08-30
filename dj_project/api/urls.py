@@ -17,7 +17,8 @@ urlpatterns = [
     path('orders/items/', views.OrderItemsView.as_view(), name='order-items'),
     path('cart/items/<int:pk>/', views.CartItemsDetailView.as_view(), name='cart-items-detail'), #from claude
     path('create-payment-intent/',views.create_payment_intent, name='create-payment-intent'),
-    path('contacts/email/', views.ContactsEmailPageView.as_view(), name='contactsEmail'),
+    # path('contacts/email/', views.ContactsEmailPageView.as_view(), name='contactsEmail'),
+    path("contacts/", views.ContactCreateView.as_view(), name="contacts-create"),
     path('services/hardware/', views.HardwarePageView.as_view(), name='hardware'),
     path('services/software/', views.SoftwarePageView.as_view(), name='software'),
     ]

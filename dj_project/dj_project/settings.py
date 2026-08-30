@@ -76,7 +76,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudinary',
-    'cloudinary_storage',   
+    'cloudinary_storage',
+    "django_tasks",
+    "django_tasks_db",  
 ]
 
 CLOUDINARY_STORAGE = {
@@ -196,16 +198,30 @@ STORAGES = {
 MEDIA_URL = 'media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 
+TASKS = {
+    "default": {
+        "BACKEND": "django_tasks_db.DatabaseBackend",
+        "QUEUES": ["default"],
+    }
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 CORS_ALLOW_ALL_ORIGINS = True #added
 CORS_ALLOW_CREDENTIALS = True #added
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
 ]
+
+# --------Emails---------
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+DEFAULT_FROM_EMAIL = "PinoyTech.ae@gmail.com"
+NOTIFY_EMAIL = "PinoyTech.ae@gmail.com"
+SITE_URL = "https://www.pinoy-tech.com"
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 

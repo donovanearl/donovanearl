@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import AppUser, LandingPage_Content,Cart,Product,CartItems,Order,OrderItems,ContactsEmailPage,HardwarePage,SoftwarePage
+from .models import AppUser, LandingPage_Content,Cart,Product,CartItems,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -66,11 +66,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         #add custom claims
         token["username"] = user.username
         return token
-    
-class ContactsEmailPageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=ContactsEmailPage
-        fields=('id','phone','email')
+
 
 class HardwarePageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -81,3 +77,32 @@ class SoftwarePageSerializer(serializers.ModelSerializer):
     class Meta:
         model=SoftwarePage
         fields=('id','intro_text','service_text','image')
+
+class ContactMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactMessage
+        fields = [
+            "id",
+            "name",
+            "email",
+            "phone",
+            "message",
+            "channel",
+            "created_at",
+        ]
+        read_only_fields = ["id", "created_at"]
+
+    def validate(self, attrs):
+        channel = attrs.get("channel")
+
+        if channel == ContactMessage.Channel.EMAIL and not attrs.get("email"):
+            raise serializers.ValidationError(
+                {"email": "Email is required for the email channel."}
+            )
+
+        if channel == ContactMessage.Channel.WHATSAPP and not attrs.get("phone"):
+            raise serializers.ValidationError(
+                {"phone": "Phone is required for the WhatsApp channel."}
+            )
+
+        return attrs

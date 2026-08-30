@@ -1,14 +1,16 @@
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,ContactsEmailPage,HardwarePage,SoftwarePage
+from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage
 from .serializers import (AppUserSerializer,UserSerializer, LandingPage_ContentSerializer,
                           MyTokenObtainPairSerializer,CartSerializer,CartItemsSerializer,ProductSerializer,
-                          OrderSerializer,OrderItemsSerializer,ContactsEmailPageSerializer,HardwarePageSerializer,SoftwarePageSerializer)
+                          OrderSerializer,OrderItemsSerializer,HardwarePageSerializer,SoftwarePageSerializer,ContactMessageSerializer)
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 import stripe
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from django.db import transaction
+from .tasks import send_contact_notification
 
 # Create your views here.
 
@@ -98,12 +100,6 @@ class OrderItemsView(generics.ListCreateAPIView):
         product = Product.objects.get(id=product_id)
         serializer.save(product=product)
 
-class ContactsEmailPageView(generics.RetrieveAPIView):
-    serializer_class=ContactsEmailPageSerializer
-    permission_classes=[AllowAny]
-    def get_object(self):
-        return ContactsEmailPage.objects.first()
-
 class HardwarePageView(generics.ListAPIView):
     serializer_class=HardwarePageSerializer
     permission_classes=[AllowAny]
@@ -113,9 +109,6 @@ class SoftwarePageView(generics.ListAPIView):
     serializer_class=SoftwarePageSerializer
     permission_classes=[AllowAny]
     queryset=SoftwarePage.objects.all()
-
-
-
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -129,3 +122,15 @@ def create_payment_intent(request):
         return Response({'client_secret':intent.client_secret})
     except Exception as e:
         return Response({'error':str(e)} , status=400)
+
+class ContactCreateView(generics.CreateAPIView):
+    queryset = ContactMessage.objects.all()
+    serializer_class = ContactMessageSerializer
+    permission_classes = [AllowAny]
+    authentication_classes = []  # no session → no CSRF on this endpoint
+
+    def perform_create(self, serializer):
+        message = serializer.save()
+        transaction.on_commit(
+            lambda: send_contact_notification.enqueue(message.id)
+        )

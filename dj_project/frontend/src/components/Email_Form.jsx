@@ -27,7 +27,7 @@ export default function Contacts_Email_Us() {
 
     try {
       // Send data to your Django backend
-      await axios.post('/api/contacts/email', {
+      await axios.post('/api/contacts/', {
         ...form,
         channel: 'email',         // Tell backend this came from Email form
       });
