@@ -1,15 +1,17 @@
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage
+from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment
 from .serializers import (AppUserSerializer,UserSerializer, LandingPage_ContentSerializer,
                           MyTokenObtainPairSerializer,CartSerializer,CartItemsSerializer,ProductSerializer,
-                          OrderSerializer,OrderItemsSerializer,HardwarePageSerializer,SoftwarePageSerializer,ContactMessageSerializer)
+                          OrderSerializer,OrderItemsSerializer,HardwarePageSerializer,SoftwarePageSerializer,ContactMessageSerializer,AppointmentSerializer)
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 import stripe
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.db import transaction
+from django.conf import settings
+from django.core.mail import send_mail
 from .tasks import send_contact_notification
 
 # Create your views here.
@@ -133,4 +135,32 @@ class ContactCreateView(generics.CreateAPIView):
         message = serializer.save()
         transaction.on_commit(
             lambda: send_contact_notification.enqueue(message.id)
+        )
+
+class AppointmentCreateView(generics.CreateAPIView):
+    queryset = Appointment.objects.all()
+    serializer_class = AppointmentSerializer
+    permission_classes = [AllowAny]
+    authentication_classes = []   # important: disables CSRF on this endpoint
+
+    def perform_create(self, serializer):
+        appointment = serializer.save()
+
+        subject = f'New Appointment Request – {appointment.name}'
+        body = (
+            'New appointment request:\n\n'
+            f'Name: {appointment.name}\n'
+            f'Phone: {appointment.phone}\n'
+            f'Email: {appointment.email}\n'
+            f'Service: {appointment.service}\n'
+            f'Preferred time: {appointment.preferred_time or "Not specified"}\n'
+            f'Notes: {appointment.notes or "None"}\n'
+        )
+
+        send_mail(
+            subject=subject,
+            message=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.NOTIFY_EMAIL],
+            fail_silently=False,
         )

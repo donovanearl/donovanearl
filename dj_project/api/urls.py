@@ -21,4 +21,5 @@ urlpatterns = [
     path("contacts/", views.ContactCreateView.as_view(), name="contacts-create"),
     path('services/hardware/', views.HardwarePageView.as_view(), name='hardware'),
     path('services/software/', views.SoftwarePageView.as_view(), name='software'),
+    path('appointments/', views.AppointmentCreateView.as_view(), name='appointment-create'),
     ]

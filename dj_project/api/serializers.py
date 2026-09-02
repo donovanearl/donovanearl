@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import AppUser, LandingPage_Content,Cart,Product,CartItems,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage
+from .models import AppUser, LandingPage_Content,Cart,Product,CartItems,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -106,3 +106,22 @@ class ContactMessageSerializer(serializers.ModelSerializer):
             )
 
         return attrs
+
+class AppointmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Appointment
+        fields = [
+            'id',
+            'name',
+            'phone',
+            'email',
+            'service',
+            'preferred_time',
+            'notes',
+            'status',
+            'amount_paid',
+            'created_at',
+        ]
+        read_only_fields = ['id', 'status', 'amount_paid', 'created_at']
+
+

@@ -1,0 +1,143 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(40, 40, 40, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-card {
+  background: #ffffff;
+  color: #333333;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e6e6e6;
+  background: #f7f7f7;
+  border-radius: 16px 16px 0 0;
+  position: sticky;
+  top: 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #222;
+}
+
+.modal-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  color: #888;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #e67e22;
+}
+
+.modal-form,
+.modal-success {
+  padding: 24px;
+}
+
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 15px;
+  outline: none;
+}
+
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus {
+  border-color: #e67e22;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+}
+
+.modal-submit,
+.modal-success-btn {
+  width: 100%;
+  border: none;
+  background: #e67e22;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 13px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.modal-submit:hover,
+.modal-success-btn:hover {
+  background: #cf6e1c;
+}
+
+.modal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-error {
+  color: #c0392b;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.modal-success {
+  text-align: center;
+}
+
+.modal-check {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #f4f4f4;
+  color: #e67e22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.modal-success h2 {
+  margin: 0 0 8px;
+  color: #222;
+}
+
+.modal-success p {
+  color: #666;
+  margin: 0 0 24px;
+}
