@@ -2,7 +2,7 @@ import axios from "axios"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants"
 
 export const getBaseURL = () => {
-  return import.meta.env.VITE_API_URL;
+  return import.meta.env.VITE_API_URL??'';
 };
 console.log("getBaseURL loaded");
 

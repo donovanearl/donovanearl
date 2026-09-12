@@ -2,6 +2,7 @@ import "../styles/Cart.css"
 import api from "../api"
 import { useEffect,useState } from "react"
 import {useNavigate} from "react-router-dom"
+import { getBaseURL } from "../api"
 
 
 
@@ -12,7 +13,7 @@ export default function Cart(){
 
     useEffect(()=>{
         const fetchdata = async ()=>{
-            try{const res=await api.get('/api/cart/items/')
+            try{const res=await api.get(`${getBaseURL()}/api/cart/items/`)
                 setCartItems(res.data)
             }
                 catch(error){
@@ -57,7 +58,10 @@ export default function Cart(){
 
 
     return <div className="cart-container">
+                <div className="header-container">
+                </div>
                 <div className="item-container">
+
                     {cartItems.map((item,index)=>{
                         return <div className="items-parent"> 
                                 <div className="items"key={item.id}> 
@@ -74,7 +78,8 @@ export default function Cart(){
                                 </div> 
                                
                             </div>           
-                    })}
+                        })}
+                    
                 </div>
                 <div className="totals-container">Totals:{Total.toFixed(2)}</div>    
                 <button className="check-out-button" onClick={checkOut}>Check out</button>

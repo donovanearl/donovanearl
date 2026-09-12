@@ -7,16 +7,20 @@
 .contents-sub-container{ 
         min-height: 800px;
         width: 90%;
+          
 }
+/* use by all pages, except laptops banner */
 .header-container{
     padding-left: 40px;
     height: auto;
     min-height: 120px;
     width: 100%;
     padding: 0px;;
-    box-shadow: 0px 0px 10px grey;
+    box-shadow: 0px 0px 3px grey;
     color: #fc6821;
     background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+   
+    
 }
 .home-header{
     font-family: "Exo 2","arial";
@@ -67,7 +71,7 @@
     }
     .cta-cards{
         
-        box-shadow: 0px 0px 10px grey;
+        box-shadow: 0px 0px 3px grey;
         border-radius: 0px;
     }
 
@@ -148,6 +152,7 @@ p1{
         grid-template-columns: repeat(2,1fr); /* Tablet*/
         gap: 10px; 
         width:100%;
+        margin-bottom: 2px;
     }
     .content-image-container{
         width: 100%;
@@ -157,7 +162,7 @@ p1{
      
     .cta-cards{
         
-        box-shadow: 0px 0px 10px grey;
+        box-shadow: 0px 0px 3px grey;
         border-radius: 5px;
     }
     .content-image{
@@ -175,6 +180,7 @@ p1{
         grid-template-columns: repeat(3,1fr); /*small laptop*/
         gap: 10px; 
         width:100%;
+        margin-bottom: 2px;
     }
     .content-image-container{
         width: 100%;
@@ -184,7 +190,7 @@ p1{
      
     .cta-cards{
        
-        box-shadow: 0px 0px 10px grey;
+        box-shadow: 0px 0px 3px grey;
         border-radius: 5px;
     }
     .content-image{
@@ -202,6 +208,7 @@ p1{
         grid-template-columns: repeat(4,1fr); /*laptop*/
         gap: 10px; 
         width:100%;
+        margin-bottom: 2px;
     }
     .content-image-container{
         width: 100%;
@@ -211,7 +218,7 @@ p1{
      
     .cta-cards{
     
-        box-shadow: 0px 0px 10px grey;
+        box-shadow: 0px 0px 3px grey;
         border-radius: 5px;
     }
     .content-image{

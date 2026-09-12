@@ -28,6 +28,8 @@ export default function Order_history(){
     // console.log("orderItems", orderItems)
 
     return <div className="order-history-container">
+                <div className="header-container">
+                        </div>
                 <div className="order-history-plate">
                     
                         {orderHistory.map((order)=>{

@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment
+from .models import AppUser,LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment,PartSelector
 from .serializers import (AppUserSerializer,UserSerializer, LandingPage_ContentSerializer,
                           MyTokenObtainPairSerializer,CartSerializer,CartItemsSerializer,ProductSerializer,
-                          OrderSerializer,OrderItemsSerializer,HardwarePageSerializer,SoftwarePageSerializer,ContactMessageSerializer,AppointmentSerializer)
+                          OrderSerializer,OrderItemsSerializer,HardwarePageSerializer,SoftwarePageSerializer,ContactMessageSerializer,AppointmentSerializer,PartSelectorSerializer)
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 import stripe
@@ -13,6 +13,9 @@ from django.db import transaction
 from django.conf import settings
 from django.core.mail import send_mail
 from .tasks import send_contact_notification
+import json
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -112,18 +115,94 @@ class SoftwarePageView(generics.ListAPIView):
     permission_classes=[AllowAny]
     queryset=SoftwarePage.objects.all()
 
+# @api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+# def create_payment_intent(request):
+#     try:
+#         amount= request.data.get('amount')
+#         intent= stripe.PaymentIntent.create(
+#             amount=int(float(amount)*100), ## stripe uses cents
+#             currency='aed',
+#         )
+#         return Response({'client_secret':intent.client_secret})
+#     except Exception as e:
+#         return Response({'error':str(e)} , status=400)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_payment_intent(request):
     try:
-        amount= request.data.get('amount')
-        intent= stripe.PaymentIntent.create(
-            amount=int(float(amount)*100), ## stripe uses cents
-            currency='aed',
-        )
-        return Response({'client_secret':intent.client_secret})
+        amount = request.data.get('amount')
+
+        cart = Cart.objects.get(user=request.user)
+        cart_items = CartItems.objects.filter(cart=cart)
+
+        if not cart_items.exists():
+            return Response({'error': 'Cart is empty'}, status=400)
+
+        with transaction.atomic():
+            order = Order.objects.create(
+                user=request.user,
+                status="pending",
+                total_price=float(amount),
+            )
+
+            for item in cart_items:
+                OrderItems.objects.create(
+                    order=order,
+                    product=item.product,
+                    quantity=item.quantity,
+                    price_at_purchase=item.product.price,
+                )
+
+            intent = stripe.PaymentIntent.create(
+                amount=int(float(amount) * 100),
+                currency='aed',
+                metadata={'order_id': order.id, 'user_id': request.user.id},
+            )
+
+            order.stripe_payment_intent_id = intent.id
+            order.save()
+
+        return Response({'client_secret': intent.client_secret, 'order_id': order.id})
     except Exception as e:
-        return Response({'error':str(e)} , status=400)
+        return Response({'error': str(e)}, status=400)
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except (ValueError, stripe.error.SignatureVerificationError):
+        return HttpResponse(status=400)
+
+    if event['type'] == 'payment_intent.succeeded':
+        intent = event['data']['object']
+        try:
+            order = Order.objects.get(stripe_payment_intent_id=intent['id'])
+            if order.status != "paid":
+                order.status = "paid"
+                order.save()
+                CartItems.objects.filter(cart__user=order.user).delete()
+        except Order.DoesNotExist:
+            pass
+
+    elif event['type'] == 'payment_intent.payment_failed':
+        intent = event['data']['object']
+        try:
+            order = Order.objects.get(stripe_payment_intent_id=intent['id'])
+            order.status = "failed"
+            order.save()
+        except Order.DoesNotExist:
+            pass
+
+    return HttpResponse(status=200)
+
+#  TODO change here-------------------------------
 
 class ContactCreateView(generics.CreateAPIView):
     queryset = ContactMessage.objects.all()
@@ -164,3 +243,7 @@ class AppointmentCreateView(generics.CreateAPIView):
             recipient_list=[settings.NOTIFY_EMAIL],
             fail_silently=False,
         )
+class PartSelectorView(generics.ListCreateAPIView):
+    queryset=PartSelector.objects.all()
+    serializer_class=PartSelectorSerializer
+    permission_classes=[AllowAny]

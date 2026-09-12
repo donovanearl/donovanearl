@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN,REFRESH_TOKEN } from "../constants";
 import "../styles/FormLogin.css"
+import { Link } from "react-router-dom";
 
 function Form({route,method}){
     const [username,setUsername] =useState("")
@@ -38,7 +39,7 @@ function Form({route,method}){
             setLoading(false);
         }}
     return <form onSubmit={handleSubmit} className="formLogin-container">
-        <h1>{name}</h1>
+        <div className="login-method-label">{name}</div>
         <input className="formLogin-input"
                type="text"
                value={username}
@@ -54,7 +55,13 @@ function Form({route,method}){
         <button className="formLogin-button" type="submit">
                {name}
         </button>
-               
+            {name !== "Register" && (
+                <p className="signup-prompt">
+                    Don’t have an account?{" "}<br></br>
+                   <Link to="/register">Sign up here</Link> 
+                </p>
+             )}
+           
     </form>
 
 }

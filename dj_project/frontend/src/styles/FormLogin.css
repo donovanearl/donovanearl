@@ -1,17 +1,21 @@
 .formLogin-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 40px auto;
-  padding: 80px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  align-self: center;
+  justify-self: center;
+  padding: 60px;
   width: 100%;
   max-width: 375px;
   height: auto;
- 
-  background-color: rgb(236, 236, 225);
+
+
+.login-method-label{
+  padding: 0px 50px;
+  font-family: "Exo 2",arial;
+  font-size: 24px;
+  font-weight: 600;
+}
+  
   
 }
 

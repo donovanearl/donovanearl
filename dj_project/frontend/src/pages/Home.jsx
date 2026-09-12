@@ -1,9 +1,10 @@
 
 import "../styles/index.css"
 import "../styles/Home.css"
-import HeroImage from "../assets/HeroSection.jpg"
 import LandingPageContents from "../components/LandingPageContents"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import BookAppointmentModal from "../components/BookAppointmentModal";
+
 
 
 
@@ -14,11 +15,18 @@ function Home(){
     let par2="Book an appointment and meet us at a convenient location for a consultation, pickup, or drop-off."
     let par3="Serving Fujairah since 2016, Pinoy-Tech provides dependable computer repair, upgrades, networking, and IT solutions." 
     let btn_book="👉 Book an Appointment"
-    const navigate= useNavigate()
+
+    
+    const [isOpen, setIsOpen] = useState(false);
+    
     
     return (
         
         <div className="contents-container">
+        <BookAppointmentModal
+                        isOpen={isOpen}
+                        onClose={() => {setIsOpen(false);}}
+                        />
           <title>Home</title>
      
             <div className="contents-sub-container">
@@ -33,7 +41,7 @@ function Home(){
                     
                 </div>
                 <div className="cta-cards">
-                    <button onClick={()=>navigate("/contacts")} className="contact-button">{btn_book}</button>
+                    <button onClick={() => {setIsOpen(true);}} className="contact-button">{btn_book}</button>
                     <div className="home-par1-text">
                         {par1}
                     </div>

@@ -16,13 +16,15 @@
 .items-container{
     display: flex;
     flex-direction: column;
-    margin: 0px;
+   
     justify-content: center;
     align-items: center;
   
     
 }
 .image-container{
+    margin: 2px;
+    border-radius: 5px;
     width: 360px;
     height: 260px;
     background-color: white;
@@ -42,6 +44,23 @@
     align-self: center;
     justify-self: center;
 }
+.booking-btn {
+    font-family: "exo 2","arial";
+    font-size: 16px;
+    border-style: 1px solid;
+    border-radius: 5px;
+    background-color: #f3c776;
+    min-width: 200px;
+    width: 85%;
+    height: 32px;
+}
+.booking-btn:hover{
+    cursor: pointer;
+}
+.booking-btn:active{
+    background-color:#f4b746 ;
+    transform: translateY(1px);
+}
 
 @media (min-width:768px){
 .services-container{
@@ -59,18 +78,22 @@
         width: 90%;
         box-shadow: 0px 0px 3px grey;      
         margin: 0px;
+        margin-bottom: 2px;
 }
 .items-container{
     display: grid;
     grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
-    margin: 1px;
+    
     justify-content: center;
     align-items: center;  
     text-align: center;
     background-color: white;
     box-shadow: 0px 0px 2px grey;
+
 }
 .image-container{
+    margin: 2px;
+    border-radius: 5px;
     width: 360px;
     height: 260px;
     overflow: hidden;

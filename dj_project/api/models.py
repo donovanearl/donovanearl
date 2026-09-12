@@ -59,7 +59,7 @@ class Order(models.Model):
     text_only_validator = RegexValidator(r'^[a-zA-Z\s]+$', 'Only text and spaces are allowed.')
    
     user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="order")
-    status=models.CharField(max_length=10, validators=[text_only_validator])
+    status=models.CharField(max_length=15, validators=[text_only_validator])
     total_price=models.FloatField()
     stripe_payment_intent_id=models.CharField(max_length=255, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
@@ -148,6 +148,17 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f'{self.name} – {self.service} ({self.get_status_display()})'
+
+class PartSelector(models.Model):
+    name=models.CharField(max_length=30)
+    type=models.CharField(max_length=15,default="")
+    socket=models.CharField(max_length=9)
+    price=models.DecimalField(max_digits=9, decimal_places=2)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+            return f'{self.name}, {self.type}, {self.socket}, {self.price}'
+
 
 
 

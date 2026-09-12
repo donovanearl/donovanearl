@@ -6,10 +6,12 @@ import "../styles/HardwareSoftware.css"
 import BookAppointmentModal from "../components/BookAppointmentModal";
 
 
+
 export default function Hardware_page(){
     const [data,setData]=useState([])
     const [loading,setLoading]=useState(true)
     const [isOpen, setIsOpen] = useState(false);
+    const [defaultService, setDefaultService] = useState("");
 
     useEffect(()=>{
         const fetchdata=async ()=>{
@@ -34,35 +36,41 @@ if(loading){
 
 return (
         <div className="services-container">
+            
             <BookAppointmentModal
                 isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
+                onClose={() => {setIsOpen(false);setDefaultService("");}}
+                defaultService={defaultService}
+                
             />
             <div className="services-sub-container">
                 <div className="header-container">
                 </div>
-                            {data.map((item)=>(
-                                            <div key={item.id} className="items-container">
-                                                    
-                                                    <div className="image-wrapper">
-                                                        <div className="image-container">
-                                                            <img src={item.image} alt="hardware-image" className="item-image"/>
-                                                        </div>
-                                                    </div>
-                                                    <div className="service-text">
-                                                            {item.service_text}
-                                                    </div>
-                                                    <div className="intro-text">
-                                                        {item.intro_text}
-                                                    </div>
-                                                    <div className="service-price">
-                                                        <h2>AED 899</h2>
-                                                    </div>
-                                                    <div className="service-price">
-                                                        <button className="booking-btn" onClick={() => setIsOpen(true)}>Book Service</button>
-                                                    </div>
-                                                        
-                                            </div>))} 
+                            {[...data]
+                                .sort((a, b) => a.id - b.id)
+                                .map((item) => (
+                                    <div key={item.id} className="items-container">
+                                    <div className="image-wrapper">
+                                        <div className="image-container">
+                                        <img src={item.image} alt="hardware-image" className="item-image" />
+                                        </div>
+                                    </div>
+                                    <div className="service-text">
+                                        {item.service_text}
+                                    </div>
+                                    <div className="intro-text">
+                                        {item.intro_text}
+                                    </div>
+                                    <div className="service-price">
+                                        <h2>AED 899</h2>
+                                    </div>
+                                    <div className="service-price">
+                                        <button className="booking-btn" onClick={() => {setDefaultService(item.service_text); setIsOpen(true);}}>
+                                        Book Service
+                                        </button>
+                                    </div>
+                                    </div>
+                                ))}
                 </div>
         </div>
             

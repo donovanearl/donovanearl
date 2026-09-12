@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment
+from .models import LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment,PartSelector
 
 # Register your models here.
 admin.site.register(LandingPage_Content)
@@ -73,3 +73,26 @@ class AppointmentAdmin(admin.ModelAdmin):
             obj.get_status_display(),
         )
     status_badge.short_description = 'Status'
+
+@admin.register(PartSelector)
+class PartSelectorAdmin(admin.ModelAdmin):
+    list_display = (
+        'type',
+        'name',
+        'socket',
+        'price',
+        'updated_at'
+    )
+    list_filter = ('type', 'socket','updated_at')
+    search_fields = ('name', 'socket')
+    ordering = ('type', 'name')
+    list_editable = ('price',)
+
+    fieldsets = (
+        ('Classification', {
+            'fields': ('type', 'socket'),
+        }),
+        ('Part', {
+            'fields': ('name', 'price'),
+        }),
+    )

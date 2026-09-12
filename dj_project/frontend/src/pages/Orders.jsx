@@ -33,40 +33,52 @@ export default function Orders(){
 
     const navigate=useNavigate()
 
-    const placeOrder= async (paymentIntentId)=>{
-        try{
-            //creates the order with the order id
-            const orderRes= await api.post("/api/orders/",{
-                total_price:total,
-                status:"pending",
-                stripe_payment_intent_id:paymentIntentId
-            })
-            const order=orderRes.data
-//2nd step
-            for(const item of cartItems){
-                await api.post("/api/orders/items/",{
-                    order:order.id,
-                    product:item.product.id,
-                    quantity:item.quantity,
-                    price_at_purchase:item.product.price
-                })
-            }
-
-            for (const item of cartItems){
-                await api.delete(`/api/cart/items/${item.id}/`)
-            }
-            console.log("Order placed!", order)
-            navigate("/order-history")
-            //navigate to order history later
+    // const placeOrder= async (paymentIntentId)=>{
+    //     try{
+    //         //creates the order with the order id
+    //         const orderRes= await api.post("/api/orders/",{
+    //             total_price:total,
+    //             status:"pending",
+    //             stripe_payment_intent_id:paymentIntentId
+    //         })
+    //         const order=orderRes.data
+    const placeOrder = async (paymentIntentId) => {
+    try {
+        for (const item of cartItems) {
+            await api.delete(`/api/cart/items/${item.id}/`)
         }
-        catch(error){
-            console.log("Error placing order",error)
-        }
-
+        navigate("/order-history")
+    } catch (error) {
+        console.log("Error placing order", error)
     }
+}
+//2nd step
+//             for(const item of cartItems){
+//                 await api.post("/api/orders/items/",{
+//                     order:order.id,
+//                     product:item.product.id,
+//                     quantity:item.quantity,
+//                     price_at_purchase:item.product.price
+//                 })
+//             }
+
+//             for (const item of cartItems){
+//                 await api.delete(`/api/cart/items/${item.id}/`)
+//             }
+//             console.log("Order placed!", order)
+//             navigate("/order-history")
+//             //navigate to order history later
+//         }
+//         catch(error){
+//             console.log("Error placing order",error)
+//         }
+
+//     }
 
     if(loading){return <div>Loading ...</div>}
     return (<div className="order-page-container">
+                        <div className="header-container">
+                         </div>
                         <h1>
                             Orders list
                         </h1>

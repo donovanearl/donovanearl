@@ -1,20 +1,27 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../styles/BookAppointmentModal.css"
+import { getBaseURL } from '../api';
 
 
-export default function BookAppointmentModal({ isOpen, onClose }) {
+export default function BookAppointmentModal({ isOpen, onClose, defaultService='' }) {
   const [form, setForm] = useState({
     name: '',
     phone: '',
     email: '',
-    service: '',
+    service: defaultService,
     preferred_time: '',
     notes: '',
   });
 
   const PREVIEW_SUCCESS = false;
   const [status, setStatus] = useState(PREVIEW_SUCCESS ? 'success' : 'idle');
+
+  useEffect(() => {
+    if (isOpen) {
+      setForm((prev) => ({ ...prev, service: defaultService }));
+    }
+  }, [isOpen, defaultService]);
 
   useEffect(() => {
     const handleEsc = (e) => {
@@ -38,7 +45,7 @@ export default function BookAppointmentModal({ isOpen, onClose }) {
       name: '',
       phone: '',
       email: '',
-      service: '',
+      service: defaultService,
       preferred_time: '',
       notes: '',
     });
@@ -50,7 +57,7 @@ export default function BookAppointmentModal({ isOpen, onClose }) {
     setStatus('loading');
 
     try {
-      await axios.post('http://localhost:8000/api/appointments/', form);
+      await axios.post(`${getBaseURL()}/api/appointments/`, form);
       setStatus('success');
     } catch (err) {
       console.error('Status:', err.response?.status);
@@ -134,12 +141,14 @@ export default function BookAppointmentModal({ isOpen, onClose }) {
           >
             <option value="">Select a service</option>
             <optgroup label="Hardware">
-              <option value="Laptop Repair">Laptop Repair</option>
-              <option value="Desktop Repair">Desktop Repair</option>
+              <option value="Laptop Repair / Upgrades">Laptop Repair / Upgrades</option>
+              <option value="Desktop Repair / Upgrades">Desktop Repair / Upgrades</option>
               <option value="PC Cleaning">PC cleaning</option>
+              <option value="Network Setup and Maintenance">Network Setup and Maintenance</option>
               <option value="Customized PC Build">Customized PC Build</option>
             </optgroup>
             <optgroup label="Software">
+              <option value="Custom Web Development">Custom Web Development</option>
               <option value="Software Installation">Software Installation</option>
               <option value="Virus Removal">Virus Removal</option>
               <option value="Data Recovery">Data Recovery</option>

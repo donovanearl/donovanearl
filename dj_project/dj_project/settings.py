@@ -36,13 +36,11 @@ SECRET_KEY=os.getenv('SECRET_KEY')
 DEBUG =os.getenv('DEBUG','False')=='True'
 
 
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','localhost').split(',')
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','localhost').split(',')
+
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.BasicAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
@@ -226,3 +224,4 @@ SITE_URL = "https://www.pinoy-tech.com"
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 stripe.api_key=os.getenv("STRIPE_SECRET_KEY")
+STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET')

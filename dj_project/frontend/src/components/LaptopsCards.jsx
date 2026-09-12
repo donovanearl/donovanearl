@@ -1,60 +1,92 @@
 import api from "../api";
 import axios from "axios";
-import React from "react"
-import { useState,useEffect } from "react";
-import "../styles/Laptops.css"
+import React, { useState, useEffect } from "react";
+import "../styles/Laptops.css";
 import { getBaseURL } from "../api";
 
-export default function LaptopCards(){
-    const [products,setProducts]= useState([])
-    const [loading,setLoading]= useState(true)
-    const [added,setAdded]=useState(false)
+export default function LaptopCards() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [addedIds, setAddedIds] = useState({});
+  const [pendingIds, setPendingIds] = useState({});
 
-    //Fetch Data
-    useEffect(()=>{
-        const fetchdata= async ()=>{
-            try{const res=await axios.get(`${getBaseURL()}/api/products/`);
-                setProducts(res.data);
-            }
-            catch(error){
-                console.log("Error Downloading",error);
-            }
-            finally{
-                setLoading(false);
-            }
-        }
-        fetchdata();
-},[])
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const res = await axios.get(`${getBaseURL()}/api/products/`);
+        setProducts(res.data);
+      } catch (error) {
+        console.log("Error Downloading", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchdata();
+  }, []);
 
-if(loading){
-    return <div>Loading... (first render takes 60 secs)</div>
-}
+  async function handle_onClick(productId, quantity) {
+    if (pendingIds[productId] || addedIds[productId]) return;
 
-   async function handle_onClick(productId,quantity){ 
-    try{
-        const res=await api.post("/api/cart/items/",
-        {product:productId,quantity:quantity}
-    );
-    setAdded(true)}
-    
-    catch(error){console.log("Error adding to cart",error)
+    setPendingIds((prev) => ({ ...prev, [productId]: true }));
+
+    try {
+      await api.post(`${getBaseURL()}/api/cart/items/`, {
+        product: productId,
+        quantity: quantity,
+      });
+
+      setAddedIds((prev) => ({ ...prev, [productId]: true }));
+
+      setTimeout(() => {
+        setAddedIds((prev) => {
+          const next = { ...prev };
+          delete next[productId];
+          return next;
+        });
+      }, 2000);
+    } catch (error) {
+      console.log("Error adding to cart", error);
+    } finally {
+      setPendingIds((prev) => {
+        const next = { ...prev };
+        delete next[productId];
+        return next;
+      });
     }
-    }
+  }
 
+  if (loading) {
+    return <div>Loading... (first render takes 60 secs)</div>;
+  }
 
-return (
+  return (
     <div className="laptops-container">
-        {products.map((product) => (
-        <div key={product.id} className="laptop-cards"> 
+      {products.map((product) => {
+        const isAdded = !!addedIds[product.id];
+        const isPending = !!pendingIds[product.id];
+
+        return (
+          <div key={product.id} className="laptop-cards">
             <div className="img-wrapper">
-                <img src={product.image} alt={product.name} className="laptop-image"/> 
-            </div>         
+              <img
+                src={product.image}
+                alt={product.name}
+                className="laptop-image"
+              />
+            </div>
             <h2 className="Product-name">{product.name}</h2>
             <p className="Product-details">{product.details}</p>
             <h2 className="price">AED {product.price}</h2>
-            <button onClick={()=>handle_onClick(product.id,1)} className="cart-btn">Add to cart</button>  
-        </div>
-      ))}
+            <button
+              onClick={() => handle_onClick(product.id, 1)}
+              className={`cart-btn ${isAdded ? "cart-btn-added" : ""}`}
+              disabled={isPending || isAdded}
+            >
+              {isPending ? "Adding..." : isAdded ? "Added ✓" : "Add to cart"}
+            </button>
+          </div>
+        );
+      })}
     </div>
-    )
+  );
 }

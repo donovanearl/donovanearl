@@ -5,6 +5,7 @@
     min-height: 780px;
     width: 90%;
     
+    
     /* background-color: #d3d6df; */
 }
 .pc-builder-plate{
@@ -13,21 +14,12 @@
     height: auto;
     width: 100%;
     
-    box-shadow: 0px 0px 2px black;
+    box-shadow: 0px 0px 3px grey;
     overflow: hidden;
     
     
 }
-.header-container{
-    padding-left: 40px;
-    height: auto;
-    min-height: 120px;
-    width: 100%;
-    padding: 0px;
-   
-    color: #fc6821;
-    background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-}
+
 .pc-builder-header{
     font-family: "Exo 2","arial";
     font-size: 36px;

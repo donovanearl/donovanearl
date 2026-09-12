@@ -3,11 +3,14 @@ import { useState,useEffect } from "react";
 import { getBaseURL } from "../api";
 import axios from "axios";
 import "../styles/HardwareSoftware.css"
+import BookAppointmentModal from "../components/BookAppointmentModal";
 
 
 export default function Software_page(){
     const [data,setData]=useState([])
     const [loading,setLoading]=useState(true)
+    const [isOpen, setIsOpen] = useState(false);
+    const [defaultService, setDefaultService] = useState("");
 
     useEffect(()=>{
         const fetchdata=async ()=>{
@@ -31,6 +34,11 @@ if(loading){
 
 return (
     <div className="services-container">
+         <BookAppointmentModal
+                        isOpen={isOpen}
+                        onClose={() => {setIsOpen(false);setDefaultService('')}}
+                        defaultService={defaultService}
+                    />
         <div className="services-sub-container">
             <div className="header-container">
             </div>
@@ -51,12 +59,9 @@ return (
                                 <h2>AED 899</h2>
                             </div>
                             <div className="service-price">
-                                <button className="booking-btn" onClick={""}>Book Service</button>
+                                <button className="booking-btn" onClick={() => {setIsOpen(true),setDefaultService(item.service_text)}}>Book Service</button>
                             </div>
-                               
-                            
-                                
-                            
+        
                         </div>
                         )
                     
