@@ -3,7 +3,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import { getBaseURL } from "../api";
 import "../styles/Contacts.css"
-import Contacts_Email_Us from "../components/Email_form";
+import Contacts_Email_Us from "../components/Email_Form";
 import EmailLogo from "../assets/EmailLogo.png"
 
 export default function Contacts_Email(){

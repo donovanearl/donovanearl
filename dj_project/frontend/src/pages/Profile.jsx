@@ -52,16 +52,16 @@ export default function Profile(){
                 </div>) :
                 <div>
                     <div className="name">
-                        <p>Name:{userdata.name}</p>
+                        <p>Name : {userdata.name}</p>
                     </div>
                     <div className="address">
-                        <p>Address:{userdata.address}</p>
+                        <p>Address : {userdata.address}</p>
                     </div>
                     <div className="email-profile">
-                        <p>Email:{userdata.email}</p>
+                        <p>Email : {userdata.email}</p>
                     </div>
                     <div className="phone-profile">
-                        <p>Phone:{userdata.phone}</p>
+                        <p>Phone : {userdata.phone}</p>
                     </div>
                         <button onClick={handleEdit}>Edit Profile</button>
                     
