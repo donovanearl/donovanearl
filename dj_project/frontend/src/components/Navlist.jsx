@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/NavList.css";
+import "../styles/Navlist.css";
 
 /**
  * Single source of truth for your nav. Each entry is either:
