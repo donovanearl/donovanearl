@@ -40,7 +40,11 @@ class CreateUserView(generics.CreateAPIView):
     def perform_create(self, serializer):
         user=serializer.save()
         Cart.objects.create(user=user)  #cart created after user registers
-        AppUser.objects.create(user=user) #auto create an empty profile
+        AppUser.objects.create(user=user ,
+                                name=self.request.data.get('userprofilename', ''),
+                                address=self.request.data.get('useraddress', ''),
+                                email=self.request.data.get('useremail', ''),
+                                phone=self.request.data.get('usermobile', '')) #auto create a profile
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class=MyTokenObtainPairSerializer

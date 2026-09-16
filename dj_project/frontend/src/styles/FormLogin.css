@@ -27,6 +27,12 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+p.field-error{
+  color: rgb(204, 14, 14);
+  margin: 0px;
+  font-size: 12px;
+
+}
 
 .formLogin-button {
   width: 90%;

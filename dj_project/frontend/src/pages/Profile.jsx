@@ -22,7 +22,7 @@ export default function Profile(){
         };
         fetchdata();
     },[]);
-
+    console.log("Data retrieved",userdata)
         const updateProfile= async ()=>{
             try{
                 const res=await api.put("/api/profile/",formData);
