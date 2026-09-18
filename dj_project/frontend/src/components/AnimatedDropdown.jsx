@@ -43,6 +43,9 @@ export default function AnimatedDropdown({ label, basePath }) {
         <DropdownMenu.Trigger className="nav-item" 
         onMouseEnter={() => setOpen(true)} 
         onMouseLeave={() => setOpen(false)}
+        onPointerDown={(e)=>{
+          if (label!=="Home"){e.preventDefault()}
+        }}
         onClick={home_click}
         >{label}
         </DropdownMenu.Trigger>

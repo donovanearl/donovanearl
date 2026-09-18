@@ -1,4 +1,4 @@
-import LogoFoot from "/src/assets/LogoFoot.jpg"
+import LogoFoot from "/src/assets/Logo1.png"
 import Email from "/src/assets/email.jpg"
 import Phone from "/src/assets/smartphone.jpg"
 import "../styles/Footer.css"
