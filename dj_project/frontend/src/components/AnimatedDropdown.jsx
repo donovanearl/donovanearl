@@ -57,6 +57,8 @@ export default function AnimatedDropdown({ label, basePath }) {
                 sideOffset={1} 
                 onMouseEnter={() => setOpen(true)} 
                 onMouseLeave={() => setOpen(false)}
+                onOpenAutoFocus={(e) => e.preventDefault()}
+                onCloseAutoFocus={(e) => e.preventDefault()}
                 >
                   {menuItems[label]?.map((item) => (
                         

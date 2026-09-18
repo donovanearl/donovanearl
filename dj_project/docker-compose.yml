@@ -21,14 +21,36 @@ services:
     volumes:
       - static_volume:/app/staticfiles
 
+  worker:
+    build: .
+    restart: always
+    command: python manage.py db_worker
+    env_file:
+      - .env.production
+    depends_on:
+      - db
+    volumes:
+      - static_volume:/app/staticfiles
+
   frontend:
     build: ./frontend
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - backend
+    volumes:
+      - certbot_www:/var/www/certbot
+      - certbot_conf:/etc/letsencrypt
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot_www:/var/www/certbot
+      - certbot_conf:/etc/letsencrypt
 
 volumes:
   postgres_data:
   static_volume:
+  certbot_www:
+  certbot_conf:
