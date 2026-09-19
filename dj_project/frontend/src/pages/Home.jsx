@@ -11,9 +11,9 @@ import BookAppointmentModal from "../components/BookAppointmentModal";
 function Home(){
     let head1="Computer & IT Support Made Easy"
     let head2="Fast. Reliable. By Appointment."
-    let par1="Slow laptop? PC won't turn on? Need upgrades or IT support?"
-    let par2="Book an appointment and meet us at a convenient location for a consultation, pickup, or drop-off."
-    let par3="Serving Fujairah since 2016, Pinoy-Tech provides dependable computer repair, upgrades, networking, and IT solutions." 
+    let par1="Slow laptop? PC won’t turn on? Need an upgrade, a website, or IT support for your business?"
+    let par2="Book an appointment for pickup, drop-off, or an on-site visit in Fujairah."
+    let par3="Pinoy-Tech has sold, repaired, upgraded, and supported thousands of PCs — and is trusted by local businesses — since 2016." 
     let btn_book="👉 Book an Appointment"
 
     
