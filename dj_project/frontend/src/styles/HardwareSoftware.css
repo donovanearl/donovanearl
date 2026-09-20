@@ -10,7 +10,8 @@
         flex-direction: column;
         min-height: 800px;
         width: 90%;
-        box-shadow: 0px 0px 3px grey;      
+        box-shadow: 0px 0px 3px grey;    
+        
 }
 .items-container{
     display: flex;

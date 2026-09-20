@@ -9,8 +9,56 @@ admin.site.register(CartItems)
 admin.site.register(Product)
 admin.site.register(Order)
 admin.site.register(OrderItems)
-admin.site.register(HardwarePage)
-admin.site.register(SoftwarePage)
+@admin.register(HardwarePage)
+class HardwarePageAdmin(admin.ModelAdmin):
+    # columns shown in the list table
+    list_display = ("order", "service_text"
+                    , "price", "short_intro", "image_preview")
+    # which column(s) are clickable to open the edit page
+    list_display_links = ("service_text",)
+    # edit these directly in the list, no need to open each item
+    list_editable = ("order", "price")
+ 
+    # search box
+    search_fields = ("service_text", "intro_text")
+    ordering = ("order", "id")
+    list_per_page = 25
+
+    @admin.display(description="Description")
+    def short_intro(self, obj):
+        text = obj.intro_text
+        return text[:60] + ("…" if len(text) > 60 else "")
+
+    @admin.display(description="Image")
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="height:40px;border-radius:4px;" />', obj.image.url)
+        return "—"
+
+@admin.register(SoftwarePage)
+class SoftwarePageAdmin(admin.ModelAdmin):
+    # columns shown in the list table
+    list_display = ("order", "service_text", "price", "short_intro", "image_preview")
+    # which column(s) are clickable to open the edit page
+    list_display_links = ("service_text",)
+    # edit these directly in the list, no need to open each item
+    list_editable = ("order", "price")
+ 
+    # search box
+    search_fields = ("service_text", "intro_text")
+    ordering = ("order", "id")
+    list_per_page = 25
+
+    @admin.display(description="Description")
+    def short_intro(self, obj):
+        text = obj.intro_text
+        return text[:60] + ("…" if len(text) > 60 else "")
+
+    @admin.display(description="Image")
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="height:40px;border-radius:4px;" />', obj.image.url)
+        return "—"
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):

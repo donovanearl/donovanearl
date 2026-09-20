@@ -119,18 +119,6 @@ class SoftwarePageView(generics.ListAPIView):
     permission_classes=[AllowAny]
     queryset=SoftwarePage.objects.all()
 
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def create_payment_intent(request):
-#     try:
-#         amount= request.data.get('amount')
-#         intent= stripe.PaymentIntent.create(
-#             amount=int(float(amount)*100), ## stripe uses cents
-#             currency='aed',
-#         )
-#         return Response({'client_secret':intent.client_secret})
-#     except Exception as e:
-#         return Response({'error':str(e)} , status=400)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_payment_intent(request):
@@ -170,6 +158,7 @@ def create_payment_intent(request):
         return Response({'client_secret': intent.client_secret, 'order_id': order.id})
     except Exception as e:
         return Response({'error': str(e)}, status=400)
+
 @csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])

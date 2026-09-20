@@ -82,6 +82,13 @@ class HardwarePage(models.Model):
     service_text=models.CharField(max_length=50)
     image=models.ImageField(blank=True)
     price=models.DecimalField(max_digits=7,decimal_places=2,default=Decimal("0.00"))
+    order = models.PositiveIntegerField(default=0, help_text="Lower numbers appear first")
+
+    class Meta:
+        ordering = ["order", "id"]   # "id" breaks ties so order is always stable
+
+    def __str__(self):
+        return self.service_text
 
 class SoftwarePage(models.Model):
 
@@ -89,6 +96,13 @@ class SoftwarePage(models.Model):
     service_text=models.CharField(max_length=50)
     image=models.ImageField(blank=True)
     price=models.DecimalField(max_digits=7,decimal_places=2,default=Decimal("0.00"))
+    order = models.PositiveIntegerField(default=0, help_text="Lower numbers appear first")
+
+    class Meta:
+            ordering = ["order", "id"]   # "id" breaks ties so order is always stable
+    
+    def __str__(self):
+        return self.service_text
 
 class ContactMessage(models.Model):
     class Channel(models.TextChoices):

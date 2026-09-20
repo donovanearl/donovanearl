@@ -1,12 +1,13 @@
 
 .footer-container{
-    
     display: flex; 
     flex-direction: column;  
     justify-content: center;
     width: 100%;
     height: auto;
     padding:8px 24px;
+    box-shadow: 0px 0px 2px grey;
+
 
     }
     .footer-left-column{
@@ -15,6 +16,7 @@
     align-items: center;
     justify-content: center;
     padding:10px 20px;
+    margin-right: 80px;
     width: 325px;
     
     p{

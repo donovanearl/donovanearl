@@ -47,7 +47,7 @@ return (
                 <div className="header-container">
                 </div>
                             {[...data]
-                                .sort((a, b) => a.id - b.id)
+                                
                                 .map((item) => (
                                     <div key={item.id} className="items-container">
                                     <div className="image-wrapper">
