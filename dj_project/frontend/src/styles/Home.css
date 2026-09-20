@@ -66,7 +66,7 @@
     .landing-page-contents-container{
     display: grid;
     grid-template-columns: 1fr; /* mobile */
-    background-color: whitesmoke;
+    
     gap: 10px;
     padding: 10px;
     width: 100%;

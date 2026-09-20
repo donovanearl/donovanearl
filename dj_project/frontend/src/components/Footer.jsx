@@ -18,14 +18,14 @@ export default function Footer(){
                     <div className="email-container">
                         <img src={Email} className="footer-email"/>
                         <p>
-                        info@Pinoy-Tech.ae
+                        PinoyTech.ae@gmail.com
                         </p>
 
                     </div>
                     <div className="phone-container">
                         <img src={Phone} className="footer-phone"/>
                         <p>
-                        0506791454
+                        050-115-8864
                         </p>
                     </div>
                 </div>

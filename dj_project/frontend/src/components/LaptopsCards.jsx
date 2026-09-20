@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../styles/HardwareSoftware.css";
 import { getBaseURL } from "../api";
+import MarketingBanner from "./MarketingBanner"
 
 export default function LaptopCards() {
   const [products, setProducts] = useState([]);
@@ -61,7 +62,9 @@ export default function LaptopCards() {
 
   return (
     <div className="services-container">
-      <div className="laptops-sub-container">
+
+      <div className="services-sub-container">
+        <MarketingBanner/>
         
         {[...products]
           .sort((a, b) => a.id - b.id)
@@ -83,7 +86,7 @@ export default function LaptopCards() {
                 <div className="service-text">{product.name}</div>
                 <div className="intro-text">{product.details}</div>
                 <div className="service-price">
-                  <h2>AED {product.price}</h2>
+                  AED {product.price}
                 </div>
                 <div className="service-price">
                   <button

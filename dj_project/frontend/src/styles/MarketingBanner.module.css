@@ -10,8 +10,30 @@
 
 .text{
   color: white;
-  font-size: 2.5rem;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
   padding: 0 2rem;
+}
+
+@media(min-width:768px){
+.container{
+  width:100%;
+  height: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.text{
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+
 }

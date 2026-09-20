@@ -1,12 +1,9 @@
 import React from "react"
 import LaptopCards from "../components/LaptopsCards"
-import MarketingBanner from "../components/MarketingBanner"
+
 
 export default function Laptops(){
-    return (<div className="laptops-page-container">
-                <div className="marketing-banner-container">
-                    <MarketingBanner/>
-                </div>
+    return (<div >
                 <LaptopCards/>
             </div>
         
