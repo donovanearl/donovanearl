@@ -42,18 +42,19 @@ function Home(){
                 </div>
                 <div className="cta-cards">
                     <button onClick={() => {setIsOpen(true);}} className="contact-button">{btn_book}</button>
-                    <div className="home-par1-text">
-                        {par1}
-                    </div>
-                     <div className="home-par2-text">     
-                        {par2}<br/>
-                    
-                    </div>
-                    <div className="home-par3-text">
-                        {par3}<br/>
+                    <div className="second-header-container">
+                        <div className="home-par1-text">
+                            {par1}
+                        </div>
+                        <div className="home-par2-text">     
+                            {par2}<br/>
                         
+                        </div>
+                        <div className="home-par3-text">
+                            {par3}<br/>
+                            
+                        </div>
                     </div>
-                    
                     <LandingPageContents/>
                 </div>
                 

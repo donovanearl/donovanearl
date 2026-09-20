@@ -1,7 +1,7 @@
 import api from "../api";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "../styles/Laptops.css";
+import "../styles/HardwareSoftware.css";
 import { getBaseURL } from "../api";
 
 export default function LaptopCards() {
@@ -56,37 +56,48 @@ export default function LaptopCards() {
   }
 
   if (loading) {
-    return <div>Loading... (first render takes 60 secs)</div>;
+    return <div>loading... (first render takes 60 secs)</div>;
   }
 
   return (
-    <div className="laptops-container">
-      {products.map((product) => {
-        const isAdded = !!addedIds[product.id];
-        const isPending = !!pendingIds[product.id];
+    <div className="services-container">
+      <div className="laptops-sub-container">
+        
+        {[...products]
+          .sort((a, b) => a.id - b.id)
+          .map((product) => {
+            const isAdded = !!addedIds[product.id];
+            const isPending = !!pendingIds[product.id];
 
-        return (
-          <div key={product.id} className="laptop-cards">
-            <div className="img-wrapper">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="laptop-image"
-              />
-            </div>
-            <h2 className="Product-name">{product.name}</h2>
-            <p className="Product-details">{product.details}</p>
-            <h2 className="price">AED {product.price}</h2>
-            <button
-              onClick={() => handle_onClick(product.id, 1)}
-              className={`cart-btn ${isAdded ? "cart-btn-added" : ""}`}
-              disabled={isPending || isAdded}
-            >
-              {isPending ? "Adding..." : isAdded ? "Added ✓" : "Add to cart"}
-            </button>
-          </div>
-        );
-      })}
+            return (
+              <div key={product.id} className="items-container">
+                <div className="image-wrapper">
+                  <div className="image-container">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="item-image"
+                    />
+                  </div>
+                </div>
+                <div className="service-text">{product.name}</div>
+                <div className="intro-text">{product.details}</div>
+                <div className="service-price">
+                  <h2>AED {product.price}</h2>
+                </div>
+                <div className="service-price">
+                  <button
+                    onClick={() => handle_onClick(product.id, 1)}
+                    className={`booking-btn ${isAdded ? "cart-btn-added" : ""}`}
+                    disabled={isPending || isAdded}
+                  >
+                    {isPending ? "Adding..." : isAdded ? "Added ✓" : "Add to cart"}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }
