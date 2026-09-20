@@ -141,17 +141,21 @@ export default function BookAppointmentModal({ isOpen, onClose, defaultService='
           >
             <option value="">Select a service</option>
             <optgroup label="Hardware">
-              <option value="Laptop Repair / Upgrades">Laptop Repair / Upgrades</option>
               <option value="Desktop Repair / Upgrades">Desktop Repair / Upgrades</option>
-              <option value="PC Cleaning">PC cleaning</option>
+              <option value="Laptop Repair / Upgrades">Laptop Repair / Upgrades</option>
               <option value="Network Setup and Maintenance">Network Setup and Maintenance</option>
-              <option value="Customized PC Build">Customized PC Build</option>
+              <option value="PC Overhaul — Cleaning & Thermal Re-paste">PC Overhaul — Cleaning & Thermal Re-paste</option>
+              
             </optgroup>
             <optgroup label="Software">
-              <option value="Custom Web Development">Custom Web Development</option>
-              <option value="Software Installation">Software Installation</option>
-              <option value="Virus Removal">Virus Removal</option>
+              <option value="Launchpad Website">Launchpad Website</option>
+              <option value="Showcase Website">Showcase Website</option>
+              <option value="Storefront Web App">Storefront Web App</option>
+              <option value="Business Email Setup">Business Email Setup</option>
+              <option value="Remote IT Support">Remote IT Support</option>
+              <option value="Virus & Malware Removal">Virus & Malware Removal</option>
               <option value="Data Recovery">Data Recovery</option>
+              <option value="PC Software repair">PC Software repair</option>
             </optgroup>
           </select>
 

@@ -56,7 +56,7 @@ return (
                                 {item.intro_text}
                             </div>
                             <div className="service-price">
-                                AED 899.00
+                                {item.price}
                             </div>
                             <div className="service-price">
                                 <button className="booking-btn" onClick={() => {setIsOpen(true),setDefaultService(item.service_text)}}>Book Service</button>

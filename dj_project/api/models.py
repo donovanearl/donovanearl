@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator , MinLengthValidator
+from decimal import Decimal
 
 # Create your models here.
 class AppUser(models.Model):
@@ -80,12 +81,14 @@ class HardwarePage(models.Model):
     intro_text= models.TextField(max_length=400)
     service_text=models.CharField(max_length=50)
     image=models.ImageField(blank=True)
+    price=models.DecimalField(max_digits=5,decimal_places=2,default=Decimal("0.00"))
 
 class SoftwarePage(models.Model):
 
     intro_text= models.TextField(max_length=400)
     service_text=models.CharField(max_length=50)
     image=models.ImageField(blank=True)
+    price=models.DecimalField(max_digits=5,decimal_places=2,default=Decimal("0.00"))
 
 class ContactMessage(models.Model):
     class Channel(models.TextChoices):
