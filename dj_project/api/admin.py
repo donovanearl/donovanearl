@@ -1,6 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
-from .models import LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment,PartSelector
+from .models import LandingPage_Content,Cart,CartItems,Product,Order,OrderItems,HardwarePage,SoftwarePage,ContactMessage,Appointment,PartSelector,AppUser
 
 # Register your models here.
 admin.site.register(LandingPage_Content)
@@ -169,3 +171,25 @@ class PartSelectorAdmin(admin.ModelAdmin):
             'fields': ('name', 'price'),
         }),
     )
+
+
+class AppUserInline(admin.StackedInline):
+    model = AppUser
+    can_delete = False
+    verbose_name_plural = "Profile"
+
+
+class CustomUserAdmin(UserAdmin):
+    inlines = (AppUserInline,)
+    list_display = ("username", "email", "is_staff", "date_joined")
+
+
+# Unregister the default User admin, register our customized one
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
+
+
+@admin.register(AppUser)
+class AppUserAdmin(admin.ModelAdmin):
+    list_display = ("user", "name", "email", "phone", "created_at")
+    search_fields = ("name", "email", "phone", "user__username")
