@@ -67,7 +67,7 @@ export default function LaptopCards() {
         <MarketingBanner/>
         
         {[...products]
-          .sort((a, b) => a.id - b.id)
+          
           .map((product) => {
             const isAdded = !!addedIds[product.id];
             const isPending = !!pendingIds[product.id];

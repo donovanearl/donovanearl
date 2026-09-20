@@ -41,7 +41,11 @@ class Product(models.Model):
     stock=models.IntegerField()
     image = models.ImageField(blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
-
+    order = models.PositiveIntegerField(default=0, help_text="Lower numbers appear first")
+    
+    class Meta:
+        ordering = ["order", "id"]   # "id" breaks ties so order is always stable
+        
     def __str__(self):
         return f"Product:{self.name} ID:{self.pk}"
 
