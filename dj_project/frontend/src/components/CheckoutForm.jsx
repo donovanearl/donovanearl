@@ -7,10 +7,12 @@ export default function CheckoutForm({total,onSuccess}){
     const stripe=useStripe()
     const elements=useElements()
     const [loading,setLoading]=useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
     const handleSubmit= async(e)=>{
         e.preventDefault()
         setLoading(true)
+        setErrorMessage("")
 
         try{
             //get client secret from Django
@@ -25,13 +27,13 @@ export default function CheckoutForm({total,onSuccess}){
                 }
             })
             if(result.error){
-                console.log("Payment Error",result.error.message)
+                setErrorMessage(result.error.message)
             }else{
-                console.log("Payment success!")
                 onSuccess(result.paymentIntent.id)  // pass payment intent ID back
             }
         }catch(error){
-            console.log("Error:",error)
+            const backendMessage = error.response?.data?.error;
+            setErrorMessage(backendMessage || "Something went wrong. Please try again.")
         }finally{
             setLoading(false)
         }
@@ -41,13 +43,13 @@ export default function CheckoutForm({total,onSuccess}){
         <form onSubmit={handleSubmit}>
             <div className="card-element-wrapper">
                 <CardElement/>
-                </div>
-                            <button type="submit" disabled={loading}>
-                                {loading?"Processing...":"Pay NOW"}
-                            </button>
-                
-           
-          
+            </div>
+
+            {errorMessage && <p className="payment-error">{errorMessage}</p>}
+
+            <button type="submit" disabled={loading}>
+                {loading?"Processing...":"Pay NOW"}
+            </button>
         </form>
     )
 

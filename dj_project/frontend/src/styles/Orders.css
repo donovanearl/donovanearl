@@ -107,6 +107,11 @@
 .checkout-form button:hover {
   background: linear-gradient(135deg, #e06010, #f0a030);
 }
+.payment-error {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
 
 @media(min-width:768px){
   .checkout-form {
