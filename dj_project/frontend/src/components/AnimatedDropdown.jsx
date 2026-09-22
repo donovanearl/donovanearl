@@ -1,4 +1,3 @@
-// src/components/AnimatedDropdown.jsx
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import React, { useState } from "react";
 import "../styles/AnimatedDropdown.css";
@@ -41,10 +40,10 @@ export default function AnimatedDropdown({ label, basePath }) {
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       
         <DropdownMenu.Trigger className="nav-item" 
-        onMouseEnter={() => setOpen(true)} 
-        onMouseLeave={() => setOpen(false)}
+        onPointerEnter={(e) => { if (e.pointerType === "mouse") setOpen(true); }} 
+        onPointerLeave={(e) => { if (e.pointerType === "mouse") setOpen(false); }}
         onPointerDown={(e)=>{
-          if (label!=="Home"){e.preventDefault()}
+          if (e.pointerType === "mouse" && label!=="Home"){e.preventDefault()}
         }}
         onClick={home_click}
         >{label}
@@ -55,18 +54,12 @@ export default function AnimatedDropdown({ label, basePath }) {
 
               <DropdownMenu.Content className="dropdown-content" 
                 sideOffset={1} 
-                onMouseEnter={() => setOpen(true)} 
-                onMouseLeave={() => setOpen(false)}
+                onPointerEnter={(e) => { if (e.pointerType === "mouse") setOpen(true); }} 
+                onPointerLeave={(e) => { if (e.pointerType === "mouse") setOpen(false); }}
                 onOpenAutoFocus={(e) => e.preventDefault()}
                 onCloseAutoFocus={(e) => e.preventDefault()}
                 >
                   {menuItems[label]?.map((item) => (
-                        
-                        // <DropdownMenu.Item key={item} onSelect={() => setOpen(false)} className="dropdown-item">
-                        // <Link to={getItemPath(item)} className="dropdown-link">
-                        //   {item}
-                        // </Link>
-                        // </DropdownMenu.Item>
                         <DropdownMenu.Item asChild key={item} className="dropdown-item">
                             <Link
                               to={getItemPath(item)}
