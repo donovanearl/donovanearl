@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Outlet } from "react-router-dom"
 import Logo1 from "/src/assets/Logo1.png"
 import Cart from "/src/assets/Shopcart.svg"
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
 import { jwtDecode } from "jwt-decode"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
+import api from "../api"
 
 
 
@@ -31,6 +32,29 @@ const MainLayout=()=>{
 
     const isExpired= decoded ? decoded.exp*1000<=Date.now():true
     const user= isExpired ? null: decoded
+
+    const [cartCount, setCartCount] = useState(0)
+
+    useEffect(() => {
+        if (!user) {
+            setCartCount(0)
+            return
+        }
+
+        const fetchCartCount = async () => {
+            try {
+                const res = await api.get('/api/cart/items/')
+                const total = res.data.reduce((sum, item) => sum + item.quantity, 0)
+                setCartCount(total)
+            } catch (error) {
+                console.log("Error fetching cart count", error)
+            }
+        }
+
+        fetchCartCount()
+        window.addEventListener("cart-updated", fetchCartCount)
+        return () => window.removeEventListener("cart-updated", fetchCartCount)
+    }, [user])
 
     
     const logout = ()=> {
@@ -63,7 +87,10 @@ const MainLayout=()=>{
                         <div className="Nav-plus">
                             <div className="customer">
                                     <button onClick={cart_click} className="Shopcartbutton">
-                                    <img src={Cart} alt="Shopcart" className="Shopcartimg"/>
+                                        <div className="cart-icon-wrapper">
+                                            <img src={Cart} alt="Shopcart" className="Shopcartimg"/>
+                                            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+                                        </div>
                                     </button>
                                     <div className="Nav-sign">
                                         <div className="Nav-sign-in">

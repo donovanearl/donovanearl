@@ -34,6 +34,7 @@ export default function Cart(){
     try {
         await api.delete(`/api/cart/items/${itemId}/`)
         setCartItems(cartItems.filter(item => item.id !== itemId))  // remove from state
+        window.dispatchEvent(new Event("cart-updated"));
     } catch(error) {
         console.log("Error deleting item", error)
     }

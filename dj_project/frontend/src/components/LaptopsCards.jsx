@@ -37,6 +37,7 @@ export default function LaptopCards() {
       });
 
       setAddedIds((prev) => ({ ...prev, [productId]: true }));
+      window.dispatchEvent(new Event("cart-updated"));
 
       setTimeout(() => {
         setAddedIds((prev) => {
