@@ -3,13 +3,13 @@ import { Outlet } from "react-router-dom"
 import Logo1 from "/src/assets/Logo1.png"
 import Cart from "/src/assets/Shopcart.svg"
 import NavBar from "../components/Navbar.jsx"
-import NavList from "../components/Navlist.jsx"
 import {Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
 import { jwtDecode } from "jwt-decode"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
 import api from "../api"
+import bg from "/src/assets/BackgroundPC.jpg"
 
 
 
@@ -79,7 +79,8 @@ const MainLayout=()=>{
     // console.log("Time-now: ",timeNow)
   
     
-    return (<div className="App"> 
+    return (<div className="App">
+            <div className="page-bg">
                 <div className="Main-Container">
                     <header className="page-Header">
                         <img src={Logo1} className="Logo1"/>
@@ -114,8 +115,8 @@ const MainLayout=()=>{
                     </div>
                     <Footer/>
                 </div>
+                </div>
             </div>
-         
     )
     }
 

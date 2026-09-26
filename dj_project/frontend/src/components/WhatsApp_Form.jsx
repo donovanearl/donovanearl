@@ -142,7 +142,7 @@ export default function Contacts_Whatsapp_Us() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition disabled:opacity-60"
+        className="whatsapp-btn"
       >
         {status === 'loading' ? 'Saving...' : 'Continue on WhatsApp'}
       </button>
