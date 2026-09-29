@@ -13,8 +13,13 @@
     height: auto;
     width: 100%;
     
-    box-shadow: 0px 0px 3px grey;
+    box-shadow: 0px 0px 2px grey;
     overflow: hidden;
+      background: rgba(255, 255, 255, 0..05);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
     
     
 }
@@ -29,72 +34,104 @@
     color:  #F4F7F8;
 }
 
+.custom-desktop-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
 
 .part-selector-container{
  
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: .5fr 1fr .5fr;
     min-height: 40px;
     height: auto;
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 2px;
     
     
 }
 .part-label{
-    font-size: 18px;
+    
+    font-size: 16px;
     justify-self: center;
     align-self: center;
-    font-weight: bold;
+    font-weight: 500;
     height: auto;
     margin: 0px 10px;
     width: 100px;
-    
 }
 .part-selector{
+    font-family: "exo 2","arial";
     font-size: 16px;
+    font-weight: 500;
     height: 60px;
     width: auto;
     min-width: 150px;
     background-color: rgb(255, 255, 255);
+    border-radius: 5px;
 }
 .part-selector{
-
+  
     height: 40px;
-    width: auto;
-    min-width: 150px;
-    background-color: rgb(255, 255, 255);
+    width: 100%;
+    background-color:rgb(255, 165, 0,.2);
 }
 .part-price{
     font-size: 18px;
+    margin-left: 20px;
     font-family: "Exo 2",Arial, Helvetica, sans-serif;
-    justify-self: center;
+    
 }
 .totals{
-    padding: 40px;
-    font-size: 24px;
-    justify-self: flex-end;
+    display: flex;
+    justify-content: center;
+  
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
     font-family: "Exo 2",Arial, Helvetica, sans-serif
     ;
 }.pcbuilder-component{
     margin-top: 40px;
 }
-.pc-builder-booking-btn {
-    font-family: "exo 2","arial";
-    font-size: 16px;
-    border-style: 1px solid;
-    border-radius: 5px;
-    background-color: #f3c776;
-    align-self: center;
-    width: 50%;
-    max-width: 400px;
-    height: 32px;
+
+@media(min-width:768px){
+    .part-label{
+    display: flex;
+    margin-left:40px;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: 500;
+    height: auto;
+    width: 40%;
+    }
+    .totals{
+    display: flex;
+    justify-content: center;
+  
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Exo 2",Arial, Helvetica, sans-serif
+    ;
+ 
 }
-.pc-builder-booking-btn:hover{
-    cursor: pointer;
-}
-.pc-builder-booking-btn:active{
-    background-color:#f4b746 ;
-    transform: translateY(1px);
-}
+@media(min-width:1024px){
+    .part-label{
+    display: flex;
+    margin-left:40px;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: 500;
+    height: auto;
+    width: 40%;
+    }
+    .part-price{
+        margin-left: 20px;
+    }
+}   
+

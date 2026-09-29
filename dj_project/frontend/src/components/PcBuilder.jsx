@@ -131,7 +131,7 @@ export default function PcBuilder(){
             <PartSelector value={selectedpart.selectedstorage2?.id||""} options={storage} onChange={handlechange_Other("selectedstorage2",storage)} label="storage2"/>
             <PartSelector value={selectedpart.selectedPSU?.id||""} options={PSU} onChange={handlechange_Other("selectedPSU",PSU)} label="PSU"/> 
             <PartSelector value={selectedpart.selectedChassis?.id||""} options={chassis} onChange={handlechange_Other("selectedChassis",chassis)} label="Chasis"/> 
-            <div className="totals">Total:  {Total} AED </div>
+            <div className="totals">Estimated Total:  {Total}  AED </div>
     </div>
  )
 }

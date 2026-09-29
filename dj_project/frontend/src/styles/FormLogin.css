@@ -10,7 +10,8 @@
 
 
 .login-method-label{
-  padding: 0px 50px;
+  align-self: center;
+  padding-right: 24px;
   font-family: "Exo 2",arial;
   font-size: 24px;
   font-weight: 600;
@@ -34,17 +35,62 @@ p.field-error{
 
 }
 
+
 .formLogin-button {
-  width: 90%;
-  height: 40px;
-  background-color: rgb(242, 146, 2);
-  color: white;
+box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 110px;
+  max-width: 229px;
+  margin: 10px 0px;     /* extra bottom space for the 3D edge */
+  padding: clamp(6px, 0.8vw, 10px) clamp(10px, 1.2vw, 18px);
+
+  background: linear-gradient(135deg, rgb(249, 115, 22, .8), rgb(255, 179, 71, .7));
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+
+  font-family: 'Exo 2', Arial, sans-serif;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  color: #1a0500;
+
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  
+  
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  /* solid edge (the "thickness") + soft ground shadow + top highlight */
+  box-shadow:
+    0 1px 0 #f2700d,
+    0 3px 12px rgba(20, 20, 22, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
 }
 
 .formLogin-button:hover {
-  background-color: #efce62;
+  
+  filter: brightness(1.06);
+  box-shadow:
+    0 1px 0 #b45309,
+    0 3px 14px rgba(20, 20, 22, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.formLogin-button:active {
+  transform: translateY(2px);   /* moves down by the edge height */
+  filter: brightness(0.97);
+  box-shadow:
+    0 1 0 #b45309,              /* edge fully collapsed */
+    0 2px 4px rgba(20, 20, 22, 0.3),
+    inset 0 2px 5px rgba(120, 45, 0, 0.35);   /* pressed-in shading */
+}
+
+.formLogin-button:focus-visible {
+  outline: 2px solid #1a0500;
+  outline-offset: 4px;
 }

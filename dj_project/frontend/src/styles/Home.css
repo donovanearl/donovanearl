@@ -12,6 +12,14 @@
 .contents-sub-container{ 
         min-height: 800px;
         width: 90%;
+        box-shadow: 0px 0px 2px grey;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0..05);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        
         
           
 }
@@ -26,7 +34,7 @@
     color: #fc6821;
     background-image: linear-gradient(
          135deg,
-        rgba(15, 32, 39),
+        rgba(15, 32, 39,.8),
         rgba(32, 58, 67),
         rgba(44, 83, 100,.7)
         ); 
@@ -36,19 +44,22 @@
     margin-left: 20px;
 }
 .home-header{
-    font-family: "Exo 2","arial";
-    font-size: 36px;
-    font-weight:600;
+    font-family: "Exo 2", Arial, sans-serif;
+    font-size: clamp(1.5em, 1rem + 1.2vw, 1.75rem);  /* 20px → 28px */
+    font-weight: bold;
     justify-self: center;
-    padding: 2px 40px;
-    padding-top: 20px;
-    color:  #F4F7F8;
+    text-align: center;
+    padding: 0 clamp(1rem, 4vw, 2rem);                 /* 16px → 32px */
+    padding-top: clamp(20px, 2vw, 20px);
+    color: #F4F7F8;
+    
 }
 .home-header2{
     font-family: "Exo 2","arial";
-    font-size: 24px;
+    font-size: 20px;
     font-style: italic;
     padding-left:30px;
+    margin-top: 10px;
     
     justify-self: center;
     color:  #E66A32;
@@ -84,7 +95,7 @@
     }
     .cta-cards{
         
-        box-shadow: 0px 0px 1.5px grey;
+       
         border-radius: 0px;
     }
 
@@ -100,7 +111,7 @@
         gap: 10px;
         border-radius: 8px;
         box-shadow: 0px 0px 5px rgb(148, 148, 148);
-
+        background-color: rgb(255, 255, 255,.9);
         transition: box-shadow 0.2s ease, transform 0.2s ease;
      
     }
@@ -108,15 +119,21 @@
         transform: translateY(-2px);
     }
     .content-image-container{
-        width: 100%;
-        height: 32vh;
+        width: 100%;               /* fluid: fills the card */
+        aspect-ratio: 376 / 300;   /* keeps your original proportions at any width */
+        flex-shrink: 0;
         overflow: hidden;
+        border-radius: 3%;
+      
     }
     .content-image{
-        padding: 10px;
+        display: block;
+        padding: 6px;
         width: 100%;
-        height: auto;
-        border-radius: 3%;  
+        height:100%;
+        box-sizing: border-box;    /* so the padding doesn't add to the 100% */
+        border-radius: 3%;
+        object-fit: cover;
     }
     .content-Header{   
         font-size: 1.2em;
@@ -129,26 +146,55 @@
         margin: 0px;
         flex-grow: 1;
     }           
-    .contact-button{
-        background-color: rgb(253, 206, 120,.5);
-        color: black;
+    .contact-button {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;    
+        padding: clamp(6px, 0.8vw, 10px) clamp(10px, 1.2vw, 18px);
+        margin-top: 2px;
+        background: linear-gradient(135deg, rgb(249, 115, 22, .8), rgb(255, 179, 71, .7));
         border: none;
-        height: auto;
-        width: 100%;
-        align-self:center;
-        padding: 8px 16px;
         border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-        font-size: 16px;
-        font-family: "Exo 2","arial";
+        font-family: 'Exo 2', Arial, sans-serif;
+        font-size: clamp(13px, 1.1vw, 15px);
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+        color: #1a0500;
 
-    }
-    .contact-button:hover {
-    background-color:rgb(255, 165, 0,.65);
-    color: black;
-    font-weight: 500;
-    }
+        cursor: pointer;
+        align-self: center;
+        justify-self: center;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+
+        /* solid edge (the "thickness") + soft ground shadow + top highlight */
+        box-shadow:
+            0 1px 0 #f2700d,
+            0 2px 8px rgba(20, 20, 22, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+        transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
+}
+
+.contact-button:hover {
+  
+  filter: brightness(1.06);
+  box-shadow:
+    0 1px 0 #b45309,
+    0 3px 14px rgba(20, 20, 22, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.contact-button:active {
+  transform: translateY(1px);   /* moves down by the edge height */
+  filter: brightness(0.97);
+  box-shadow:
+    0 1 0 #b45309,              /* edge fully collapsed */
+    0 2px 4px rgba(20, 20, 22, 0.3),
+    inset 0 2px 5px rgba(120, 45, 0, 0.35);   /* pressed-in shading */
+}
 h1{
     font-family: "Exo 2","arial";
     }
@@ -167,20 +213,7 @@ p1{
         width:100%;
         margin-bottom: 2px;
     }
-    .content-image-container{
-        width: 100%;
-        height: 36vh;
-        
-    }
-     
- 
-    .content-image{
-        padding: 10px;
-        width: 100%;
-        height:100%;
-        border-radius: 3%;
-         
-    }
+      
 
 }
 @media(min-width:1024px){
@@ -191,22 +224,10 @@ p1{
         width:100%;
         margin-bottom: 2px;
     }
-    .content-image-container{
-        width: 100%;
-        height: 36vh;
         
-    }
-     
-   
-    .content-image{
-        padding: 10px;
-        width: 100%;
-        height:100%;
-        border-radius: 3%;
-         
-    }
-
 }
+
+
 @media(min-width:1284px){
     .landing-page-contents-container{
         display: grid;
@@ -215,21 +236,7 @@ p1{
         width:100%;
         margin-bottom: 2px;
     }
-    .content-image-container{
-        width: 100%;
-        height: 36vh;
-        
-    }
-     
- 
-    .content-image{
-        padding: 10px;
-        width: 100%;
-        height:100%;
-        border-radius: 3%;
-         
-    }
-
+   
 }
 
 

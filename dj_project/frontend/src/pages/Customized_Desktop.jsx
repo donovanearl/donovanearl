@@ -23,7 +23,7 @@ export default function Customized_Desktop(){
                             <PcBuilder/>
                         </div>
                             
-                        <button className="pc-builder-booking-btn" onClick={()=>setIsOpen(true)}>Book a Consultation</button>
+                        <button className="booking-btn" onClick={()=>setIsOpen(true)}>Book a Consultation</button>
                 </div>
         </div>)
 }

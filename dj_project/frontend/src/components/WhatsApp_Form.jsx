@@ -142,7 +142,7 @@ export default function Contacts_Whatsapp_Us() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="whatsapp-btn"
+        className="email-submit-btn"
       >
         {status === 'loading' ? 'Saving...' : 'Continue on WhatsApp'}
       </button>

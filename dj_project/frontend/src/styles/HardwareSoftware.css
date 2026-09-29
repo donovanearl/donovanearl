@@ -7,11 +7,19 @@
 }
 
 .services-sub-container{
-        display: flex;
-        flex-direction: column;
-        min-height: 800px;
-        width: 90%;
-        box-shadow: 0px 0px 1px grey;    
+    display: flex;
+    flex-direction: column;
+    min-height: 800px;
+    width: 90%;
+    box-shadow: 0px 0px 1px grey;   
+        
+            
+    overflow: hidden;
+      background: rgba(255, 255, 255, 0..05);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
         
 }
 .items-container{
@@ -20,7 +28,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
     box-shadow: 0px 0px 1.5px grey; 
    
     
@@ -41,6 +48,7 @@
     padding: 20px;
     width: 100%;
     height: 100%;
+    
 }
 .intro-text{
     padding: 10px;
@@ -58,22 +66,62 @@
     font-weight: 600;
 }
 .booking-btn {
-    font-family: "exo 2","arial";
-    font-size: 16px;
-    border-style: 1px solid;
-    border-radius: 5px;
-    background-color: #f3c776;
-    min-width: 140px;
-    width: 85%;
-    height: 32px;
-    margin: 3px 0px;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 110px;
+  max-width: 180px;
+  margin: 10px auto 14px;      /* extra bottom space for the 3D edge */
+  padding: clamp(6px, 0.8vw, 10px) clamp(10px, 1.2vw, 18px);
+
+  background: linear-gradient(135deg, rgb(249, 115, 22, .8), rgb(255, 179, 71, .7));
+  border: none;
+  border-radius: 5px;
+
+  font-family: 'Exo 2', Arial, sans-serif;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  color: #1a0500;
+
+  cursor: pointer;
+  align-self: center;
+  justify-self: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  /* solid edge (the "thickness") + soft ground shadow + top highlight */
+  box-shadow:
+    0 1px 0 #f2700d,
+    0 3px 12px rgba(20, 20, 22, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
 }
-.booking-btn:hover{
-    cursor: pointer;
+
+.booking-btn:hover {
+  
+  filter: brightness(1.06);
+  box-shadow:
+    0 1px 0 #b45309,
+    0 3px 14px rgba(20, 20, 22, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-.booking-btn:active{
-    background-color:#f4b746 ;
-    transform: translateY(1px);
+
+.booking-btn:active {
+  transform: translateY(2px);   /* moves down by the edge height */
+  filter: brightness(0.97);
+  box-shadow:
+    0 1 0 #b45309,              /* edge fully collapsed */
+    0 2px 4px rgba(20, 20, 22, 0.3),
+    inset 0 2px 5px rgba(120, 45, 0, 0.35);   /* pressed-in shading */
+}
+
+.booking-btn:focus-visible {
+  outline: 2px solid #1a0500;
+  outline-offset: 4px;
 }
 
 @media (min-width:768px){
@@ -91,11 +139,7 @@
         width: 90%;
      
 }
-/* .image-wrapper{
-    display: flex;
-    flex-direction: row;
-    
-} */
+
 .items-container{
     display: flex;
    flex-direction: column;
@@ -141,26 +185,7 @@
 .service-price{
     font-size: 16px;
     font-weight: 600;
-}
-.booking-btn {
-    font-family: "exo 2","arial";
-    font-size: 16px;
-    border-style: 1px solid;
-    border-radius: 5px;
-    background-color: #f3c776;
-    min-width: 140px;
-    width: 85%;
-    height: 32px;
-    margin: 3px 3px;
-}
-.booking-btn:hover{
-    cursor: pointer;
-}
-.booking-btn:active{
-    background-color:#f4b746 ;
-    transform: translateY(1px);
-}
-
+    }
 }
 
 @media (min-width:1024px){
@@ -196,7 +221,7 @@
     width: 100%;
     max-width: 360px;
     max-height: 260px;
-    background-color: rgb(255, 255, 255,.3);
+    background-color: rgb(255, 255, 255,.9);
     box-shadow: 0px 0px 4px grey;
    
 
@@ -221,23 +246,6 @@
 .service-price{
     font-size: 16px;
     font-weight: 600;
-}
-.booking-btn {
-    font-family: "exo 2","arial";
-    font-size: 16px;
-    border-style: 1px solid;
-    border-radius: 5px;
-    background-color: #f3c776;
-    min-width: 140px;
-    width: 85%;
-    height: 32px;
-}
-.booking-btn:hover{
-    cursor: pointer;
-}
-.booking-btn:active{
-    background-color:#f4b746 ;
-    transform: translateY(1px);
 }
 
 }

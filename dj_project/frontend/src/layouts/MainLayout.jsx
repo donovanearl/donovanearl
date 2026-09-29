@@ -90,7 +90,7 @@ const MainLayout=()=>{
                                     <div className="Nav-sign">
                                         <div className="Nav-sign-in">
                                             <p>
-                                            Welcome! {" "}{user? (<><Link to="/profile">{user.username}</Link>{" "}{" "}<button onClick={logout}>logout</button></>):(<Link to="/login">Sign In</Link>)}
+                                            Welcome! {" "}{user? (<><Link to="/profile">{user.username}</Link>{" "}{" "}<button className="logout-btn"onClick={logout}>logout</button></>):(<Link to="/login">Sign In</Link>)}
                                             </p>
                                         </div>
                                         <p>New customer?{" "}

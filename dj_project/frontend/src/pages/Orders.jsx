@@ -63,13 +63,13 @@ export default function Orders(){
 
                                     </div>
                                     <div className="subtotal">
-                                        Subtotal:{subTotal(item).toFixed(2)}
+                                        Subtotal: {subTotal(item).toFixed(2)}
                                     </div>
                                 </div>
                                  )}
                             )}
                             <div className="total-container">
-                                        <h2>Total:{total}
+                                        <h2>Total: {total}
                                         </h2>
                                     </div>
                         </div> 
