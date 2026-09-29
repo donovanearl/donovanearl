@@ -7,24 +7,6 @@ import Contacts_Email_Us from "../components/Email_Form";
 import EmailLogo from "../assets/EmailLogo.png"
 
 export default function Contacts_Email(){
-    const [data,setData]= useState([])
-    const [loading,setLoading]=useState(true)
-
-    useEffect(()=>{
-        const fetchdata= async ()=>{
-            try{
-                const res= await axios.get(`${getBaseURL()}/api/contacts/email/`)
-                setData(res.data)}
-            catch(error){
-                console.log("Error loading data",error)}
-            finally{setLoading(false)}
-        };
-        fetchdata();
-    },[])
-    if(loading){
-        return <div>loading...</div>
-    }
-    console.log("Contact Data:",data);
 
     return (<div className="contacts-container">
                 <div className="contacts-sub-container">

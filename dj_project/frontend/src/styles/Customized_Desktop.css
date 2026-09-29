@@ -4,9 +4,8 @@
     justify-content: center;
     min-height: 780px;
     width: 90%;
-    
-    
-    /* background-color: #d3d6df; */
+    margin-left: auto;
+    margin-right: auto;
 }
 .pc-builder-plate{
     display: flex;

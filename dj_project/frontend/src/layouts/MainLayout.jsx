@@ -56,24 +56,18 @@ const MainLayout=()=>{
         return () => window.removeEventListener("cart-updated", fetchCartCount)
     }, [user])
 
+    // Start each new page at the top
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [location.pathname])
+
     
     const logout = ()=> {
         localStorage.removeItem(ACCESS_TOKEN)
         localStorage.removeItem(REFRESH_TOKEN)
         navigate("/")
     }
-      const navItems = [
-        { label: "Home", to: "/" },
-        { label: "Products", children: [
-            { label: "Laptops", to: "/products/laptops" },
-            { label: "Custom-PC", to: "/products/customized-desktop" },
-        ]},
-        { label: "Services", children: [
-            {label: "Hardware", to: "/services/hardware"},
-            {label: "Software", to: "/services/software"}
-        ]},
-        { label: "Contacts", to: "/contacts" },
-        ];
+  
     
     console.log("User:",user)
     // console.log("Time-now: ",timeNow)
@@ -111,7 +105,10 @@ const MainLayout=()=>{
                     </header>
                     
                     <div className="Outlet">
-                        <Outlet/>
+                         {/* key remounts this div on every navigation, replaying the CSS fade */}
+                        <div key={location.pathname} className="page-fade">
+                            <Outlet />
+                        </div>
                     </div>
                     <Footer/>
                 </div>

@@ -1,6 +1,6 @@
 import LogoFoot from "/src/assets/Logo1.png"
-import Email from "/src/assets/email.jpg"
-import Phone from "/src/assets/smartphone.jpg"
+import Email from "/src/assets/emailfooter.png"
+import Phone from "/src/assets/smartphonefooter.png"
 import "../styles/Footer.css"
 
 
@@ -31,7 +31,7 @@ export default function Footer(){
                 </div>
                 <div className="copyright-container">
                     <p>
-                        &copy; 2026 Pinoy-Tech . All rights reserved. Website design by <span style={{ fontSize:18,color: '#dd940c', fontWeight:"bold"}}>Pinoy-Tech</span>.
+                        &copy; 2026 Pinoy-Tech . All rights reserved. Website design by <span style={{ fontSize:20,color: 'rgb(255, 165, 0)', fontWeight:"bold", textShadow: '0px 0px .2px grey'}}>Pinoy-Tech</span>.
                     </p>
                 </div>
             

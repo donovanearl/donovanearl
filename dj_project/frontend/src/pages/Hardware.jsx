@@ -31,7 +31,7 @@ export default function Hardware_page(){
         },[]);
 
 if(loading){
-    return <div>loading... (first render takes 60 secs)</div>
+    return <div>loading...</div>
     }
 
 return (
