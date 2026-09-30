@@ -11,7 +11,7 @@
   z-index: -10; /* Places it completely behind your application */
   
   /*  background properties */
-  background-image: url("../src/assets/bg.jpg");
+  background-image: url("../assets/bg.jpg");
   background-size:auto;
   opacity: 1;
   background-position: center;
