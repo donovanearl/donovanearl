@@ -123,16 +123,16 @@
     font-family: "Exo 2",arial;
     outline: none;   /* removes the bblack border*/
   }
-    .dropdown-link:focus,
-        .dropdown-link:focus-visible {
-          outline: none;
-        }
+.dropdown-link:focus,
+.dropdown-link:focus-visible{
+  outline: none;
+  }
 
-        /* Radix sets data-highlighted on hover AND keyboard focus */
-        .dropdown-link[data-highlighted] {
-          background-color: rgb(245, 169, 76,.3);
-          border-radius: 1px;
-        }
+  /* Radix sets data-highlighted on hover AND keyboard focus */
+  .dropdown-link[data-highlighted] {
+      background-color: rgb(245, 169, 76,.3);
+      border-radius: 1px;
+  }
 
 
 }

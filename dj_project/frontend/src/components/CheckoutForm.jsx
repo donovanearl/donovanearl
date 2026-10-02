@@ -48,7 +48,7 @@ export default function CheckoutForm({total,onSuccess}){
             {errorMessage && <p className="payment-error">{errorMessage}</p>}
 
             <button type="submit" disabled={loading}>
-                {loading?"Processing...":"Pay NOW"}
+                {loading?"Processing...":"Pay now"}
             </button>
         </form>
     )

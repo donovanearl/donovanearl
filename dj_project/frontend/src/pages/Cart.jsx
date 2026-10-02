@@ -28,28 +28,27 @@ export default function Cart(){
         const price=parseFloat(item.product.price);
         return Number((price*item.quantity).toFixed(2))}
 
-    const Total=cartItems.reduce((acc,item)=>acc+subTotal(item),0)
-    
+    const Total=cartItems.reduce((acc,item)=>acc+subTotal(item),0) 
     const deleteItem = async (itemId) => {
-    try {
-        await api.delete(`/api/cart/items/${itemId}/`)
-        setCartItems(cartItems.filter(item => item.id !== itemId))  // remove from state
-        window.dispatchEvent(new Event("cart-updated"));
-    } catch(error) {
-        console.log("Error deleting item", error)
-    }
-}   
+            try {
+                await api.delete(`/api/cart/items/${itemId}/`)
+                setCartItems(cartItems.filter(item => item.id !== itemId))  // remove from state
+                window.dispatchEvent(new Event("cart-updated"));
+            } catch(error) {
+                console.log("Error deleting item", error)
+            }
+    }   
     const updateQuantity = async (itemId, newQuantity) => {
-    if(newQuantity < 1) return  // prevent going below 1
-    try {
-        await api.patch(`/api/cart/items/${itemId}/`, {quantity: newQuantity})
-        setCartItems(cartItems.map(item => 
-            item.id === itemId ? {...item, quantity: newQuantity} : item
-        ))  // update state immediately
-    } catch(error) {
-        console.log("Error updating quantity", error)
+        if(newQuantity < 1) return  // prevent going below 1
+            try {
+                await api.patch(`/api/cart/items/${itemId}/`, {quantity: newQuantity})
+                setCartItems(cartItems.map(item => 
+                    item.id === itemId ? {...item, quantity: newQuantity} : item
+                ))  // update state immediately
+            } catch(error) {
+                console.log("Error updating quantity", error)
+            }
     }
-}
     const checkOut = ()=>{
         navigate("/Orders/")
      
@@ -82,8 +81,7 @@ export default function Cart(){
                         })}
                     
                 </div>
-                <div className="totals-container">Totals:{Total.toFixed(2)}</div>    
+                <div className="totals-container">Totals: {Total.toFixed(2)}</div>    
                 <button className="check-out-button" onClick={checkOut}>Check out</button>
             </div>
 }
-// TODO: Check out should navigate to Orders page and api.get from there useEffect

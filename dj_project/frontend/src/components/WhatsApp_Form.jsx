@@ -102,7 +102,7 @@ export default function Contacts_Whatsapp_Us() {
       {/* ... same form fields as before ... */}
       <div className='label-input-container'>
         
-        <label className="name-label">Your Name</label>
+        <label className="label">Your Name</label>
         <input
           name="name"
           value={form.name}
@@ -115,7 +115,7 @@ export default function Contacts_Whatsapp_Us() {
 
       <div className='label-input-container'>
         
-        <label className="whatsapp-label">Your WhatsApp Number</label>
+        <label className="label">Your WhatsApp</label>
         <input
           name="phone"
           value={form.phone}
@@ -127,7 +127,7 @@ export default function Contacts_Whatsapp_Us() {
       </div>
 
       <div className='label-input-container'>
-        <label className="message-label">Message</label>
+        <label className="label">Message</label>
         <textarea
           name="message"
           value={form.message}

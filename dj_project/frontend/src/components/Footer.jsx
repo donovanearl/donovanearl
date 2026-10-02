@@ -30,9 +30,9 @@ export default function Footer(){
                     </div>
                 </div>
                 <div className="copyright-container">
-                    <p>
-                        &copy; 2026 Pinoy-Tech . All rights reserved. Website design by <span style={{ fontSize:18,color: 'rgb(255, 165, 0)', fontWeight:"bold", textShadow: '1px 1px 3px black'}}>Pinoy-Tech</span> .
-                    </p>
+                    
+                        &copy; 2026 Pinoy-Tech . All rights reserved. Website design by Pinoy-Tech .
+                    
                 </div>
             
             </div>

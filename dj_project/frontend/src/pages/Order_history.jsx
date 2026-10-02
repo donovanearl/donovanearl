@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import api from "../api";
 import "../styles/Order_history.css"
+import Loader from "../components/Loader";
 
 export default function Order_history(){
     const [orderHistory,setOrderHistory]= useState([])
@@ -22,10 +23,7 @@ export default function Order_history(){
         fetchdata();
     },[]);
 
-    if(loading){return <div>Loading...</div>}
-    
-    // console.log("orderHistory", orderHistory)
-    // console.log("orderItems", orderItems)
+    if(loading){return <Loader/>}
 
     return <div className="order-history-container">
                 <div className="header-container">
@@ -55,7 +53,7 @@ export default function Order_history(){
                                                     </div>
                                     })}
                                      <div className="total-price">
-                                                                Total:{Number(order.total_price).toFixed(2)}
+                                                                Total: {Number(order.total_price).toFixed(2)}
                                         </div>                            
                             </div>
                         

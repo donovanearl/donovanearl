@@ -4,6 +4,7 @@ import { getBaseURL } from "../api";
 import axios from "axios";
 import "../styles/HardwareSoftware.css"
 import BookAppointmentModal from "../components/BookAppointmentModal";
+import Loader from "../components/Loader";
 
 
 
@@ -31,7 +32,7 @@ export default function Hardware_page(){
         },[]);
 
 if(loading){
-    return <div>loading...</div>
+    return <Loader/>
     }
 
 return (
@@ -61,10 +62,15 @@ return (
                                     <div className="intro-text">
                                         {item.intro_text}
                                     </div>
-                                    <div className="service-price">
-                                        AED {item.price}
+                                    <div className="service-price-container">
+                                        <div>
+                                            <span style={{fontStyle: 'italic' }}>Starting from:</span>
+                                        </div>
+                                        <div className="service-price" >
+                                             AED {item.price}
+                                        </div>
                                     </div>
-                                    <div className="service-price">
+                                    <div className="service-btn">
                                         <button className="booking-btn" onClick={() => {setDefaultService(item.service_text); setIsOpen(true);}}>
                                         Book Service
                                         </button>

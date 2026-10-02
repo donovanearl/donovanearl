@@ -6,6 +6,7 @@ import "../styles/Contacts.css"
 import Contacts_Email_Us from "../components/Email_Form";
 import EmailLogo from "../assets/EmailLogo.png"
 
+
 export default function Contacts_Email(){
 
     return (<div className="contacts-container">
@@ -14,17 +15,15 @@ export default function Contacts_Email(){
                     </div>
                     
                         <div className="contacts-items-container">
-                              
-                                    <div className="contacts-email-header">
+                               <div className="contacts-email-header">
                                         Send us a message—<br></br>We're ready to help with all your computer needs.
                                     </div>
-                                    
-                                        <div className="contacts-email-form-container">
-                                            <img src={EmailLogo} alt='EmailLogo' className="EmailLogo"/>
-                                            <Contacts_Email_Us/>
-                                        </div>
-                           
-                            </div>
+                                <img src={EmailLogo} alt='EmailLogo' className="EmailLogo"/>
+
+                                <div className="contacts-email-form-container">
+                                    <Contacts_Email_Us/> 
+                                </div> 
+                        </div>
                 </div>
                 
                         

@@ -4,6 +4,7 @@ import { getBaseURL } from "../api";
 import axios from "axios";
 import "../styles/HardwareSoftware.css"
 import BookAppointmentModal from "../components/BookAppointmentModal";
+import Loader from "../components/Loader";
 
 
 export default function Software_page(){
@@ -29,7 +30,7 @@ export default function Software_page(){
         },[]);
 
 if(loading){
-    return <div>loading...</div>
+    return <Loader/>
     }
 
 return (
@@ -55,10 +56,15 @@ return (
                             <div className="intro-text">
                                 {item.intro_text}
                             </div>
-                            <div className="service-price">
-                                AED {item.price}
-                            </div>
-                            <div className="service-price">
+                              <div className="service-price-container">
+                                        <div>
+                                            <span style={{fontStyle: 'italic' }}>Starting from:</span>
+                                        </div>
+                                        <div className="service-price" >
+                                             AED {item.price}
+                                        </div>
+                                    </div>
+                            <div className="service-btn">
                                 <button className="booking-btn" onClick={() => {setIsOpen(true),setDefaultService(item.service_text)}}>Book Service</button>
                             </div>
         

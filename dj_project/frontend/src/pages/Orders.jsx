@@ -3,6 +3,7 @@ import { useEffect,useState } from "react";
 import api from "../api";
 import {useNavigate} from "react-router-dom"
 import CheckoutForm from "../components/CheckoutForm";
+import Loader from "../components/Loader";
 
 export default function Orders(){
     const [cartItems,setCartItems]=useState([])
@@ -44,7 +45,7 @@ export default function Orders(){
     }
 }
 
-    if(loading){return <div>Loading ...</div>}
+    if(loading){return <Loader/>}
     return (<div className="order-page-container">
                         <div className="header-container">
                          </div>

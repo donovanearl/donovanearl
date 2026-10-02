@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+
 export default function Contacts_Email_Us() {
   // 1. Form state – stores what the user types
   const [form, setForm] = useState({
@@ -57,10 +58,11 @@ export default function Contacts_Email_Us() {
   // ========== THE FORM ==========
   return (
     <form onSubmit={handleSubmit} className="contacts-form-email">
-      
+
       {/* Name field */}
+  
       <div className='label-input-container'>
-        <label className="name-label">Your Name</label>
+        <label className="label">Your Name</label>
         <input
           name="name"
           value={form.name}
@@ -73,7 +75,7 @@ export default function Contacts_Email_Us() {
 
       {/* Email field */}
       <div className='label-input-container'>
-        <label className="email-label">Your Email</label>
+        <label className="label">Your Email</label>
         <input
           type="email"
           name="email"
@@ -87,7 +89,7 @@ export default function Contacts_Email_Us() {
 
       {/* Message field */}
       <div className='label-input-container'>
-        <label className="message-label">Message</label>
+        <label className="label">Message</label>
         <textarea
           name="message"
           value={form.message}

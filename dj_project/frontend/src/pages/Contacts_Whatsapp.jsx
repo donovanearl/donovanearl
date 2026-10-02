@@ -12,10 +12,12 @@ export default function Contacts_Whatsapp(){
                 <div className="contacts-sub-container">
                      <div className="header-container">
                     </div>
-                    
-                     <div className="contacts-whatsapp-form-container">
+                    <div className="contacts-items-container">
                         <img src={WhatsAppLogo} alt='WhatsAppLogo' className="WhatsAppLogo"/>
-                        <Contacts_Whatsapp_Us/>
+                        <div className="contacts-email-form-container">
+                            
+                            <Contacts_Whatsapp_Us/>
+                        </div>
                     </div>
                     
                 </div>

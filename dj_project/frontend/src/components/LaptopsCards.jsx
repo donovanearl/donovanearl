@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/HardwareSoftware.css";
 import { getBaseURL } from "../api";
 import MarketingBanner from "./MarketingBanner"
+import Loader from "./Loader";
 
 export default function LaptopCards() {
   const [products, setProducts] = useState([]);
@@ -58,7 +59,7 @@ export default function LaptopCards() {
   }
 
   if (loading) {
-    return <div>loading... (first render takes 60 secs)</div>;
+    return <Loader/>;
   }
 
   return (
