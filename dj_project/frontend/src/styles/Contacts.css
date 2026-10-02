@@ -3,7 +3,7 @@
       display: flex;
       justify-content: center;
       object-fit: contain;   
-  }
+    }
   .contacts-sub-container{
           display: flex;
           flex-direction: column;
@@ -65,7 +65,7 @@
     display: flex;
     width: 100%;
     padding: 2px;
-}
+  }
   /* ------------labels------------ */
 .label{
     display: flex;
@@ -75,7 +75,7 @@
     max-width: 100px;
     font-size: 14px;
     align-items: center;
-}
+  }
 
   /* ------------inputs------------ */
   .name-input{
@@ -88,7 +88,6 @@
   }
   .whatsapp-input{
     width:100%;
-    
     max-width: 500px;
   }
   .message-input{
@@ -229,7 +228,6 @@
     max-height: 200px;
     width: auto;
   }
-
 
 
 }
