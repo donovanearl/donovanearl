@@ -59,6 +59,9 @@ export default function Cart(){
 
     return <div className="cart-container">
                 <div className="header-container">
+                    <div className="cart-header">
+                        My Cart
+                    </div>
                 </div>
                 <div className="item-container">
 
@@ -66,22 +69,27 @@ export default function Cart(){
                         return <div className="items-parent"> 
                                 <div className="items"key={item.id}> 
                                
-                                    <div className="items-name"> {index+1}. {item.product.name}  </div>
-                                    <div>Price: ${item.product.price}</div>
-                                    <div>Qty: {item.quantity} </div>
-                                    <div className="subtotal">Subtotal: {subTotal(item)}</div>
-                                    <div className="buttons">
-                                        <button className="minus" onClick={()=>updateQuantity(item.id,item.quantity -1)}>-</button>
-                                        <button className="plus" onClick={()=>updateQuantity(item.id,item.quantity+1)}>+</button>
-                                        <button className="remove" onClick={() => deleteItem(item.id)}>Remove</button>  
-                                    </div>
+                                   
+                                        <div className="subtotal-details">
+                                            <div className="items-name"> {index+1}. {item.product.name}  </div>
+                                            <div className="cart-item-price">Price: {item.product.price}</div>
+                                            <div>Qty: {item.quantity} </div>
+                                            
+                                            <div className="buttons">
+                                                <button className="minus" onClick={()=>updateQuantity(item.id,item.quantity -1)}>-</button>
+                                                <button className="plus" onClick={()=>updateQuantity(item.id,item.quantity+1)}>+</button>
+                                                <button className="remove" onClick={() => deleteItem(item.id)}>Remove</button>  
+                                            </div>
+                                            <div className="subtotal">Subtotal: {subTotal(item)}</div>
+                                        </div>
+                                
                                 </div> 
                                
                             </div>           
                         })}
                     
                 </div>
-                <div className="totals-container">Totals: {Total.toFixed(2)}</div>    
+                <div className="totals-container">Totals: {Total.toFixed(2)} &nbsp;&nbsp;AED</div>    
                 <button className="check-out-button" onClick={checkOut}>Check out</button>
             </div>
 }

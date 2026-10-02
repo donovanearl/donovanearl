@@ -16,7 +16,21 @@
             0 8px 32px rgba(0, 0, 0, 0.15),
             inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
+.header-container{
+  display: flex;
+  align-items: center;
+}
+.orders-header{
+  display: flex;
 
+  width: 100%;
+  
+  justify-content: center;
+ 
+  font-size: 28px;
+  color: white;
+  font-weight: bold;
+}
 .order-page-container h1 {
   font-size: 24px;
   font-weight: 800;
@@ -29,10 +43,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
- 
   overflow: hidden;
-  
-  
   margin-bottom: 1.5rem;
 }
 
@@ -41,7 +52,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem 1.5rem;
+  padding: 0.85rem 1rem;
   border-bottom: 1px solid rgba(255, 180, 80, 0.2);
   
   gap: 1rem;
@@ -55,7 +66,14 @@
 }
 
 .items-price {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #a04800;
+  display: flex;
+  gap: 1rem;
+}
+.items-qty {
+  font-size: 14px;
   font-weight: 600;
   color: #a04800;
   display: flex;
@@ -63,8 +81,8 @@
 }
 
 .subtotal {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color: #7a3500;
 }
 
@@ -77,9 +95,9 @@
 }
 
 .total-container h2 {
-  margin: 0;
-  font-size: 17px;
-  font-weight: 800;
+  margin: 4px;
+  font-size: 16px;
+  font-weight: 700;
   color: #7a3500;
 }
 
@@ -166,7 +184,7 @@
     margin-top: 8px;
 }
 
-@media(min-width:768px){
+@media(min-width:1024px){
   .checkout-form {
   width: 60%;
   padding: 1.75rem 2rem;
@@ -174,5 +192,12 @@
   border-radius: 12px;
   border: 1.5px solid rgba(255, 180, 80, 0.35);
   box-shadow: 0 4px 20px rgba(255, 150, 30, 0.08);
+  }
+  .orders-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 }

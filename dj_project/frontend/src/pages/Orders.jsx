@@ -48,9 +48,12 @@ export default function Orders(){
     if(loading){return <Loader/>}
     return (<div className="order-page-container">
                         <div className="header-container">
+                            <div className="cart-header">
+                                My orders list
+                            </div>
                          </div>
                         <h1>
-                            Orders list
+                           
                         </h1>
                         <div className="orders-list-container">
                             {cartItems.map((item,index)=>{return(
@@ -59,9 +62,10 @@ export default function Orders(){
                                         {index+1}.{item.product.name}
                                     </div>
                                     <div className="items-price">
-                                        Price:{item.product.price} {" "}
-                                        Qty:{item.quantity}  
-
+                                        Price: {item.product.price} {" "}
+                                    </div>
+                                     <div className="items-qty">
+                                        Qty: {item.quantity} 
                                     </div>
                                     <div className="subtotal">
                                         Subtotal: {subTotal(item).toFixed(2)}
@@ -70,12 +74,10 @@ export default function Orders(){
                                  )}
                             )}
                             <div className="total-container">
-                                        <h2>Total: {total}
+                                        <h2>Total: {total} &nbsp;&nbsp;AED
                                         </h2>
                                     </div>
-                        </div> 
-                        
-                    
+                        </div>      
                     <div className="checkout-form">
                             <CheckoutForm
                                 total={total}
