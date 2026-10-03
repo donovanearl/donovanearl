@@ -42,6 +42,9 @@ return (
                     />
         <div className="services-sub-container">
             <div className="header-container">
+                 <div className="hardware-header">
+                        Software services
+                    </div>
             </div>
              {data.map((item)=>(
                     <div key={item.id} className="items-container">

@@ -46,6 +46,9 @@ return (
             />
             <div className="services-sub-container">
                 <div className="header-container">
+                       <div className="hardware-header">
+                        Hardware services
+                    </div>
                 </div>
                             {[...data]
                                 
