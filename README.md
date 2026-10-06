@@ -8,20 +8,20 @@ Full Stack Web Developer | Python - Django - React - PostgreSQL
 
 A full-stack e-commerce web application built end-to-end as a personal project to learn and apply modern web development practices.
 
-###Live website
+### Live website
 https://www.Pinoy-tech.com
 
-###Tech Stack
+### Tech Stack
 | Layer | Technologies |
 |-------|-------------|
 | Backend | Python, Django, Django REST Framework (DRF) |
 | Frontend | React, Vite, JavaScript (ES6+), CSS |
 | Database | PostgreSQL |
 | Payments | Stripe API |
-| Deployment | Render (PaaS) |
+| Deployment | DigitalOcean Droplet , Docker |
 | Tools | Git, VS Code, Postman |
 
-###Features
+### Features
 - Product catalogue with browsing and search
 - Shopping cart management
 - User registration and authentication
@@ -46,7 +46,7 @@ dj_project/
 
 ---
 
-##Phonebook Application (phonebook.py)
+## Phonebook Application (phonebook.py)
 
 A desktop CRUD application built with Python, PyQt5, and SQLite.
 
@@ -67,9 +67,9 @@ A desktop CRUD application built with Python, PyQt5, and SQLite.
 
 Self-taught Full Stack Developer making a deliberate career pivot from 15 years in IT infrastructure and systems administration. I build real projects to learn — not just tutorials.
 
-Live App: [donovanearl-1.onrender.com](https://donovanearl-1.onrender.com)
+Live App: www.Pinoy-Tech.com
 donovan_earl@yahoo.com
-Currently based in UAE | Targeting Christchurch, New Zealand
+Currently based in UAE | Targeting roles in New Zealand
 
 ---
 
