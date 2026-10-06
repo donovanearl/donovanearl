@@ -8,8 +8,8 @@ Full Stack Web Developer | Python - Django - React - PostgreSQL
 
 A full-stack e-commerce web application built end-to-end as a personal project to learn and apply modern web development practices.
 
-###Live Demo
-**https://donovanearl-1.onrender.com**
+###Live website
+https://www.Pinoy-tech.com
 
 ###Tech Stack
 | Layer | Technologies |
