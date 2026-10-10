@@ -65,7 +65,7 @@ A desktop CRUD application built with Python, PyQt5, and SQLite.
 
 ## About Me
 
-Self-taught Full Stack Developer making a deliberate career pivot from 15 years in IT infrastructure and systems administration. I build real projects to learn — not just tutorials.
+Self-taught Full Stack Developer making a deliberate career pivot from 12+ years in IT infrastructure and systems administration. I build real projects to learn — not just tutorials.
 
 Live App: www.Pinoy-Tech.com
 donovan_earl@yahoo.com
